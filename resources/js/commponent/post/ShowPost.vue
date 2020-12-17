@@ -1,0 +1,52 @@
+<template>
+	<div>
+		
+		<div v-for="post in this.getPosts" :key="post.id">
+			<!--			{{post}}-->
+			
+			<!--				post section-->
+			<div class="row">
+				<div class="col-md-8">
+					
+					<div class="card mb-4 shadow-sm">
+						<div>
+							
+							<div class="card-body p-0 ml-3 mr-3 mt-2">
+								{{post.user.name}}
+								<div class="d-flex justify-content-between align-items-center pb-2">
+									
+									<p class="card-text lead pb-3 pt-3"
+									   style="font-size: 22px; letter-spacing: 1px; word-spacing: 1px;">
+										{{post.content}}</p>
+								</div>
+							</div>
+							<div class="card-footer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+
+</template>
+
+<script>
+    export default {
+        name: "ShowPost",
+        mounted() {
+            this.$store.dispatch('getPosts');
+            // console.log(this.$store.getters.posts);
+        },
+        computed: {
+            getPosts() {
+                return this.$store.getters.getPosts;
+                
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>

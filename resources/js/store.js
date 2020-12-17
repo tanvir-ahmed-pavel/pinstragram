@@ -1,13 +1,14 @@
 import {getUser} from "./authHelper";
 
-const user = getUser();
+const authUser = getUser();
 export default {
     state: {
-        auth: !!user,
+        auth: !!authUser,
         loading: null,
         authErrors: null,
         validationErrors: null,
-        user: user,
+        authUser: authUser,
+        posts: [],
     },
 
     getters: {
@@ -15,7 +16,7 @@ export default {
             return state.welcome;
         },
         user(state){
-            return state.user;
+            return state.authUser;
         },
         auth(state){
             return state.auth;
@@ -26,6 +27,9 @@ export default {
         validationErrors(state){
             return state.validationErrors;
         },
+        getPosts(state){
+            return state.posts;
+        }
     },
 
     mutations: {
@@ -37,30 +41,33 @@ export default {
             state.loading = false;
             state.authErrors = null;
             state.auth = true;
-            state.user = payload;
-            localStorage.setItem('user', JSON.stringify(state.user))
+            state.authUser = payload;
+            localStorage.setItem('authUser', JSON.stringify(state.authUser))
         },
 
         loginFailed(state, payload){
             state.loading = false;
             state.authErrors = payload;
             state.auth = false;
-            state.user = null;
-            localStorage.removeItem('user');
+            state.authUser = null;
+            localStorage.removeItem('authUser');
         },
         registerFailed(state, payload){
             state.loading = false;
             state.validationErrors = payload;
             state.auth = false;
-            state.user = null;
-            localStorage.removeItem('user');
+            state.authUser = null;
+            localStorage.removeItem('authUser');
         },
 
         logout(state){
             state.auth = false;
             state.loading = false;
-            state.user = null;
-            localStorage.removeItem('user');
+            state.authUser = null;
+            localStorage.removeItem('authUser');
+        },
+        getPosts(state, payload){
+            state.posts = payload;
         },
     },
 
@@ -79,6 +86,16 @@ export default {
         },
         logout(context){
             context.commit("logout");
+        },
+        getPosts(context){
+            axios.get('api/post').then((response)=>{
+                context.commit("getPosts", response.data.posts)
+            })
+        },
+        createPost(context, payload){
+            axios.post('api/post', payload).then((response)=>{
+
+            })
         }
 
     },

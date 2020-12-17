@@ -2,6 +2,7 @@ import Home from './commponent/Home';
 import Login from './commponent/Login';
 import Dashboard from './commponent/Dashboard';
 import Register from "./commponent/Register";
+import ProfileLayout from "./commponent/profile/ProfileLayout";
 export const routes = [
     {
         name: 'Home',
@@ -26,4 +27,12 @@ export const routes = [
             requirsAuth: true,
         },
     },
+    {
+        name: 'ProfileLayout',
+        path: '/profile',
+        component: ProfileLayout,
+        meta: {
+            requirsAuth: true,
+        },
+    }
 ];

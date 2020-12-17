@@ -66,6 +66,9 @@
 									<input id="password-confirm" v-model="form.password_confirmation" type="password"
 									       class="form-control" name="password_confirmation"
 									       autocomplete="new-password">
+									<div class="mt-3">
+										Already have an account??<router-link to="/login" class="text-decoration-none m-1">Login</router-link>
+									</div>
 								</div>
 							</div>
 							
@@ -106,7 +109,7 @@
                 this.$store.dispatch('login');
 
                 register(this.form).then((response) => {
-                    axios.get('api/user').then((response) => {
+                    axios.get('/user').then((response) => {
                         this.$store.dispatch("loginSuccess", response.data);
                         this.$router.push({path: '/dashboard'});
                     });

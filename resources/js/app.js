@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 import {routes} from './routes.js';
 import StoreData from './store';
 import App from './commponent/App';
+// import CreatePost from "./commponent/post/CreatePost";
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -19,7 +20,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     const requirsAuth = to.matched.some(record => record.meta.requirsAuth);
-    const auth = store.state.user;
+    const auth = store.state.auth;
     if (requirsAuth && !auth){
         next('/login');
     } else if (to.path === '/login' && auth){
@@ -39,5 +40,6 @@ const app = new Vue({
     store,
     components: {
         App,
+        // CreatePost,
     }
 });

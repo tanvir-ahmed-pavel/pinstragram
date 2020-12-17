@@ -38,21 +38,30 @@
 									        v-for="message in errors.password">
 										{{message}}
 									</strong>
-								
 								</div>
 							</div>
 							
-							<!--								<div class="form-group row">-->
-							<!--									<div class="col-md-6 offset-md-4">-->
-							<!--										<div class="form-check">-->
-							<!--											<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>-->
-							<!--											-->
-							<!--											<label class="form-check-label" for="remember">-->
-							<!--												{{ __('Remember Me') }}-->
-							<!--											</label>-->
-							<!--										</div>-->
-							<!--									</div>-->
-							<!--								</div>-->
+							<div class="form-group row">
+								<div class="col-md-6 offset-md-4">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" v-model="form.remember" name="remember" id="remember" >
+										
+										<label class="form-check-label" for="remember">
+											{{"Remember me"}}
+										</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-6 offset-md-4">
+									<div class="mt-1">
+										Don't have an account??
+										<router-link to="/register" class="text-decoration-none m-1">Register
+										</router-link>
+									</div>
+								</div>
+							</div>
 							
 							<div class="form-group row mb-0">
 								<div class="col-md-8 offset-md-4">
@@ -78,6 +87,7 @@
 <script>
 
     import {login} from "../authHelper";
+
     export default {
         name: "Login",
         data() {
@@ -85,37 +95,38 @@
                 form: {
                     email: '',
                     password: '',
+                    remember: false,
                 },
                 errors: [],
             };
         },
         methods: {
-             loginReq() {
+            loginReq() {
                 this.$store.dispatch('login');
-                
+
                 login(this.form).then((response) => {
                     axios.get('api/user').then((response) => {
                         this.$store.dispatch("loginSuccess", response.data);
                         this.$router.push({path: '/dashboard'});
                     });
                 })
-	                .catch((err)=>{
-                    this.form.password = '';
-                    this.$store.dispatch("loginFailed", err);
-                    this.errors = this.$store.state.authErrors;
-                });
-                    // axios.post('api/login', this.form).then(response => {
-                    //
-                    //
-                    //     this.$router.push({path: '/dashboard'});
-                    // })
-                    //     .catch(err => {
-                    //         this.form.password = '';
-                    //         this.$store.dispatch("loginFailed", err.response.data.errors);
-                    //         this.errors = this.$store.state.authErrors;
-                    //     })
+                    .catch((err) => {
+                        this.form.password = '';
+                        this.$store.dispatch("loginFailed", err);
+                        this.errors = this.$store.state.authErrors;
+                    });
+                // axios.post('api/login', this.form).then(response => {
+                //
+                //
+                //     this.$router.push({path: '/dashboard'});
+                // })
+                //     .catch(err => {
+                //         this.form.password = '';
+                //         this.$store.dispatch("loginFailed", err.response.data.errors);
+                //         this.errors = this.$store.state.authErrors;
+                //     })
             },
-            
+
         },
         computed: {}
     }

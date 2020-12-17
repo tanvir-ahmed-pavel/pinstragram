@@ -53,7 +53,7 @@
         methods: {
 
             logout() {
-                axios.post('api/logout').then(() => {
+                axios.post('/logout').then(() => {
                     this.$store.dispatch("logout");
                     this.$router.push({name: 'Login'});
                 })

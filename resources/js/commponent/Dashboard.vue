@@ -1,22 +1,28 @@
 <template>
 	<div>
-		<div v-if="user">
-			{{user.name}}
-			<br>
-			{{user.email}}
-		</div>
-		
-		<div v-if="error">
-			{{error.message}}
-		</div>
-		
+<!--		<div v-if="user">-->
+<!--			{{user.name}}-->
+<!--			<br>-->
+<!--			{{user.email}}-->
+<!--		</div>-->
+<!--		-->
+<!--		<div v-if="error">-->
+<!--			{{error.message}}-->
+<!--		</div>-->
+		<create-post></create-post>
+		<br>
+		<show-post></show-post>
 	</div>
+	
 </template>
 
 <script>
+    import CreatePost from "./post/CreatePost";
+    import ShowPost from "./post/ShowPost";
     export default {
         name: "Dashboard",
-	    data () {
+        components: {ShowPost, CreatePost},
+        data () {
             return {
 	            error: null,
             }
