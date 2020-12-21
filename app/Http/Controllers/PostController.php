@@ -54,6 +54,8 @@ class PostController extends Controller
             "img" => "required_without_all:content|image",
         ]);
 
+//        dd($request->img);
+
         $img_path = $request->file("img");
         if (!is_null($img_path)) {
             $img_path = $request->file("img")->store("post_imgs", 'public');

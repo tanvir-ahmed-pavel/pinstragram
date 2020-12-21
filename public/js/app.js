@@ -2423,6 +2423,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ShowPost",
   created: function created() {
@@ -2506,22 +2507,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreatePost",
   data: function data() {
     return {
-      form: {
-        content: '' // img: '',
-
-      }
+      content: '',
+      img: '',
+      imgPre: '',
+      formData: new FormData()
     };
   },
   methods: {
-    createPost: function createPost() {
+    imgUpload: function imgUpload(e) {
       var _this = this;
 
-      this.$store.dispatch('createPost', this.form).then(function () {
-        _this.form.content = '';
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this.imgPre = e.target.result;
+      };
+
+      this.img = e.target.files[0];
+    },
+    createPost: function createPost() {
+      var _this2 = this;
+
+      this.formData.append('content', this.content);
+      this.formData.append('img', this.img);
+      this.$store.dispatch('createPost', this.formData).then(function () {
+        _this2.content = '';
+        _this2.img = '';
+        _this2.imgPre = '';
       });
     }
   }
@@ -39138,33 +39157,31 @@ var render = function() {
             _c("div", { staticClass: "card mb-4 shadow-sm" }, [
               _c("div", [
                 _c("div", { staticClass: "card-body p-0 ml-3 mr-3 mt-2" }, [
-                  _vm._v(
-                    "\n\t\t\t\t\t\t\t" +
-                      _vm._s(post.user.name) +
-                      "\n\t\t\t\t\t\t\t"
-                  ),
+                  _vm._v("\n\t\t\t\t\t\t\t\t" + _vm._s(post.user.name) + "\n"),
+                  _vm._v(" "),
                   _c(
-                    "div",
+                    "p",
                     {
-                      staticClass:
-                        "d-flex justify-content-between align-items-center pb-2"
+                      staticClass: "card-text lead pb-3 pt-3",
+                      staticStyle: {
+                        "font-size": "22px",
+                        "letter-spacing": "1px",
+                        "word-spacing": "1px"
+                      }
                     },
-                    [
-                      _c(
-                        "p",
-                        {
-                          staticClass: "card-text lead pb-3 pt-3",
-                          staticStyle: {
-                            "font-size": "22px",
-                            "letter-spacing": "1px",
-                            "word-spacing": "1px"
-                          }
-                        },
-                        [_vm._v("\n\t\t\t\t\t\t\t\t\t" + _vm._s(post.content))]
-                      )
-                    ]
+                    [_vm._v("\n\t\t\t\t\t\t\t\t\t\t" + _vm._s(post.content))]
                   )
                 ]),
+                _vm._v(" "),
+                post.img
+                  ? _c("img", {
+                      staticClass: "card-img-bottom",
+                      attrs: {
+                        src: "/storage/" + post.img,
+                        alt: "Card image cap"
+                      }
+                    })
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-footer" })
               ])
@@ -39215,8 +39232,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.content,
-                        expression: "form.content"
+                        value: _vm.content,
+                        expression: "content"
                       }
                     ],
                     staticClass: "form-control border-0",
@@ -39226,20 +39243,33 @@ var render = function() {
                       name: "content",
                       placeholder: "Whats on your mind....."
                     },
-                    domProps: { value: _vm.form.content },
+                    domProps: { value: _vm.content },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.form, "content", $event.target.value)
+                        _vm.content = $event.target.value
                       }
                     }
                   })
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "d-flex justify-content-between" }, [
-                  _vm._m(1),
+                  _c("div", { staticClass: "mb-3" }, [
+                    _c("input", {
+                      staticClass: "form-control-file ",
+                      attrs: { type: "file", name: "img", id: "img" },
+                      on: { change: _vm.imgUpload }
+                    }),
+                    _vm._v(" "),
+                    this.imgPre
+                      ? _c("img", {
+                          staticStyle: { "max-height": "50px" },
+                          attrs: { src: this.imgPre, alt: "" }
+                        })
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c(
@@ -39247,10 +39277,13 @@ var render = function() {
                       {
                         staticClass: "btn",
                         class:
-                          _vm.form.content || _vm.form.img
+                          _vm.content || _vm.img
                             ? "btn-primary"
                             : "btn-secondary",
-                        attrs: { disabled: !_vm.form.content, type: "submit" },
+                        attrs: {
+                          disabled: !_vm.content && !_vm.img,
+                          type: "submit"
+                        },
                         on: {
                           click: function($event) {
                             $event.preventDefault()
@@ -39308,17 +39341,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "ml-2" }, [
         _c("div", { staticClass: "p-0 m-0" })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c("input", {
-        staticClass: "form-control-file ",
-        attrs: { type: "file", name: "img", id: "img" }
-      })
     ])
   }
 ]

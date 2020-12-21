@@ -13,13 +13,14 @@
 							
 							<div class="card-body p-0 ml-3 mr-3 mt-2">
 								{{post.user.name}}
-								<div class="d-flex justify-content-between align-items-center pb-2">
+<!--								<div class="d-flex justify-content-between align-items-center pb-2">-->
 									
 									<p class="card-text lead pb-3 pt-3"
 									   style="font-size: 22px; letter-spacing: 1px; word-spacing: 1px;">
 										{{post.content}}</p>
-								</div>
+<!--								</div>-->
 							</div>
+							<img v-if="post.img" class="card-img-bottom" :src="'/storage/'+post.img" alt="Card image cap">
 							<div class="card-footer"></div>
 						</div>
 					</div>
