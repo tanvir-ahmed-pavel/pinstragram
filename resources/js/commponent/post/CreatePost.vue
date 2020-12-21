@@ -25,17 +25,18 @@
 						</div>
 						<div>
 							<div class="form-group border-0">
-                                <textarea style="font-size: 25px;" rows="2" v-model="form.content" class="form-control border-0" name="content"
+                                <textarea style="font-size: 25px;" rows="2" v-model="content" class="form-control border-0" name="content"
                                           placeholder="Whats on your mind....."></textarea>
 							</div>
 
 							<div class="d-flex justify-content-between">
 								<div class="mb-3">
+									<input type="file" @change="imgUpload" name="img" id="img"  class="form-control-file ">
 
-									<input type="file" name="img" id="img"  class="form-control-file ">
+									<img v-if="this.imgPre" :src="this.imgPre" style="max-height: 50px;" alt="">
 								</div>
 								<div class="form-group">
-									<button :disabled="!form.content" class="btn" :class="form.content || form.img ? 'btn-primary' : 'btn-secondary'" type="submit" @click.prevent="createPost()" >
+									<button :disabled="!content && !img" class="btn" :class="content || img ? 'btn-primary' : 'btn-secondary'" type="submit" @click.prevent="createPost()" >
 										Post
 									</button>
 								</div>
@@ -57,16 +58,31 @@
         name: "CreatePost",
 	    data(){
             return{
-                form:{
-                    content:'',
-	                // img: '',
-                }
+                content: '',
+	            img: '',
+                imgPre: '',
+	            formData: new FormData,
             }
 	    },
 	    methods:{
+            imgUpload(e){
+                let fileReader = new FileReader();
+                fileReader.readAsDataURL(e.target.files[0]);
+                fileReader.onload = (e) => {
+                    this.imgPre = e.target.result;
+                };
+                this.img = e.target.files[0];
+
+
+
+            },
             createPost(){
-                this.$store.dispatch('createPost', this.form).then(()=>{
-                    this.form.content='';
+                this.formData.append('content', this.content);
+                this.formData.append('img', this.img);
+                this.$store.dispatch('createPost', this.formData).then(()=>{
+                    this.content='';
+                    this.img='';
+                    this.imgPre='';
                 });
 
 

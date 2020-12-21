@@ -2360,7 +2360,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$store.dispatch('login');
       Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["register"])(this.form).then(function (response) {
-        axios.get('/user').then(function (response) {
+        axios.get('api/user').then(function (response) {
           _this.$store.dispatch("loginSuccess", response.data);
 
           _this.$router.push({
@@ -2390,10 +2390,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -2566,22 +2562,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreatePost",
   data: function data() {
     return {
-      form: {
-        content: '' // img: '',
-
-      }
+      content: '',
+      img: '',
+      imgPre: '',
+      formData: new FormData()
     };
   },
   methods: {
-    createPost: function createPost() {
+    imgUpload: function imgUpload(e) {
       var _this = this;
 
-      this.$store.dispatch('createPost', this.form).then(function () {
-        _this.form.content = '';
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this.imgPre = e.target.result;
+      };
+
+      this.img = e.target.files[0];
+    },
+    createPost: function createPost() {
+      var _this2 = this;
+
+      this.formData.append('content', this.content);
+      this.formData.append('img', this.img);
+      this.$store.dispatch('createPost', this.formData).then(function () {
+        _this2.content = '';
+        _this2.img = '';
+        _this2.imgPre = '';
       });
     }
   }
@@ -7191,7 +7204,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".card-head{\n    display: flex;\n}\n/* User profile image */\n.post_title_img{\n    height: 50px;\n    width: 50px;\n    border-radius: 50px;\n}\n.card-head-icon{\n    cursor: pointer;\n}\n.card-title{\n    display: flex;\n    background-color: #FFFFFF;\n}\n.name-and-time{\n    text-decoration: none;\n    height: 50px;\n    margin-left: 15px;\n}\n.name{\n    color: #1b1e21;\n    font-size: 20px;\n    font-family: 'Ubuntu', sans-serif;\n    font-weight: 600;\n}\n.name:hover{\n    color: #1b1e21;\n}\n.time{\n    font-size: 0.8em;\n}\n\n/* Dropdown Button */\n.dropbtn {\n    font-size: 16px;\n    background-color: #FFFFFF;\n    border: none;\n}\n\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n\n/* Dropdown Content (Hidden by Default) */\n.dropdown-content {\n    display: none;\n    position: absolute;\n    background-color: #f1f1f1;\n    min-width: 160px;\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    z-index: 1;\n}\n\n/* Links inside the dropdown */\n.dropdown-content a {\n    color: black;\n    padding: 12px 16px;\n    text-decoration: none;\n    display: block;\n}\n\n/* Change color of dropdown links on hover */\n.dropdown-content a:hover{\n    background-color: #ddd;\n}\n\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\n    display: block;\n}\n.delete-btn:hover{\n    color: #f1f1f1;\n    background-color: #9F0B0B !important;\n}\n.edit-btn:hover{\n    color: #f1f1f1;\n    background-color: #1A212C !important;\n}\n", ""]);
+exports.push([module.i, ".card-head{\n    display: flex;\n}\n/* User profile image */\n.post_title_img{\n    height: 50px;\n    width: 50px;\n    border-radius: 50px;\n}\n.card-head-icon{\n    cursor: pointer;\n}\n.card-title{\n    display: flex;\n    background-color: #FFFFFF;\n}\n.name-and-time{\n    text-decoration: none;\n    margin: auto 0 auto 15px !important;\n}\n.name{\n    color: #1b1e21;\n    font-size: 20px;\n    font-family: 'Ubuntu', sans-serif;\n    font-weight: 600;\n    line-height: 100%;\n}\n.name:hover{\n    color: #1b1e21;\n}\n.time{\n    font-size: 0.8em;\n    line-height: 100%;\n}\n\n/* Dropdown Button */\n.dropbtn {\n    font-size: 16px;\n    background-color: #FFFFFF;\n    border: none;\n}\n\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n\n/* Dropdown Content (Hidden by Default) */\n.dropdown-content {\n    display: none;\n    position: absolute;\n    background-color: #f1f1f1;\n    min-width: 160px;\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    z-index: 1;\n}\n\n/* Links inside the dropdown */\n.dropdown-content a {\n    color: black;\n    padding: 12px 16px;\n    text-decoration: none;\n    display: block;\n}\n\n/* Change color of dropdown links on hover */\n.dropdown-content a:hover{\n    background-color: #ddd;\n}\n\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\n    display: block;\n}\n.delete-btn:hover{\n    color: #f1f1f1;\n    background-color: #9F0B0B !important;\n}\n.edit-btn:hover{\n    color: #f1f1f1;\n    background-color: #1A212C !important;\n}\n.post-body{\n    padding: 0;\n}\n/* Post Caption */\n.post-caption{\n    padding: 10px 20px;\n    font-family: 'Arial', sans-serif;\n}\n/* Post Image */\n.img{\n    width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -39878,7 +39891,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "name-and-time" }, [
-                      _c("div", [
+                      _c("div", { staticClass: "d-block" }, [
                         _c(
                           "a",
                           {
@@ -39890,7 +39903,9 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "time" }, [
-                        _vm._v("20 minutes ago")
+                        _vm._v(
+                          "\n                                        20 minutes ago\n                                    "
+                        )
                       ])
                     ])
                   ]),
@@ -40041,7 +40056,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "card-body post-body" }, [
                 _c("div", { staticClass: "post-caption text-justify" }, [
                   _vm._v(
                     "\n                                " +
@@ -40050,13 +40065,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "post-img" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(post.img) +
-                      "\n                            "
-                  )
-                ])
+                _vm._m(0, true)
               ])
             ])
           ])
@@ -40066,7 +40075,23 @@ var render = function() {
     0
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "post-img" }, [
+      _c("img", {
+        staticClass: "img",
+        attrs: {
+          src:
+            "https://cdn.bajajauto.com/tinyPng.ashx?filePath=/-/media/bajaj-auto/motorbikes-new/dominar-400/dont-hold-back-mobile.ashx?w=450",
+          alt: "Post's image"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -40105,8 +40130,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.content,
-                        expression: "form.content"
+                        value: _vm.content,
+                        expression: "content"
                       }
                     ],
                     staticClass: "form-control border-0",
@@ -40116,20 +40141,33 @@ var render = function() {
                       name: "content",
                       placeholder: "Whats on your mind....."
                     },
-                    domProps: { value: _vm.form.content },
+                    domProps: { value: _vm.content },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.form, "content", $event.target.value)
+                        _vm.content = $event.target.value
                       }
                     }
                   })
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "d-flex justify-content-between" }, [
-                  _vm._m(1),
+                  _c("div", { staticClass: "mb-3" }, [
+                    _c("input", {
+                      staticClass: "form-control-file ",
+                      attrs: { type: "file", name: "img", id: "img" },
+                      on: { change: _vm.imgUpload }
+                    }),
+                    _vm._v(" "),
+                    this.imgPre
+                      ? _c("img", {
+                          staticStyle: { "max-height": "50px" },
+                          attrs: { src: this.imgPre, alt: "" }
+                        })
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c(
@@ -40137,10 +40175,13 @@ var render = function() {
                       {
                         staticClass: "btn",
                         class:
-                          _vm.form.content || _vm.form.img
+                          _vm.content || _vm.img
                             ? "btn-primary"
                             : "btn-secondary",
-                        attrs: { disabled: !_vm.form.content, type: "submit" },
+                        attrs: {
+                          disabled: !_vm.content && !_vm.img,
+                          type: "submit"
+                        },
                         on: {
                           click: function($event) {
                             $event.preventDefault()
@@ -40196,17 +40237,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "ml-2" }, [
         _c("div", { staticClass: "p-0 m-0" })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c("input", {
-        staticClass: "form-control-file ",
-        attrs: { type: "file", name: "img", id: "img" }
-      })
     ])
   }
 ]
@@ -56934,7 +56964,7 @@ router.beforeEach(function (to, from, next) {
   var requirsAuth = to.matched.some(function (record) {
     return record.meta.requirsAuth;
   });
-  var auth = store.state.auth;
+  var auth = store.getters.auth;
 
   if (requirsAuth && !auth) {
     next('/login');

@@ -5,26 +5,6 @@
 			<!--			{{post}}-->
 
 			<!--				post section-->
-<!--			<div class="row">-->
-<!--				<div class="col-md-8">-->
-
-<!--					<div class="card mb-4 shadow-sm">-->
-<!--						<div>-->
-
-<!--							<div class="card-body p-0 ml-3 mr-3 mt-2">-->
-<!--								{{post.user.name}}-->
-<!--								<div class="d-flex justify-content-between align-items-center pb-2">-->
-
-<!--									<p class="card-text lead pb-3 pt-3"-->
-<!--									   style="font-size: 22px; letter-spacing: 1px; word-spacing: 1px;">-->
-<!--										{{post.content}}</p>-->
-<!--								</div>-->
-<!--							</div>-->
-<!--							<div class="card-footer"></div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
             <div class="row">
                 <div class="col-md-8">
                     <div class="card mb-4 shadow-sm">
@@ -33,10 +13,12 @@
                                 <img src="https://gatorprints.com/wp-content/uploads/2015/04/Sample-Logo-square.png"
                                      class="post_title_img"/>
                                 <div class="name-and-time">
-                                    <div>
+                                    <div class="d-block">
                                         <a class="name my-0 py-0" href="#">{{post.user.name}}</a>
-                                        </div>
-                                    <div class="time">20 minutes ago</div>
+                                    </div>
+                                    <div class="time">
+                                        20 minutes ago
+                                    </div>
                                 </div>
                             </div>
                             <div class="dropdown">
@@ -74,12 +56,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body post-body">
+                            <!-- From Database -->
+<!--                            <div v-if="post.content != null">-->
+<!--                                <div class="post-caption text-justify">-->
+<!--                                    {{post.content}}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div v-if="post.img != null">-->
+<!--                                <div class="post-img">-->
+<!--                                    {{ post.img }}-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <!-- BAD CODE -->
                             <div class="post-caption text-justify">
                                 {{post.content}}
                             </div>
                             <div class="post-img">
-                                {{ post.img }}
+                                <img class="img"
+                                    src="https://cdn.bajajauto.com/tinyPng.ashx?filePath=/-/media/bajaj-auto/motorbikes-new/dominar-400/dont-hold-back-mobile.ashx?w=450"
+                                     alt="Post's image"/>
                             </div>
                         </div>
                     </div>

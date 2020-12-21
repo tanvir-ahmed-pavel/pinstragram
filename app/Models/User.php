@@ -41,6 +41,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function ($user){
+//            $fpath = 'storage/'.$user->id.$user->user_name.'.png';
+//            $path = $user->id.$user->user_name.'.png';
+//            Avatar::create($user->user_name)->save($fpath);
+            $user->profile()->create([
+//                "profile_img" => $path,
+                "title" => "i am " . $user->name,
+            ]);
+        });
+    }
+
     public function posts(){
         return $this->hasMany(Post::class);
     }

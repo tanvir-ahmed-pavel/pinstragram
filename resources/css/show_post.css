@@ -16,20 +16,21 @@
 }
 .name-and-time{
     text-decoration: none;
-    height: 50px;
-    margin-left: 15px;
+    margin: auto 0 auto 15px !important;
 }
 .name{
     color: #1b1e21;
     font-size: 20px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 600;
+    line-height: 100%;
 }
 .name:hover{
     color: #1b1e21;
 }
 .time{
     font-size: 0.8em;
+    line-height: 100%;
 }
 
 /* Dropdown Button */
@@ -80,4 +81,16 @@
 .edit-btn:hover{
     color: #f1f1f1;
     background-color: #1A212C !important;
+}
+.post-body{
+    padding: 0;
+}
+/* Post Caption */
+.post-caption{
+    padding: 10px 20px;
+    font-family: 'Arial', sans-serif;
+}
+/* Post Image */
+.img{
+    width: 100%;
 }
