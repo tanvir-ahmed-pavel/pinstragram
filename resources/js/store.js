@@ -44,6 +44,7 @@ export default {
         loginSuccess(state, payload){
             state.loading = false;
             state.authErrors = null;
+            state.auth = true;
             state.authUser = payload;
             localStorage.setItem('authUser', JSON.stringify(state.authUser))
         },

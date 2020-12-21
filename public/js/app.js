@@ -2360,7 +2360,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$store.dispatch('login');
       Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["register"])(this.form).then(function (response) {
-        axios.get('/user').then(function (response) {
+        axios.get('api/user').then(function (response) {
           _this.$store.dispatch("loginSuccess", response.data);
 
           _this.$router.push({
@@ -56046,7 +56046,7 @@ router.beforeEach(function (to, from, next) {
   var requirsAuth = to.matched.some(function (record) {
     return record.meta.requirsAuth;
   });
-  var auth = store.state.auth;
+  var auth = store.getters.auth;
 
   if (requirsAuth && !auth) {
     next('/login');
@@ -56945,7 +56945,7 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     },
     createPost: function createPost(context, payload) {
       axios.post('/api/post', payload).then(function () {
-        context.dispatch('getPosts'); // can be improved by adding "add" method 
+        context.dispatch('getPosts'); // can be improved by adding "add" method
       });
     },
     getProfile: function getProfile(context, payload) {

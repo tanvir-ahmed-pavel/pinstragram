@@ -109,7 +109,7 @@
                 this.$store.dispatch('login');
 
                 register(this.form).then((response) => {
-                    axios.get('/user').then((response) => {
+                    axios.get('api/user').then((response) => {
                         this.$store.dispatch("loginSuccess", response.data);
                         this.$router.push({path: '/dashboard'});
                     });
