@@ -1,0 +1,83 @@
+.card-head{
+    display: flex;
+}
+/* User profile image */
+.post_title_img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+.card-head-icon{
+    cursor: pointer;
+}
+.card-title{
+    display: flex;
+    background-color: #FFFFFF;
+}
+.name-and-time{
+    text-decoration: none;
+    height: 50px;
+    margin-left: 15px;
+}
+.name{
+    color: #1b1e21;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+}
+.name:hover{
+    color: #1b1e21;
+}
+.time{
+    font-size: 0.8em;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    font-size: 16px;
+    background-color: #FFFFFF;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover{
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+.delete-btn:hover{
+    color: #f1f1f1;
+    background-color: #9F0B0B !important;
+}
+
+.edit-btn:hover{
+    color: #f1f1f1;
+    background-color: #1A212C !important;
+}

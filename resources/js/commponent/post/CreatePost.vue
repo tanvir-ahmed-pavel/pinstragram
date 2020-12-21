@@ -1,13 +1,13 @@
 <template>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-8 mb-4">
 			<form method="POST" enctype="multipart/form-data">
 				<div class="card">
 					<div class="card-body pb-0">
 						<div class="d-flex align-items-center mt-3 pb-2">
 							<div class="overflow-hidden d-flex justify-content-center align-items-center position-relative"
 							     style="height: 40px; width: 40px; border: 1.5px solid #000000; border-radius: 50%; background-color: rgba(255,255,0,0)">
-								
+
 								<!--					<img src="/storage/{{Auth::user()->profile->profile_img ?? "profile_imgs/default-avatar.png"}}"-->
 								<!--					alt="img"-->
 								<!--					style="height: 100%; width: auto;">-->
@@ -20,7 +20,7 @@
 									<!--						<a class="text-decoration-none lead text-dark" style="font-size: 20px;"-->
 									<!--						   href="{{ url('/profile/'.Auth::user()->profile->user_id)}}">{{ Auth::user()->user_name }}</a>-->
 								</div>
-							
+
 							</div>
 						</div>
 						<div>
@@ -28,10 +28,10 @@
                                 <textarea style="font-size: 25px;" rows="2" v-model="form.content" class="form-control border-0" name="content"
                                           placeholder="Whats on your mind....."></textarea>
 							</div>
-							
+
 							<div class="d-flex justify-content-between">
 								<div class="mb-3">
-									
+
 									<input type="file" name="img" id="img"  class="form-control-file ">
 								</div>
 								<div class="form-group">
@@ -42,14 +42,14 @@
 							</div>
 						</div>
 					</div>
-					<div class="card-footer pb-4">
-					
-					</div>
+<!--					<div class="card-footer pb-4">-->
+<!--					-->
+<!--					</div>-->
 				</div>
 			</form>
 		</div>
 	</div>
-	
+
 </template>
 
 <script>
@@ -68,11 +68,11 @@
                 this.$store.dispatch('createPost', this.form).then(()=>{
                     this.form.content='';
                 });
-                
-                
+
+
             }
 	    }
-	    
+
     }
 </script>
 
