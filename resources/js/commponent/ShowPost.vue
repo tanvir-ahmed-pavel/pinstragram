@@ -34,8 +34,14 @@
 <script>
     export default {
         name: "ShowPost",
+	    created() {
+            if (this.$router.currentRoute.path === '/dashboard'){
+                this.$store.dispatch('getPosts');
+            } else {
+                this.$store.dispatch('getUserPosts', this.$route.params.id);
+            }
+        },
         mounted() {
-            this.$store.dispatch('getPosts');
             // console.log(this.$store.getters.posts);
         },
         computed: {

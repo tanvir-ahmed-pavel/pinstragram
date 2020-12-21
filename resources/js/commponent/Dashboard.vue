@@ -18,7 +18,7 @@
 
 <script>
     import CreatePost from "./post/CreatePost";
-    import ShowPost from "./post/ShowPost";
+    import ShowPost from "./ShowPost";
     export default {
         name: "Dashboard",
         components: {ShowPost, CreatePost},

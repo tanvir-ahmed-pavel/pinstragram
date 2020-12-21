@@ -59,14 +59,13 @@
             return{
                 form:{
                     content:'',
-	                img: '',
+	                // img: '',
                 }
             }
 	    },
 	    methods:{
             createPost(){
                 this.$store.dispatch('createPost', this.form).then(()=>{
-                    this.$store.dispatch('getPosts');
                     this.form.content='';
                 });
                 

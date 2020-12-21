@@ -3,7 +3,8 @@
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
 				<a class="navbar-brand" href="">
-					<router-link to="/">Home</router-link>
+					<router-link v-if="auth" to="/dashboard">Home</router-link>
+					<router-link v-else to="/">Home</router-link>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 				        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -26,7 +27,8 @@
 								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
 								   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ user.name }} </a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-									<a v-if="auth" class="dropdown-item" href="#" @click.prevent="logout">Logout</a>
+									<router-link class="dropdown-item" :to="'/profile/'+this.user.id">Profile</router-link>
+									<a  class="dropdown-item" href="#" @click.prevent="logout">Logout</a>
 								</div>
 							</li>
 						</template>
@@ -68,9 +70,6 @@
                 return this.$store.getters.user;
             }
         },
-        mounted() {
-            // this.auth();
-        }
     }
 </script>
 

@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::resource("post", '\App\Http\Controllers\PostController');
+Route::get("profile/{id}", [\App\Http\Controllers\ProfileController::class, 'index']);
 
 
 

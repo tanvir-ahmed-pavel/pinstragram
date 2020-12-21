@@ -9,6 +9,7 @@ import App from './commponent/App';
 // import CreatePost from "./commponent/post/CreatePost";
 
 Vue.use(Vuex);
+
 Vue.use(VueRouter);
 
 const store = new Vuex.Store(StoreData);

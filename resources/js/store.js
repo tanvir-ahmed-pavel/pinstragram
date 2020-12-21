@@ -9,6 +9,7 @@ export default {
         validationErrors: null,
         authUser: authUser,
         posts: [],
+        profile: null,
     },
 
     getters: {
@@ -29,6 +30,9 @@ export default {
         },
         getPosts(state){
             return state.posts;
+        },
+        getProfile(state){
+            return state.profile;
         }
     },
 
@@ -40,7 +44,6 @@ export default {
         loginSuccess(state, payload){
             state.loading = false;
             state.authErrors = null;
-            state.auth = true;
             state.authUser = payload;
             localStorage.setItem('authUser', JSON.stringify(state.authUser))
         },
@@ -69,6 +72,9 @@ export default {
         getPosts(state, payload){
             state.posts = payload;
         },
+        getProfile(state, payload) {
+            state.profile = payload;
+        }
     },
 
     actions: {
@@ -88,13 +94,23 @@ export default {
             context.commit("logout");
         },
         getPosts(context){
-            axios.get('api/post').then((response)=>{
+            axios.get('/api/post').then((response)=>{
+                context.commit("getPosts", response.data.posts)
+            })
+        },
+        getUserPosts(context, payload){
+            axios.get('/api/post/' + payload).then((response)=>{
                 context.commit("getPosts", response.data.posts)
             })
         },
         createPost(context, payload){
-            axios.post('api/post', payload).then((response)=>{
-
+            axios.post('/api/post', payload).then(()=>{
+                context.dispatch('getPosts'); // can be improved by adding "add" method
+            })
+        },
+        getProfile(context, payload) {
+            axios.get('/api/profile/' + payload).then((response)=>{
+                context.commit('getProfile', response.data.profile);
             })
         }
 

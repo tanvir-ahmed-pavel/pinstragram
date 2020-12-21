@@ -29,7 +29,7 @@ export const routes = [
     },
     {
         name: 'ProfileLayout',
-        path: '/profile',
+        path: '/profile/:id',
         component: ProfileLayout,
         meta: {
             requirsAuth: true,
