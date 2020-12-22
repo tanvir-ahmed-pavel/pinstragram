@@ -2468,17 +2468,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ShowPost",
   created: function created() {
@@ -2508,9 +2497,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -40057,15 +40043,26 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("div", { staticClass: "card-body post-body" }, [
-                _c("div", { staticClass: "post-caption text-justify" }, [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(post.content) +
-                      "\n                            "
-                  )
-                ]),
+                post.content != null
+                  ? _c("div", [
+                      _c("div", { staticClass: "post-caption text-justify" }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(post.content) +
+                            "\n                                "
+                        )
+                      ])
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _vm._m(0, true)
+                _c("div", [
+                  post.img
+                    ? _c("img", {
+                        staticClass: "post-img",
+                        attrs: { src: "storage/" + post.img, width: "100%" }
+                      })
+                    : _vm._e()
+                ])
               ])
             ])
           ])
@@ -40075,23 +40072,7 @@ var render = function() {
     0
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "post-img" }, [
-      _c("img", {
-        staticClass: "img",
-        attrs: {
-          src:
-            "https://cdn.bajajauto.com/tinyPng.ashx?filePath=/-/media/bajaj-auto/motorbikes-new/dominar-400/dont-hold-back-mobile.ashx?w=450",
-          alt: "Post's image"
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

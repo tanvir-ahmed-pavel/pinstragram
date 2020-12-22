@@ -58,24 +58,13 @@
                         </div>
                         <div class="card-body post-body">
                             <!-- From Database -->
-<!--                            <div v-if="post.content != null">-->
-<!--                                <div class="post-caption text-justify">-->
-<!--                                    {{post.content}}-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div v-if="post.img != null">-->
-<!--                                <div class="post-img">-->
-<!--                                    {{ post.img }}-->
-<!--                                </div>-->
-<!--                            </div>-->
-                            <!-- BAD CODE -->
-                            <div class="post-caption text-justify">
-                                {{post.content}}
+                            <div v-if="post.content != null">
+                                <div class="post-caption text-justify">
+                                    {{post.content}}
+                                </div>
                             </div>
-                            <div class="post-img">
-                                <img class="img"
-                                    src="https://cdn.bajajauto.com/tinyPng.ashx?filePath=/-/media/bajaj-auto/motorbikes-new/dominar-400/dont-hold-back-mobile.ashx?w=450"
-                                     alt="Post's image"/>
+                            <div>
+                                <img class="post-img" v-if="post.img" :src="'storage/' + post.img" width="100%"/>
                             </div>
                         </div>
                     </div>

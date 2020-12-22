@@ -43,9 +43,6 @@
 							</div>
 						</div>
 					</div>
-<!--					<div class="card-footer pb-4">-->
-<!--					-->
-<!--					</div>-->
 				</div>
 			</form>
 		</div>
