@@ -9,13 +9,13 @@
                         <div class="card-title card-header shadow-sm justify-content-between align-items-center">
                             <div class="d-flex">
                                 <img src="https://gatorprints.com/wp-content/uploads/2015/04/Sample-Logo-square.png"
-                                     class="post_title_img"/>
+                                     class="post_title_img" alt="Profile image"/>
                                 <div class="name-and-time">
                                     <div class="d-block">
                                         <a class="name my-0 py-0" href="#">{{post.user.name}}</a>
                                     </div>
-                                    <div class="time text-muted pt-1">
-                                        20 minutes ago
+                                    <div class="time text-muted">
+                                        {{moment(post.created_at).fromNow()}}
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div>
-                                <img class="post-img" v-if="post.img" :src="'/storage/' + post.img" width="100%"/>
+                                <img class="post-img" v-if="post.img" :src="'/storage/' + post.img" width="100%" alt="Post's image"/>
                             </div>
                         </div>
                     </div>
@@ -78,6 +78,7 @@
 </template>
 
 <script>
+    var moment = require('moment');
     export default {
         name: "ShowPost",
 	    created() {
@@ -89,6 +90,11 @@
         },
         mounted() {
             // console.log(this.$store.getters.posts);
+        },
+        data() {
+            return {
+                moment:moment,
+            }
         },
         computed: {
             getPosts() {
