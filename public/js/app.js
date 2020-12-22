@@ -2469,6 +2469,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61462,9 +61464,15 @@ var render = function() {
                           "a",
                           {
                             staticClass: "name my-0 py-0",
-                            attrs: { href: "#" }
+                            attrs: { href: "/#/" }
                           },
-                          [_vm._v(_vm._s(post.user.name))]
+                          [
+                            _vm._v(
+                              "\n                                            " +
+                                _vm._s(post.user.name) +
+                                "\n                                        "
+                            )
+                          ]
                         )
                       ]),
                       _vm._v(" "),
@@ -61660,13 +61668,40 @@ var render = function() {
               _c("div", { staticClass: "card-body post-body" }, [
                 post.content
                   ? _c("div", [
-                      _c("div", { staticClass: "post-caption text-justify" }, [
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(post.content) +
-                            "\n                                "
-                        )
-                      ])
+                      post.content.toString().length >= 150
+                        ? _c(
+                            "div",
+                            { staticClass: "post-caption text-justify" },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(
+                                    post.content.toString().substring(0, 149) +
+                                      "... "
+                                  ) +
+                                  "\n                                    "
+                              ),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "text-decoration-none",
+                                  attrs: { href: "" }
+                                },
+                                [_vm._v("see more")]
+                              )
+                            ]
+                          )
+                        : _c(
+                            "div",
+                            { staticClass: "post-caption text-justify" },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(post.content.toString()) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
                     ])
                   : _vm._e(),
                 _vm._v(" "),

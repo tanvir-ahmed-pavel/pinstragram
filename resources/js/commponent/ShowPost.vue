@@ -1,6 +1,5 @@
 <template>
 	<div>
-
 		<div v-for="post in this.getPosts" :key="post.id">
 			<!--				post section-->
             <div class="row">
@@ -12,14 +11,15 @@
                                      class="post_title_img" alt="Profile image"/>
                                 <div class="name-and-time">
                                     <div class="d-block">
-                                        <a class="name my-0 py-0" href="#">{{post.user.name}}</a>
+                                        <a class="name my-0 py-0" :href="'/#/'">
+                                            {{post.user.name}}
+                                        </a>
                                     </div>
                                     <div class="time text-muted">
                                         {{moment(post.created_at).fromNow()}}
                                     </div>
                                 </div>
                             </div>
-
                             <!--------- DROPDOWN -------->
                             <div class="dropdown mt-2 mr-3">
                                 <a class="text-muted text-decoration-none" href="#" role="button"
@@ -60,8 +60,12 @@
                         </div>
                         <div class="card-body post-body">
                             <div v-if="post.content">
-                                <div class="post-caption text-justify">
-                                    {{post.content}}
+                                <div class="post-caption text-justify" v-if="post.content.toString().length >= 150">
+                                    {{post.content.toString().substring(0, 149) + '... ' }}
+                                    <a :href="''" class="text-decoration-none">see more</a>
+                                </div>
+                                <div class="post-caption text-justify" v-else>
+                                    {{post.content.toString()}}
                                 </div>
                             </div>
                             <div>
@@ -72,13 +76,11 @@
                 </div>
             </div>
 		</div>
-
 	</div>
-
 </template>
 
 <script>
-    var moment = require('moment');
+    let moment = require('moment');
     export default {
         name: "ShowPost",
 	    created() {
