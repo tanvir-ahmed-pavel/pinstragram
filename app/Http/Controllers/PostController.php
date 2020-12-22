@@ -50,8 +50,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $this->validate($request, [
-            "content" => "required_without_all:img",
-            "img" => "required_without_all:content|image",
+            "content" => "required_without_all:img|string|nullable",
+            "img" => "required_without_all:content|image|nullable",
         ]);
 
 //        dd($request->img);
