@@ -27,6 +27,7 @@
 }
 .name:hover{
     color: #1b1e21;
+    text-decoration: none;
 }
 .time{
     font-size: 0.8em;
