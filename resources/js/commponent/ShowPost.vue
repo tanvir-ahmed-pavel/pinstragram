@@ -59,13 +59,13 @@
                             </div>
                         </div>
                         <div class="card-body post-body">
-                            <div v-if="post.content != null">
+                            <div v-if="post.content">
                                 <div class="post-caption text-justify">
                                     {{post.content}}
                                 </div>
                             </div>
                             <div>
-                                <img class="post-img" v-if="post.img" :src="'storage/' + post.img" width="100%"/>
+                                <img class="post-img" v-if="post.img" :src="'/storage/' + post.img" width="100%"/>
                             </div>
                         </div>
                     </div>

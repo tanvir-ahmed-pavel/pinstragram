@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
+    Route::get("profile/post/{id}", [\App\Http\Controllers\ProfileController::class, 'profilePost']);
 
 });
 

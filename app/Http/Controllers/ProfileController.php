@@ -22,6 +22,14 @@ class ProfileController extends Controller
         ], 200);
     }
 
+    public function profilePost($id){
+        $posts = User::findOrFail($id)->posts()->orderBy("updated_at", "desc")->with('user.profile')->get();
+
+        return response()->json([
+            'posts' => $posts,
+        ], 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

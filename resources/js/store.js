@@ -100,7 +100,7 @@ export default {
             })
         },
         getUserPosts(context, payload){
-            axios.get('/api/post/' + payload).then((response)=>{
+            axios.get('/api/profile/post/' + payload).then((response)=>{
                 context.commit("getPosts", response.data.posts)
             })
         },
