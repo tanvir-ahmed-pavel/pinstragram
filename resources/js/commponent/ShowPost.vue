@@ -2,8 +2,6 @@
 	<div>
 
 		<div v-for="post in this.getPosts" :key="post.id">
-			<!--			{{post}}-->
-
 			<!--				post section-->
             <div class="row">
                 <div class="col-md-8">
@@ -16,27 +14,31 @@
                                     <div class="d-block">
                                         <a class="name my-0 py-0" href="#">{{post.user.name}}</a>
                                     </div>
-                                    <div class="time">
+                                    <div class="time text-muted pt-1">
                                         20 minutes ago
                                     </div>
                                 </div>
                             </div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
+
+                            <!--------- DROPDOWN -------->
+                            <div class="dropdown mt-2 mr-3">
+                                <a class="text-muted text-decoration-none" href="#" role="button"
+                                   id="dropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                          class="bi bi-three-dots card-head-icon" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                                     </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-0 m-0">
+                                    <a href="#" class="dropdown-item view-btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                              class="bi bi-fullscreen mr-2" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
                                         </svg>
                                         View
                                     </a>
-                                    <a href="#" class="edit-btn">
+                                    <a href="#" class="dropdown-item edit-btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                              class="bi bi-tools mr-2" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"/>
@@ -44,7 +46,7 @@
                                         </svg>
                                         Edit
                                     </a>
-                                    <a href="#" class="delete-btn">
+                                    <a href="#" class="dropdown-item delete-btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                              class="bi bi-trash2 mr-2" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"/>
@@ -57,7 +59,6 @@
                             </div>
                         </div>
                         <div class="card-body post-body">
-                            <!-- From Database -->
                             <div v-if="post.content != null">
                                 <div class="post-caption text-justify">
                                     {{post.content}}

@@ -2468,6 +2468,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ShowPost",
   created: function created() {
@@ -7190,7 +7191,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".card-head{\n    display: flex;\n}\n/* User profile image */\n.post_title_img{\n    height: 50px;\n    width: 50px;\n    border-radius: 50px;\n}\n.card-head-icon{\n    cursor: pointer;\n}\n.card-title{\n    display: flex;\n    background-color: #FFFFFF;\n}\n.name-and-time{\n    text-decoration: none;\n    margin: auto 0 auto 15px !important;\n}\n.name{\n    color: #1b1e21;\n    font-size: 20px;\n    font-family: 'Ubuntu', sans-serif;\n    font-weight: 600;\n    line-height: 100%;\n}\n.name:hover{\n    color: #1b1e21;\n}\n.time{\n    font-size: 0.8em;\n    line-height: 100%;\n}\n\n/* Dropdown Button */\n.dropbtn {\n    font-size: 16px;\n    background-color: #FFFFFF;\n    border: none;\n}\n\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n\n/* Dropdown Content (Hidden by Default) */\n.dropdown-content {\n    display: none;\n    position: absolute;\n    background-color: #f1f1f1;\n    min-width: 160px;\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n    z-index: 1;\n}\n\n/* Links inside the dropdown */\n.dropdown-content a {\n    color: black;\n    padding: 12px 16px;\n    text-decoration: none;\n    display: block;\n}\n\n/* Change color of dropdown links on hover */\n.dropdown-content a:hover{\n    background-color: #ddd;\n}\n\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\n    display: block;\n}\n.delete-btn:hover{\n    color: #f1f1f1;\n    background-color: #9F0B0B !important;\n}\n.edit-btn:hover{\n    color: #f1f1f1;\n    background-color: #1A212C !important;\n}\n.post-body{\n    padding: 0;\n}\n/* Post Caption */\n.post-caption{\n    padding: 10px 20px;\n    font-family: 'Arial', sans-serif;\n}\n/* Post Image */\n.img{\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, ".card-head{\n    display: flex;\n}\n/* User profile image */\n.post_title_img{\n    height: 50px;\n    width: 50px;\n    border-radius: 50px;\n}\n.card-head-icon{\n    cursor: pointer;\n}\n.card-title{\n    display: flex;\n    background-color: #FFFFFF;\n}\n.name-and-time{\n    text-decoration: none;\n    margin: auto 0 auto 15px !important;\n}\n.name{\n    color: #1b1e21;\n    font-size: 20px;\n    font-family: 'Ubuntu', sans-serif;\n    font-weight: 600;\n    line-height: 100%;\n}\n.name:hover{\n    color: #1b1e21;\n}\n.time{\n    font-size: 0.8em;\n    line-height: 100%;\n}\n\n/* Dropdown Button */\n.dropbtn {\n    font-size: 16px;\n    background-color: #FFFFFF;\n    border: none;\n}\n\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n.dropdown-item{\n    padding: 10px 15px;\n}\n.dropdown-item a {\n    text-decoration: none;\n    color: #1b1e21;\n}\n\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\n    display: block;\n}\n.view-btn:hover{\n    color: #f1f1f1;\n    background-color: #007BFF;\n}\n.delete-btn:hover{\n    color: #f1f1f1;\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\n    color: #f1f1f1;\n    background-color: #28A745 !important;\n}\n.post-body{\n    padding: 0;\n}\n/* Post Caption */\n.post-caption{\n    padding: 10px 20px;\n    font-family: 'Arial', sans-serif;\n}\n/* Post Image */\n.img{\n    width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -39888,7 +39889,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "time" }, [
+                      _c("div", { staticClass: "time text-muted pt-1" }, [
                         _vm._v(
                           "\n                                        20 minutes ago\n                                    "
                         )
@@ -39896,38 +39897,25 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "dropdown" }, [
-                    _c("button", { staticClass: "dropbtn" }, [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-three-dots card-head-icon",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              d:
-                                "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "dropdown-content" }, [
-                      _c("a", { attrs: { href: "#" } }, [
+                  _c("div", { staticClass: "dropdown mt-2 mr-3" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-muted text-decoration-none",
+                        attrs: {
+                          href: "#",
+                          role: "button",
+                          id: "dropdownMenuLink",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
                         _c(
                           "svg",
                           {
-                            staticClass: "bi bi-fullscreen mr-2",
+                            staticClass: "bi bi-three-dots card-head-icon",
                             attrs: {
                               xmlns: "http://www.w3.org/2000/svg",
                               width: "16",
@@ -39941,103 +39929,149 @@ var render = function() {
                               attrs: {
                                 "fill-rule": "evenodd",
                                 d:
-                                  "M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
+                                  "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
                               }
                             })
                           ]
-                        ),
-                        _vm._v(
-                          "\n                                        View\n                                    "
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        { staticClass: "edit-btn", attrs: { href: "#" } },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "bi bi-tools mr-2",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: "16",
-                                height: "16",
-                                fill: "currentColor",
-                                viewBox: "0 0 16 16"
-                              }
-                            },
-                            [
-                              _c("path", {
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "dropdown-menu dropdown-menu-right p-0 m-0"
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item view-btn",
+                            attrs: { href: "#" }
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "bi bi-fullscreen mr-2",
                                 attrs: {
-                                  "fill-rule": "evenodd",
-                                  d:
-                                    "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "16",
+                                  height: "16",
+                                  fill: "currentColor",
+                                  viewBox: "0 0 16 16"
                                 }
-                              }),
-                              _vm._v(" "),
-                              _c("path", {
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(
+                              "\n                                        View\n                                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item edit-btn",
+                            attrs: { href: "#" }
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "bi bi-tools mr-2",
                                 attrs: {
-                                  "fill-rule": "evenodd",
-                                  d:
-                                    "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "16",
+                                  height: "16",
+                                  fill: "currentColor",
+                                  viewBox: "0 0 16 16"
                                 }
-                              })
-                            ]
-                          ),
-                          _vm._v(
-                            "\n                                        Edit\n                                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        { staticClass: "delete-btn", attrs: { href: "#" } },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "bi bi-trash2 mr-2",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: "16",
-                                height: "16",
-                                fill: "currentColor",
-                                viewBox: "0 0 16 16"
-                              }
-                            },
-                            [
-                              _c("path", {
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(
+                              "\n                                        Edit\n                                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item delete-btn",
+                            attrs: { href: "#" }
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "bi bi-trash2 mr-2",
                                 attrs: {
-                                  "fill-rule": "evenodd",
-                                  d:
-                                    "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "16",
+                                  height: "16",
+                                  fill: "currentColor",
+                                  viewBox: "0 0 16 16"
                                 }
-                              }),
-                              _vm._v(" "),
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("path", {
-                                attrs: {
-                                  "fill-rule": "evenodd",
-                                  d:
-                                    "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(
-                            "\n                                        Delete\n                                    "
-                          )
-                        ]
-                      )
-                    ])
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(
+                              "\n                                        Delete\n                                    "
+                            )
+                          ]
+                        )
+                      ]
+                    )
                   ])
                 ]
               ),
