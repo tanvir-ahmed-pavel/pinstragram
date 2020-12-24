@@ -1,0 +1,58 @@
+/** Variables **/
+:root{
+    --theme-color: #2E89FF;
+    --white: #FFFFFF;
+}
+.logo{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+.logo-div{
+    margin: 5px auto;
+}
+.crd-header{
+    background-color: var(--theme-color);
+    color: var(--white);
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    box-shadow: 0 1px 5px var(--theme-color);
+}
+.crd-header-div{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+.crd-body{
+    color: var(--theme-color);
+    background-color: var(--white);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+
+/* Field */
+.reg-input-field{
+    border: 0;
+    border-radius: 0;
+    border-bottom: 2px solid var(--theme-color);
+    color: var(--theme-color);
+}
+.btn-reg{
+    background-color: var(--theme-color);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+.btn-reg:hover{
+    color: var(--theme-color);
+    background-color: var(--white);
+    border: 1px solid var(--theme-color);
+}
+.reg-label{
+    color: var(--theme-color);
+    margin-right: 0;
+    padding-right: 0;
+}
