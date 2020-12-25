@@ -9,6 +9,7 @@ export default {
         validationErrors: null,
         authUser: authUser,
         posts: [],
+        singlePost: null,
         profile: null,
     },
 
@@ -30,6 +31,9 @@ export default {
         },
         getPosts(state){
             return state.posts;
+        },
+        getSinglePost(state){
+            return state.singlePost;
         },
         getProfile(state){
             return state.profile;
@@ -73,6 +77,9 @@ export default {
         getPosts(state, payload){
             state.posts = payload;
         },
+        getSinglePost(state, payload){
+            state.singlePost = payload;
+        },
         getProfile(state, payload) {
             state.profile = payload;
         }
@@ -97,6 +104,11 @@ export default {
         getPosts(context){
             axios.get('/api/post').then((response)=>{
                 context.commit("getPosts", response.data.posts)
+            })
+        },
+        getSinglePost(context, payload){
+            axios.get('/api/post/'+payload).then((response)=>{
+                context.commit("getSinglePost", response.data.post)
             })
         },
         getUserPosts(context, payload){

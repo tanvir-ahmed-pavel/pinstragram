@@ -2621,6 +2621,114 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ShowSinglePost",
+  created: function created() {
+    this.$store.dispatch('getSinglePost', this.$route.params.id);
+  },
+  data: function data() {
+    return {
+      moment: moment
+    };
+  },
+  computed: {
+    post: function post() {
+      return this.$store.getters.getSinglePost;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/profile/ProfileEdit.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/profile/ProfileEdit.vue?vue&type=script&lang=js& ***!
@@ -7437,7 +7545,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../css/register.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/register.css"), "");
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\r\n", ""]);
 
 // exports
 
@@ -7454,6 +7562,26 @@ exports.push([module.i, "\n", ""]);
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../css/show_post.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/show_post.css"), "");
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Ubuntu&display=swap);", ""]);
+
+// module
+exports.push([module.i, "\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+exports.i(__webpack_require__(/*! -!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../css/show_post.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/show_post.css"), "");
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Ubuntu&display=swap);", ""]);
 
 // module
@@ -7476,7 +7604,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/** Variables **/\n:root{\n    --theme-color: #2E89FF;\n    --white: #FFFFFF;\n}\n.logo{\n    margin-top: 15px;\n    margin-bottom: 15px;\n    height: 150px;\n    width: 150px;\n    border-radius: 100%;\n}\n.logo-div{\n    margin: 5px auto;\n}\n.crd-header{\n    background-color: var(--theme-color);\n    color: var(--white);\n    text-align: center;\n    font-size: 30px;\n    font-weight: 800;\n    box-shadow: 0 1px 5px var(--theme-color);\n}\n.crd-header-div{\n    text-align: center;\n    font-size: 12px;\n    font-weight: 500;\n}\n.crd-body{\n    color: var(--theme-color);\n    background-color: var(--white);\n    padding-top: 30px;\n    padding-bottom: 30px;\n}\n\n\n/* Field */\n.reg-input-field{\n    border: 0;\n    border-radius: 0;\n    border-bottom: 2px solid var(--theme-color);\n    color: var(--theme-color);\n}\n.btn-reg{\n    background-color: var(--theme-color);\n    color: var(--white);\n    border: 1px solid var(--white);\n}\n.btn-reg:hover{\n    color: var(--theme-color);\n    background-color: var(--white);\n    border: 1px solid var(--theme-color);\n}\n.reg-label{\n    color: var(--theme-color);\n    margin-right: 0;\n    padding-right: 0;\n}\n", ""]);
+exports.push([module.i, "/** Variables **/\n:root{\r\n    --theme-color: #2E89FF;\r\n    --white: #FFFFFF;\n}\n.logo{\r\n    margin-top: 15px;\r\n    margin-bottom: 15px;\r\n    height: 150px;\r\n    width: 150px;\r\n    border-radius: 100%;\n}\n.logo-div{\r\n    margin: 5px auto;\n}\n.crd-header{\r\n    background-color: var(--theme-color);\r\n    color: var(--white);\r\n    text-align: center;\r\n    font-size: 30px;\r\n    font-weight: 800;\r\n    box-shadow: 0 1px 5px var(--theme-color);\n}\n.crd-header-div{\r\n    text-align: center;\r\n    font-size: 12px;\r\n    font-weight: 500;\n}\n.crd-body{\r\n    color: var(--theme-color);\r\n    background-color: var(--white);\r\n    padding-top: 30px;\r\n    padding-bottom: 30px;\n}\r\n\r\n\r\n/* Field */\n.reg-input-field{\r\n    border: 0;\r\n    border-radius: 0;\r\n    border-bottom: 2px solid var(--theme-color);\r\n    color: var(--theme-color);\n}\n.btn-reg{\r\n    background-color: var(--theme-color);\r\n    color: var(--white);\r\n    border: 1px solid var(--white);\n}\n.btn-reg:hover{\r\n    color: var(--theme-color);\r\n    background-color: var(--white);\r\n    border: 1px solid var(--theme-color);\n}\n.reg-label{\r\n    color: var(--theme-color);\r\n    margin-right: 0;\r\n    padding-right: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -7495,7 +7623,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".card-head{\n    display: flex;\n}\n/* User profile image */\n.post_title_img{\n    height: 50px;\n    width: 50px;\n    border-radius: 50px;\n}\n.card-head-icon{\n    cursor: pointer;\n}\n.card-title{\n    display: flex;\n    background-color: #FFFFFF;\n}\n.name-and-time{\n    text-decoration: none;\n    margin: auto 0 auto 15px !important;\n}\n.name{\n    color: #1b1e21;\n    font-size: 18px;\n    font-family: 'Ubuntu', sans-serif;\n    font-weight: 600;\n    line-height: 100%;\n}\n.name:hover{\n    color: #1b1e21;\n    text-decoration: none;\n}\n.time{\n    font-size: 0.8em;\n    line-height: 100%;\n}\n\n/* Dropdown Button */\n.dropbtn {\n    font-size: 16px;\n    background-color: #FFFFFF;\n    border: none;\n}\n\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n.dropdown-item{\n    padding: 10px 15px;\n}\n.dropdown-item a {\n    text-decoration: none;\n    color: #1b1e21;\n}\n\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\n    display: block;\n}\n.view-btn:hover{\n    color: #f1f1f1;\n    background-color: #007BFF;\n}\n.delete-btn:hover{\n    color: #f1f1f1;\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\n    color: #f1f1f1;\n    background-color: #28A745 !important;\n}\n.post-body{\n    padding: 0;\n}\n/* Post Caption */\n.post-caption{\n    padding: 10px 20px;\n    font-family: 'Arial', sans-serif;\n}\n/* Post Image */\n.img{\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, ".card-head{\r\n    display: flex;\n}\r\n/* User profile image */\n.post_title_img{\r\n    height: 50px;\r\n    width: 50px;\r\n    border-radius: 50px;\n}\n.card-head-icon{\r\n    cursor: pointer;\n}\n.card-title{\r\n    display: flex;\r\n    background-color: #FFFFFF;\n}\n.name-and-time{\r\n    text-decoration: none;\r\n    margin: auto 0 auto 15px !important;\n}\n.name{\r\n    color: #1b1e21;\r\n    font-size: 18px;\r\n    font-family: 'Ubuntu', sans-serif;\r\n    font-weight: 600;\r\n    line-height: 100%;\n}\n.name:hover{\r\n    color: #1b1e21;\r\n    text-decoration: none;\n}\n.time{\r\n    font-size: 0.8em;\r\n    line-height: 100%;\n}\r\n\r\n/* Dropdown Button */\n.dropbtn {\r\n    font-size: 16px;\r\n    background-color: #FFFFFF;\r\n    border: none;\n}\r\n\r\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\r\n    position: relative;\r\n    display: inline-block;\n}\n.dropdown-item{\r\n    padding: 10px 15px;\n}\n.dropdown-item a {\r\n    text-decoration: none;\r\n    color: #1b1e21;\n}\r\n\r\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\r\n    display: block;\n}\n.view-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #007BFF;\n}\n.delete-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #28A745 !important;\n}\n.post-body{\r\n    padding: 0;\n}\r\n/* Post Caption */\n.post-caption{\r\n    padding: 10px 20px;\r\n    font-family: 'Arial', sans-serif;\n}\r\n/* Post Image */\n.img{\r\n    width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -60292,6 +60420,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -61891,297 +62049,301 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(this.getPosts, function(post) {
-      return _c("div", { key: post.id }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-8" }, [
-            _c("div", { staticClass: "card mb-4 shadow-sm" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "card-title card-header shadow-sm justify-content-between align-items-center"
-                },
-                [
-                  _c("div", { staticClass: "d-flex" }, [
-                    _c("img", {
-                      staticClass: "post_title_img",
-                      attrs: {
-                        src:
-                          "https://gatorprints.com/wp-content/uploads/2015/04/Sample-Logo-square.png",
-                        alt: "Profile image"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "name-and-time" }, [
-                      _c("div", { staticClass: "d-block" }, [
+  return _vm.getPosts
+    ? _c(
+        "div",
+        _vm._l(this.getPosts, function(post) {
+          return _c("div", { key: post.id }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("div", { staticClass: "card mb-4 shadow-sm" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "card-title card-header shadow-sm justify-content-between align-items-center"
+                    },
+                    [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("img", {
+                          staticClass: "post_title_img",
+                          attrs: {
+                            src: "/storage/" + post.user.profile.profile_img,
+                            alt: "Profile image"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "name-and-time" }, [
+                          _c("div", { staticClass: "d-block" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "name my-0 py-0",
+                                attrs: { href: "/#/" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(post.user.name) +
+                                    "\n                                        "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "time text-muted" }, [
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(_vm.moment(post.created_at).fromNow()) +
+                                "\n                                    "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "dropdown mt-2 mr-3" }, [
                         _c(
                           "a",
                           {
-                            staticClass: "name my-0 py-0",
-                            attrs: { href: "/#/" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                            " +
-                                _vm._s(post.user.name) +
-                                "\n                                        "
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "time text-muted" }, [
-                        _vm._v(
-                          "\n                                        " +
-                            _vm._s(_vm.moment(post.created_at).fromNow()) +
-                            "\n                                    "
-                        )
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "dropdown mt-2 mr-3" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "text-muted text-decoration-none",
-                        attrs: {
-                          href: "#",
-                          role: "button",
-                          id: "dropdownMenuLink",
-                          "data-toggle": "dropdown",
-                          "aria-haspopup": "true",
-                          "aria-expanded": "false"
-                        }
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "bi bi-three-dots card-head-icon",
+                            staticClass: "text-muted text-decoration-none",
                             attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              width: "16",
-                              height: "16",
-                              fill: "currentColor",
-                              viewBox: "0 0 16 16"
+                              href: "#",
+                              role: "button",
+                              id: "dropdownMenuLink",
+                              "data-toggle": "dropdown",
+                              "aria-haspopup": "true",
+                              "aria-expanded": "false"
                             }
                           },
                           [
-                            _c("path", {
-                              attrs: {
-                                "fill-rule": "evenodd",
-                                d:
-                                  "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                              }
-                            })
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "bi bi-three-dots card-head-icon",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "16",
+                                  height: "16",
+                                  fill: "currentColor",
+                                  viewBox: "0 0 16 16"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                                  }
+                                })
+                              ]
+                            )
                           ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "dropdown-menu dropdown-menu-right p-0 m-0"
+                          },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "dropdown-item view-btn",
+                                attrs: { to: "/post/" + post.id }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass: "bi bi-fullscreen mr-2",
+                                    attrs: {
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      width: "16",
+                                      height: "16",
+                                      fill: "currentColor",
+                                      viewBox: "0 0 16 16"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        "fill-rule": "evenodd",
+                                        d:
+                                          "M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(
+                                  "\n                                        View\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdown-item edit-btn",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass: "bi bi-tools mr-2",
+                                    attrs: {
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      width: "16",
+                                      height: "16",
+                                      fill: "currentColor",
+                                      viewBox: "0 0 16 16"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        "fill-rule": "evenodd",
+                                        d:
+                                          "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        "fill-rule": "evenodd",
+                                        d:
+                                          "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(
+                                  "\n                                        Edit\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdown-item delete-btn",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass: "bi bi-trash2 mr-2",
+                                    attrs: {
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      width: "16",
+                                      height: "16",
+                                      fill: "currentColor",
+                                      viewBox: "0 0 16 16"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        "fill-rule": "evenodd",
+                                        d:
+                                          "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      attrs: {
+                                        "fill-rule": "evenodd",
+                                        d:
+                                          "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(
+                                  "\n                                        Delete\n                                    "
+                                )
+                              ]
+                            )
+                          ],
+                          1
                         )
-                      ]
-                    ),
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body post-body" }, [
+                    post.content
+                      ? _c("div", [
+                          post.content.toString().length >= 150
+                            ? _c(
+                                "div",
+                                { staticClass: "post-caption text-justify" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(
+                                        post.content
+                                          .toString()
+                                          .substring(0, 149) + "... "
+                                      ) +
+                                      "\n                                    "
+                                  ),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "text-decoration-none",
+                                      attrs: { href: "" }
+                                    },
+                                    [_vm._v("see more")]
+                                  )
+                                ]
+                              )
+                            : _c(
+                                "div",
+                                { staticClass: "post-caption text-justify" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(post.content.toString()) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "dropdown-menu dropdown-menu-right p-0 m-0"
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item view-btn",
-                            attrs: { href: "#" }
-                          },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "bi bi-fullscreen mr-2",
-                                attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  width: "16",
-                                  height: "16",
-                                  fill: "currentColor",
-                                  viewBox: "0 0 16 16"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    "fill-rule": "evenodd",
-                                    d:
-                                      "M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(
-                              "\n                                        View\n                                    "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item edit-btn",
-                            attrs: { href: "#" }
-                          },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "bi bi-tools mr-2",
-                                attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  width: "16",
-                                  height: "16",
-                                  fill: "currentColor",
-                                  viewBox: "0 0 16 16"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    "fill-rule": "evenodd",
-                                    d:
-                                      "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("path", {
-                                  attrs: {
-                                    "fill-rule": "evenodd",
-                                    d:
-                                      "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(
-                              "\n                                        Edit\n                                    "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item delete-btn",
-                            attrs: { href: "#" }
-                          },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "bi bi-trash2 mr-2",
-                                attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  width: "16",
-                                  height: "16",
-                                  fill: "currentColor",
-                                  viewBox: "0 0 16 16"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    "fill-rule": "evenodd",
-                                    d:
-                                      "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("path", {
-                                  attrs: {
-                                    d:
-                                      "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("path", {
-                                  attrs: {
-                                    "fill-rule": "evenodd",
-                                    d:
-                                      "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(
-                              "\n                                        Delete\n                                    "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body post-body" }, [
-                post.content
-                  ? _c("div", [
-                      post.content.toString().length >= 150
-                        ? _c(
-                            "div",
-                            { staticClass: "post-caption text-justify" },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(
-                                    post.content.toString().substring(0, 149) +
-                                      "... "
-                                  ) +
-                                  "\n                                    "
-                              ),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "text-decoration-none",
-                                  attrs: { href: "" }
-                                },
-                                [_vm._v("see more")]
-                              )
-                            ]
-                          )
-                        : _c(
-                            "div",
-                            { staticClass: "post-caption text-justify" },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(post.content.toString()) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
+                    _c("div", [
+                      post.img
+                        ? _c("img", {
+                            staticClass: "post-img",
+                            attrs: {
+                              src: "/storage/" + post.img,
+                              width: "100%",
+                              alt: "Post's image"
+                            }
+                          })
+                        : _vm._e()
                     ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", [
-                  post.img
-                    ? _c("img", {
-                        staticClass: "post-img",
-                        attrs: {
-                          src: "/storage/" + post.img,
-                          width: "100%",
-                          alt: "Post's image"
-                        }
-                      })
-                    : _vm._e()
+                  ])
                 ])
               ])
             ])
           ])
-        ])
-      ])
-    }),
-    0
-  )
+        }),
+        0
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -62328,6 +62490,294 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=template&id=940f32ea&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=template&id=940f32ea&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card mb-4 shadow-sm" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "card-title card-header shadow-sm justify-content-between align-items-center"
+            },
+            [
+              _c("div", { staticClass: "d-flex" }, [
+                _c("img", {
+                  staticClass: "post_title_img",
+                  attrs: {
+                    src: "/storage/" + _vm.post.user.profile.profile_img,
+                    alt: "Profile image"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "name-and-time" }, [
+                  _c("div", { staticClass: "d-block" }, [
+                    _c(
+                      "a",
+                      { staticClass: "name my-0 py-0", attrs: { href: "/#/" } },
+                      [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(_vm.post.user.name) +
+                            "\n\t\t\t\t\t\t\t\t"
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "time text-muted" }, [
+                    _vm._v(
+                      "\n\t\t\t\t\t\t\t\t" +
+                        _vm._s(_vm.moment(_vm.post.created_at).fromNow()) +
+                        "\n\t\t\t\t\t\t\t"
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "dropdown mt-2 mr-3" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-muted text-decoration-none",
+                    attrs: {
+                      href: "#",
+                      role: "button",
+                      id: "dropdownMenuLink",
+                      "data-toggle": "dropdown",
+                      "aria-haspopup": "true",
+                      "aria-expanded": "false"
+                    }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "bi bi-three-dots card-head-icon",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "16",
+                          height: "16",
+                          fill: "currentColor",
+                          viewBox: "0 0 16 16"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            d:
+                              "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "dropdown-menu dropdown-menu-right p-0 m-0" },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item view-btn",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-fullscreen mr-2",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                d:
+                                  "M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v("\n\t\t\t\t\t\t\t\tView\n\t\t\t\t\t\t\t")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item edit-btn",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-tools mr-2",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                d:
+                                  "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                d:
+                                  "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v("\n\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item delete-btn",
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-trash2 mr-2",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                d:
+                                  "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                d:
+                                  "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v("\n\t\t\t\t\t\t\t\tDelete\n\t\t\t\t\t\t\t")
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body post-body" }, [
+            _vm.post.content
+              ? _c("div", [
+                  _vm.post.content.toString().length >= 150
+                    ? _c("div", { staticClass: "post-caption text-justify" }, [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t" +
+                            _vm._s(
+                              _vm.post.content.toString().substring(0, 149) +
+                                "... "
+                            ) +
+                            "\n\t\t\t\t\t\t\t"
+                        ),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "text-decoration-none",
+                            attrs: { href: "" }
+                          },
+                          [_vm._v("see more")]
+                        )
+                      ])
+                    : _c("div", { staticClass: "post-caption text-justify" }, [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t" +
+                            _vm._s(_vm.post.content.toString()) +
+                            "\n\t\t\t\t\t\t"
+                        )
+                      ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", [
+              _vm.post.img
+                ? _c("img", {
+                    staticClass: "post-img",
+                    attrs: {
+                      src: "/storage/" + _vm.post.img,
+                      width: "100%",
+                      alt: "Post's image"
+                    }
+                  })
+                : _vm._e()
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -80107,6 +80557,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/commponent/post/ShowSinglePost.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/commponent/post/ShowSinglePost.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ShowSinglePost_vue_vue_type_template_id_940f32ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShowSinglePost.vue?vue&type=template&id=940f32ea&scoped=true& */ "./resources/js/commponent/post/ShowSinglePost.vue?vue&type=template&id=940f32ea&scoped=true&");
+/* harmony import */ var _ShowSinglePost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShowSinglePost.vue?vue&type=script&lang=js& */ "./resources/js/commponent/post/ShowSinglePost.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ShowSinglePost_vue_vue_type_style_index_0_id_940f32ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css& */ "./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ShowSinglePost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ShowSinglePost_vue_vue_type_template_id_940f32ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ShowSinglePost_vue_vue_type_template_id_940f32ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "940f32ea",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/commponent/post/ShowSinglePost.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/commponent/post/ShowSinglePost.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/commponent/post/ShowSinglePost.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowSinglePost.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css& ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_style_index_0_id_940f32ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=style&index=0&id=940f32ea&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_style_index_0_id_940f32ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_style_index_0_id_940f32ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_style_index_0_id_940f32ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_style_index_0_id_940f32ea_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/commponent/post/ShowSinglePost.vue?vue&type=template&id=940f32ea&scoped=true&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/commponent/post/ShowSinglePost.vue?vue&type=template&id=940f32ea&scoped=true& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_template_id_940f32ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowSinglePost.vue?vue&type=template&id=940f32ea&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/post/ShowSinglePost.vue?vue&type=template&id=940f32ea&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_template_id_940f32ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowSinglePost_vue_vue_type_template_id_940f32ea_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/commponent/profile/ProfileEdit.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/commponent/profile/ProfileEdit.vue ***!
@@ -80261,6 +80798,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _commponent_Register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./commponent/Register */ "./resources/js/commponent/Register.vue");
 /* harmony import */ var _commponent_profile_ProfileLayout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./commponent/profile/ProfileLayout */ "./resources/js/commponent/profile/ProfileLayout.vue");
 /* harmony import */ var _commponent_profile_ProfileEdit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./commponent/profile/ProfileEdit */ "./resources/js/commponent/profile/ProfileEdit.vue");
+/* harmony import */ var _commponent_post_ShowSinglePost__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./commponent/post/ShowSinglePost */ "./resources/js/commponent/post/ShowSinglePost.vue");
+
 
 
 
@@ -80283,6 +80822,13 @@ var routes = [{
   name: 'Dashboard',
   path: '/dashboard',
   component: _commponent_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"],
+  meta: {
+    requirsAuth: true
+  }
+}, {
+  name: 'ShowSinglePost',
+  path: '/post/:id',
+  component: _commponent_post_ShowSinglePost__WEBPACK_IMPORTED_MODULE_6__["default"],
   meta: {
     requirsAuth: true
   }
@@ -80324,6 +80870,7 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     validationErrors: null,
     authUser: authUser,
     posts: [],
+    singlePost: null,
     profile: null
   },
   getters: {
@@ -80344,6 +80891,9 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     },
     getPosts: function getPosts(state) {
       return state.posts;
+    },
+    getSinglePost: function getSinglePost(state) {
+      return state.singlePost;
     },
     getProfile: function getProfile(state) {
       return state.profile;
@@ -80384,6 +80934,9 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     getPosts: function getPosts(state, payload) {
       state.posts = payload;
     },
+    getSinglePost: function getSinglePost(state, payload) {
+      state.singlePost = payload;
+    },
     getProfile: function getProfile(state, payload) {
       state.profile = payload;
     }
@@ -80407,6 +80960,11 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     getPosts: function getPosts(context) {
       axios.get('/api/post').then(function (response) {
         context.commit("getPosts", response.data.posts);
+      });
+    },
+    getSinglePost: function getSinglePost(context, payload) {
+      axios.get('/api/post/' + payload).then(function (response) {
+        context.commit("getSinglePost", response.data.post);
       });
     },
     getUserPosts: function getUserPosts(context, payload) {
@@ -80447,8 +81005,8 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\laravel-projects\spa\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\laravel-projects\spa\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\spa\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\spa\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

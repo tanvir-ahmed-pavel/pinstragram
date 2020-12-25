@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="getPosts">
 		<div v-for="post in this.getPosts" :key="post.id">
 			<!--				post section-->
             <div class="row">
@@ -7,7 +7,7 @@
                     <div class="card mb-4 shadow-sm">
                         <div class="card-title card-header shadow-sm justify-content-between align-items-center">
                             <div class="d-flex">
-                                <img src="https://gatorprints.com/wp-content/uploads/2015/04/Sample-Logo-square.png"
+                                <img :src="'/storage/'+post.user.profile.profile_img"
                                      class="post_title_img" alt="Profile image"/>
                                 <div class="name-and-time">
                                     <div class="d-block">
@@ -31,13 +31,13 @@
                                     </svg>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right p-0 m-0">
-                                    <a href="#" class="dropdown-item view-btn">
+                                    <router-link :to="'/post/'+post.id" class="dropdown-item view-btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                              class="bi bi-fullscreen mr-2" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
                                         </svg>
                                         View
-                                    </a>
+                                    </router-link>
                                     <a href="#" class="dropdown-item edit-btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                              class="bi bi-tools mr-2" viewBox="0 0 16 16">

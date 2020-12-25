@@ -4,6 +4,7 @@ import Dashboard from './commponent/Dashboard';
 import Register from "./commponent/Register";
 import ProfileLayout from "./commponent/profile/ProfileLayout";
 import ProfileEdit from "./commponent/profile/ProfileEdit";
+import ShowSinglePost from "./commponent/post/ShowSinglePost";
 export const routes = [
     {
         name: 'Home',
@@ -26,6 +27,14 @@ export const routes = [
         component: Dashboard,
         meta: {
             requirsAuth: true,
+        },
+    },
+    {
+        name: 'ShowSinglePost',
+        path: '/post/:id',
+        component: ShowSinglePost,
+        meta: {
+          requirsAuth: true,
         },
     },
     {

@@ -81,6 +81,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $post = Post::findOrFail($id)->user()->with('profile');
+
+        return response()->json([
+            'post' => $post,
+        ], 200);
 
     }
 
