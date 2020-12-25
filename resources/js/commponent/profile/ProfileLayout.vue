@@ -2,13 +2,11 @@
 	<div class="container">
 		<div style="padding-left: 7%; padding-right: 7%;">
 			<div class="row pt-2 pb-5">
-
-
-
+				
 				<div class="col-md-3">
 					<div class="float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center"
 					     style="height: 170px; width: 170px; border: 3px solid #ffffff; border-radius: 50%;">
-						<img src="/" alt="img"
+						<img v-if="profile" :src="'/storage/'+profile.profile_img" alt="img"
 						style="height: 100%; width: auto;">
 					</div>
 				</div>
@@ -25,11 +23,11 @@
 								<div>
 									<div class="h1" style="font-weight: 100;">{{ 'asd' }}</div>
 								</div>
-
-								<a class="btn btn-sm btn-outline-secondary pl-2 pr-2 ml-4 mb-1 p-0"
-								   href="#">
-								<small>Edit Profile</small> <i class="fas fa-cogs"></i>
-								</a>
+								
+									<router-link class="btn btn-sm btn-outline-secondary pl-2 pr-2 ml-4 mb-1 p-0" :to="'/profile/'+user.id+'/edit'">
+										<small>Edit Profile</small> <i class="fas fa-cogs"></i>
+									</router-link>
+								
 
 							</div>
 
@@ -71,10 +69,10 @@
 
 <!--						                    Profile info section-->
 
-						<div class="pt-4 font-weight-bold">{{ "Hi! I'm a default Title" }}</div>
-						<div>{{"Hi! I'm a default Description" }}</div>
-						<div><a href="https://www.">www.com</a></div>
-						{{this.profile}}
+						<div v-if="profile" class="pt-4 font-weight-bold">{{ profile.title }}</div>
+						<div v-if="profile">{{profile.description}}</div>
+						<div v-if="profile"><a href="https://www.">{{profile.url}}</a></div>
+<!--						{{this.profile}}-->
 					</div>
 				</div>
 
@@ -92,9 +90,7 @@
 			<div class="row">
 				<div class="col-md-12"></div>
 			</div>
-
-
-
+			
 
 		</div>
 	</div>

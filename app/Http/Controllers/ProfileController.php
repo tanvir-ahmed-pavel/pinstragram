@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -82,7 +83,37 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $this->validate($request, [
+            "title" => "string|nullable",
+            "description" => "string|nullable",
+            "profile_img" => "image|nullable",
+            "url" => "url|nullable",
+        ]);
+
+
+
+        $user = User::findOrFail($id);
+
+        if ( Auth::user()->id == $user->profile->user_id) {
+            if ($data['profile_img']) {
+                $img_path = $request->file("profile_img")->store("profile_imgs", 'public');
+                $user->profile()->update([
+                    "title" => $data["title"],
+                    "url" => $data["url"],
+                    "description" => $data["description"],
+                    "profile_img" => $img_path,
+                ]);
+            } else {
+                $user->profile()->update([
+                    "title" => $data["title"],
+                    "url" => $data["url"],
+                    "description" => $data["description"],
+                ]);
+            }
+            return response()->json('success', 200);
+        }
+        return response()->json('Server error', 500);
+
     }
 
     /**

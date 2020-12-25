@@ -51,6 +51,8 @@ class User extends Authenticatable
             $user->profile()->create([
 //                "profile_img" => $path,
                 "title" => "i am " . $user->name,
+                "description" => "Hi I am default description",
+                "url" => ""
             ]);
         });
     }

@@ -23,7 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    Route::get("profile/post/{id}", [\App\Http\Controllers\ProfileController::class, 'profilePost']);
+    Route::get("/profile/post/{id}", [\App\Http\Controllers\ProfileController::class, 'profilePost']);
+    Route::put("/profile/{id}", [\App\Http\Controllers\ProfileController::class, 'update']);
 
 });
 
