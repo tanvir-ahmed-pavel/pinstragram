@@ -35,23 +35,23 @@
 
 
 /* Field */
-.reg-input-field{
+.reg-log-input-field{
     border: 0;
     border-radius: 0;
     border-bottom: 2px solid var(--theme-color);
     color: var(--theme-color);
 }
-.btn-reg{
+.btn-reg-log{
     background-color: var(--theme-color);
     color: var(--white);
     border: 1px solid var(--white);
 }
-.btn-reg:hover{
+.btn-reg-log:hover{
     color: var(--theme-color);
     background-color: var(--white);
     border: 1px solid var(--theme-color);
 }
-.reg-label{
+.reg-log-label{
     color: var(--theme-color);
     margin-right: 0;
     padding-right: 0;

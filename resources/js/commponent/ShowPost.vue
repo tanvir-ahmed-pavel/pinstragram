@@ -1,19 +1,21 @@
 <template>
 	<div v-if="getPosts">
 		<div v-for="post in this.getPosts" :key="post.id">
-			<!--				post section-->
             <div class="row">
                 <div class="col-md-8">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-title card-header shadow-sm justify-content-between align-items-center">
+                            <!--------- HEADER PROPERTIES -------->
                             <div class="d-flex">
-                                <img :src="'/storage/'+post.user.profile.profile_img"
-                                     class="post_title_img" alt="Profile image"/>
+                                <router-link :to="'/profile/'+post.user.id" class="name my-0 py-0">
+                                    <img :src="'/storage/'+post.user.profile.profile_img"
+                                         class="post_title_img" alt="Profile image"/>
+                                </router-link>
                                 <div class="name-and-time">
                                     <div class="d-block">
-                                        <a class="name my-0 py-0" :href="'/#/'">
+                                        <router-link :to="'/profile/'+post.user.id" class="name my-0 py-0">
                                             {{post.user.name}}
-                                        </a>
+                                        </router-link>
                                     </div>
                                     <div class="time text-muted">
                                         {{moment(post.created_at).fromNow()}}
@@ -58,6 +60,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--------- POST CONTENT AND IMAGE -------->
                         <div class="card-body post-body">
                             <div v-if="post.content">
                                 <div class="post-caption text-justify" v-if="post.content.toString().length >= 150">
@@ -72,6 +75,7 @@
                                 <img class="post-img" v-if="post.img" :src="'/storage/' + post.img" width="100%" alt="Post's image"/>
                             </div>
                         </div>
+                        <!--------- LIKE COMMENT SHARE -------->
                     </div>
                 </div>
             </div>
