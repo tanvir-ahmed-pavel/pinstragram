@@ -1,7 +1,7 @@
 <template>
 	<div class="row">
 		<div class="col-md-8 mb-4">
-			<form method="POST" enctype="multipart/form-data">
+			<form  >
 				<div class="card">
 					<div class="card-body pb-0">
 						<div class="d-flex align-items-center mt-3 pb-2">
@@ -69,9 +69,7 @@
                     this.imgPre = e.target.result;
                 };
                 this.img = e.target.files[0];
-
-
-
+	            
             },
             createPost(){
                 this.formData.append('content', this.content);

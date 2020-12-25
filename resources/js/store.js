@@ -113,7 +113,7 @@ export default {
             axios.get('/api/profile/' + payload).then((response)=>{
                 context.commit('getProfile', response.data.profile);
             })
-        }
+        },
 
     },
 
