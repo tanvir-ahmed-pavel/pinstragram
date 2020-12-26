@@ -24,7 +24,7 @@ class ProfileController extends Controller
     }
 
     public function profilePost($id){
-        $posts = User::findOrFail($id)->posts()->orderBy("updated_at", "desc")->with('user.profile')->get();
+        $posts = User::findOrFail($id)->posts()->orderBy("created_at", "desc")->with('user.profile')->get();
 
         return response()->json([
             'posts' => $posts,

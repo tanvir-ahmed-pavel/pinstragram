@@ -3,7 +3,7 @@
 		<div style="padding-left: 7%; padding-right: 7%;">
 			<div class="row pt-2 pb-5">
 				
-				<div class="col-md-3">
+				<div v-if="profile" class="col-md-3">
 					<div class="float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center"
 					     style="height: 170px; width: 170px; border: 3px solid #ffffff; border-radius: 50%;">
 						<img v-if="profile" :src="'/storage/'+profile.profile_img" alt="img"

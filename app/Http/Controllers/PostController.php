@@ -23,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy("updated_at", "desc")->with('user.profile')->get();
+        $posts = Post::orderBy("created_at", "desc")->with('user.profile')->get();
 
 //        dd($posts);
         return response()->json([
@@ -81,7 +81,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id)->user()->with('profile');
+        $post = Post::findOrFail($id)->with('user.profile')->where('id', $id)->get();
 
         return response()->json([
             'post' => $post,
@@ -109,7 +109,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $data = $this->validate($request, [
+            "content" => "string|nullable"
+        ]);
+        $post = Post::findOrFail($id);
+
+        if (Auth::user()->id === $post->user->id){
+            $post->update($data);
+            return response()->json('',200);
+        }
+        return response()->json('',401);
     }
 
     /**
@@ -120,6 +130,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        if ($post->user->id === Auth::user()->id){
+            $post->delete();
+            return response()->json('Post Deleted', 200);
+        }
+        return response()->json('', 401);
     }
 }

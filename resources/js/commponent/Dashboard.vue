@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="user">
 <!--		<div v-if="user">-->
 <!--			{{user.name}}-->
 <!--			<br>-->

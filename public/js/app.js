@@ -2038,8 +2038,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   data: function data() {
@@ -2517,6 +2515,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2532,12 +2554,37 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
   },
   data: function data() {
     return {
-      moment: moment
+      moment: moment,
+      form: {
+        content: '',
+        _method: 'PATCH'
+      },
+      editing: false
     };
+  },
+  methods: {
+    deletePost: function deletePost(payload) {
+      if (confirm("Are you sure you want to delete this post??")) {
+        this.$store.dispatch('deletePost', payload);
+      }
+    },
+    cancelEdit: function cancelEdit(payload) {
+      this.form.content = payload;
+      this.editing = false;
+    },
+    updatePost: function updatePost(payload) {
+      axios.post('/api/post/' + payload, this.form).then(function () {}); // this.$store.dispatch('updatePost', payload);
+      // console.log(this.content);
+
+      this.editing = false;
+    }
   },
   computed: {
     getPosts: function getPosts() {
       return this.$store.getters.getPosts;
+    },
+    user: function user() {
+      return this.$store.getters.user;
     }
   }
 });
@@ -7568,7 +7615,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../css/login-register.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/login-register.css"), "");
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\r\n", ""]);
 
 // exports
 
@@ -7587,7 +7634,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../css/login-register.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/login-register.css"), "");
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\r\n", ""]);
 
 // exports
 
@@ -7646,7 +7693,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/** Variables **/\n:root{\n    --theme-color: #2E89FF;\n    --white: #FFFFFF;\n}\n.logo{\n    margin-top: 15px;\n    margin-bottom: 15px;\n    height: 150px;\n    width: 150px;\n    border-radius: 100%;\n}\n.logo-div{\n    margin: 5px auto;\n}\n.crd-header{\n    background-color: var(--theme-color);\n    color: var(--white);\n    text-align: center;\n    font-size: 30px;\n    font-weight: 800;\n    box-shadow: 0 1px 5px var(--theme-color);\n}\n.crd-header-div{\n    text-align: center;\n    font-size: 12px;\n    font-weight: 500;\n}\n.crd-body{\n    color: var(--theme-color);\n    background-color: var(--white);\n    padding-top: 30px;\n    padding-bottom: 30px;\n}\n\n\n/* Field */\n.reg-log-input-field{\n    border: 0;\n    border-radius: 0;\n    border-bottom: 2px solid var(--theme-color);\n    color: var(--theme-color);\n}\n.btn-reg-log{\n    background-color: var(--theme-color);\n    color: var(--white);\n    border: 1px solid var(--white);\n}\n.btn-reg-log:hover{\n    color: var(--theme-color);\n    background-color: var(--white);\n    border: 1px solid var(--theme-color);\n}\n.reg-log-label{\n    color: var(--theme-color);\n    margin-right: 0;\n    padding-right: 0;\n}\n", ""]);
+exports.push([module.i, "/** Variables **/\n:root{\r\n    --theme-color: #2E89FF;\r\n    --white: #FFFFFF;\n}\n.logo{\r\n    margin-top: 15px;\r\n    margin-bottom: 15px;\r\n    height: 150px;\r\n    width: 150px;\r\n    border-radius: 100%;\n}\n.logo-div{\r\n    margin: 5px auto;\n}\n.crd-header{\r\n    background-color: var(--theme-color);\r\n    color: var(--white);\r\n    text-align: center;\r\n    font-size: 30px;\r\n    font-weight: 800;\r\n    box-shadow: 0 1px 5px var(--theme-color);\n}\n.crd-header-div{\r\n    text-align: center;\r\n    font-size: 12px;\r\n    font-weight: 500;\n}\n.crd-body{\r\n    color: var(--theme-color);\r\n    background-color: var(--white);\r\n    padding-top: 30px;\r\n    padding-bottom: 30px;\n}\r\n\r\n\r\n/* Field */\n.reg-log-input-field{\r\n    border: 0;\r\n    border-radius: 0;\r\n    border-bottom: 2px solid var(--theme-color);\r\n    color: var(--theme-color);\n}\n.btn-reg-log{\r\n    background-color: var(--theme-color);\r\n    color: var(--white);\r\n    border: 1px solid var(--white);\n}\n.btn-reg-log:hover{\r\n    color: var(--theme-color);\r\n    background-color: var(--white);\r\n    border: 1px solid var(--theme-color);\n}\n.reg-log-label{\r\n    color: var(--theme-color);\r\n    margin-right: 0;\r\n    padding-right: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -7665,7 +7712,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".card-head{\n    display: flex;\n}\n/* User profile image */\n.post_title_img{\n    height: 50px;\n    width: 50px;\n    border-radius: 50px;\n}\n.card-head-icon{\n    cursor: pointer;\n}\n.card-title{\n    display: flex;\n    background-color: #FFFFFF;\n}\n.name-and-time{\n    text-decoration: none;\n    margin: auto 0 auto 15px !important;\n}\n.name{\n    color: #1b1e21;\n    font-size: 18px;\n    font-family: 'Ubuntu', sans-serif;\n    font-weight: 600;\n    line-height: 100%;\n}\n.name:hover{\n    color: #1b1e21;\n    text-decoration: none;\n}\n.time{\n    font-size: 0.8em;\n    line-height: 100%;\n}\n\n/* Dropdown Button */\n.dropbtn {\n    font-size: 16px;\n    background-color: #FFFFFF;\n    border: none;\n}\n\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n.dropdown-item{\n    padding: 10px 15px;\n}\n.dropdown-item a {\n    text-decoration: none;\n    color: #1b1e21;\n}\n\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\n    display: block;\n}\n.view-btn:hover{\n    color: #f1f1f1;\n    background-color: #007BFF;\n}\n.delete-btn:hover{\n    color: #f1f1f1;\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\n    color: #f1f1f1;\n    background-color: #28A745 !important;\n}\n.post-body{\n    padding: 0;\n}\n/* Post Caption */\n.post-caption{\n    padding: 10px 20px;\n    font-family: 'Arial', sans-serif;\n}\n/* Post Image */\n.img{\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, ".card-head{\r\n    display: flex;\n}\r\n/* User profile image */\n.post_title_img{\r\n    height: 50px;\r\n    width: 50px;\r\n    border-radius: 50px;\n}\n.card-head-icon{\r\n    cursor: pointer;\n}\n.card-title{\r\n    display: flex;\r\n    background-color: #FFFFFF;\n}\n.name-and-time{\r\n    text-decoration: none;\r\n    margin: auto 0 auto 15px !important;\n}\n.name{\r\n    color: #1b1e21;\r\n    font-size: 18px;\r\n    font-family: 'Ubuntu', sans-serif;\r\n    font-weight: 600;\r\n    line-height: 100%;\n}\n.name:hover{\r\n    color: #1b1e21;\r\n    text-decoration: none;\n}\n.time{\r\n    font-size: 0.8em;\r\n    line-height: 100%;\n}\r\n\r\n/* Dropdown Button */\n.dropbtn {\r\n    font-size: 16px;\r\n    background-color: #FFFFFF;\r\n    border: none;\n}\r\n\r\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\r\n    position: relative;\r\n    display: inline-block;\n}\n.dropdown-item{\r\n    padding: 10px 15px;\n}\n.dropdown-item a {\r\n    text-decoration: none;\r\n    color: #1b1e21;\n}\r\n\r\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\r\n    display: block;\n}\n.view-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #007BFF;\n}\n.delete-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #28A745 !important;\n}\n.post-body{\r\n    padding: 0;\n}\r\n/* Post Caption */\n.post-caption{\r\n    padding: 10px 20px;\r\n    font-family: 'Arial', sans-serif;\n}\r\n/* Post Image */\n.img{\r\n    width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -61154,11 +61201,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [_c("create-post"), _vm._v(" "), _c("br"), _vm._v(" "), _c("show-post")],
-    1
-  )
+  return _vm.user
+    ? _c(
+        "div",
+        [
+          _c("create-post"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("show-post")
+        ],
+        1
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -62261,9 +62316,9 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                            " +
+                                      "\n\t\t\t\t\t\t\t\t\t\t\t" +
                                         _vm._s(post.user.name) +
-                                        "\n                                        "
+                                        "\n\t\t\t\t\t\t\t\t\t\t"
                                     )
                                   ]
                                 )
@@ -62273,11 +62328,11 @@ var render = function() {
                             _vm._v(" "),
                             _c("div", { staticClass: "time text-muted" }, [
                               _vm._v(
-                                "\n                                        " +
+                                "\n\t\t\t\t\t\t\t\t\t\t" +
                                   _vm._s(
                                     _vm.moment(post.created_at).fromNow()
                                   ) +
-                                  "\n                                    "
+                                  "\n\t\t\t\t\t\t\t\t\t"
                               )
                             ])
                           ])
@@ -62362,103 +62417,119 @@ var render = function() {
                                   ]
                                 ),
                                 _vm._v(
-                                  "\n                                        View\n                                    "
+                                  "\n\t\t\t\t\t\t\t\t\t\tView\n\t\t\t\t\t\t\t\t\t"
                                 )
                               ]
                             ),
                             _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "dropdown-item edit-btn",
-                                attrs: { href: "#" }
-                              },
-                              [
-                                _c(
-                                  "svg",
+                            post.user.id === _vm.user.id
+                              ? _c(
+                                  "a",
                                   {
-                                    staticClass: "bi bi-tools mr-2",
-                                    attrs: {
-                                      xmlns: "http://www.w3.org/2000/svg",
-                                      width: "16",
-                                      height: "16",
-                                      fill: "currentColor",
-                                      viewBox: "0 0 16 16"
+                                    staticClass: "dropdown-item edit-btn",
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        _vm.editing = post.id
+                                      }
                                     }
                                   },
                                   [
-                                    _c("path", {
-                                      attrs: {
-                                        "fill-rule": "evenodd",
-                                        d:
-                                          "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      attrs: {
-                                        "fill-rule": "evenodd",
-                                        d:
-                                          "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
-                                      }
-                                    })
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass: "bi bi-tools mr-2",
+                                        attrs: {
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          width: "16",
+                                          height: "16",
+                                          fill: "currentColor",
+                                          viewBox: "0 0 16 16"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            "fill-rule": "evenodd",
+                                            d:
+                                              "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("path", {
+                                          attrs: {
+                                            "fill-rule": "evenodd",
+                                            d:
+                                              "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t\t\t"
+                                    )
                                   ]
-                                ),
-                                _vm._v(
-                                  "\n                                        Edit\n                                    "
                                 )
-                              ]
-                            ),
+                              : _vm._e(),
                             _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "dropdown-item delete-btn",
-                                attrs: { href: "#" }
-                              },
-                              [
-                                _c(
-                                  "svg",
+                            post.user.id === _vm.user.id
+                              ? _c(
+                                  "a",
                                   {
-                                    staticClass: "bi bi-trash2 mr-2",
-                                    attrs: {
-                                      xmlns: "http://www.w3.org/2000/svg",
-                                      width: "16",
-                                      height: "16",
-                                      fill: "currentColor",
-                                      viewBox: "0 0 16 16"
+                                    staticClass: "dropdown-item delete-btn",
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deletePost(post.id)
+                                      }
                                     }
                                   },
                                   [
-                                    _c("path", {
-                                      attrs: {
-                                        "fill-rule": "evenodd",
-                                        d:
-                                          "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      attrs: {
-                                        d:
-                                          "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      attrs: {
-                                        "fill-rule": "evenodd",
-                                        d:
-                                          "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
-                                      }
-                                    })
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass: "bi bi-trash2 mr-2",
+                                        attrs: {
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          width: "16",
+                                          height: "16",
+                                          fill: "currentColor",
+                                          viewBox: "0 0 16 16"
+                                        }
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            "fill-rule": "evenodd",
+                                            d:
+                                              "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("path", {
+                                          attrs: {
+                                            d:
+                                              "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("path", {
+                                          attrs: {
+                                            "fill-rule": "evenodd",
+                                            d:
+                                              "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t\t\tDelete\n\t\t\t\t\t\t\t\t\t"
+                                    )
                                   ]
-                                ),
-                                _vm._v(
-                                  "\n                                        Delete\n                                    "
                                 )
-                              ]
-                            )
+                              : _vm._e()
                           ],
                           1
                         )
@@ -62467,43 +62538,109 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-body post-body" }, [
+                    _vm.editing === post.id
+                      ? _c("div", [
+                          _c("form", [
+                            _c(
+                              "textarea",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: (_vm.form.content = post.content),
+                                    expression: "form.content=post.content"
+                                  }
+                                ],
+                                staticClass:
+                                  "post-caption text-justify form-control border-0",
+                                staticStyle: { resize: "none" },
+                                attrs: {
+                                  autofocus: "",
+                                  placeholder: "Update your caption",
+                                  id: "content",
+                                  rows: "2",
+                                  name: "content"
+                                },
+                                domProps: {
+                                  value: (_vm.form.content = post.content)
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      (_vm.form.content = post),
+                                      "content",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              },
+                              [_vm._v(_vm._s(post.content))]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass:
+                                "ml-3 mt-2 mb-2 btn btn-success btn-sm",
+                              attrs: { type: "submit", value: "Save" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.updatePost(post.id)
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     post.content
                       ? _c("div", [
-                          post.content.toString().length >= 150
-                            ? _c(
-                                "div",
-                                { staticClass: "post-caption text-justify" },
-                                [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(
-                                        post.content
-                                          .toString()
-                                          .substring(0, 149) + "... "
-                                      ) +
-                                      "\n                                    "
-                                  ),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "text-decoration-none",
-                                      attrs: { href: "" }
-                                    },
-                                    [_vm._v("see more")]
-                                  )
-                                ]
-                              )
-                            : _c(
-                                "div",
-                                { staticClass: "post-caption text-justify" },
-                                [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(post.content.toString()) +
-                                      "\n                                "
-                                  )
-                                ]
-                              )
+                          _vm.editing !== post.id
+                            ? _c("div", [
+                                post.content.toString().length >= 150
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass: "post-caption text-justify"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n\t\t\t\t\t\t\t\t\t\t" +
+                                            _vm._s(
+                                              post.content
+                                                .toString()
+                                                .substring(0, 149) + "... "
+                                            ) +
+                                            "\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t"
+                                        ),
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass: "text-decoration-none",
+                                            attrs: { href: "" }
+                                          },
+                                          [_vm._v("see more")]
+                                        )
+                                      ]
+                                    )
+                                  : _c(
+                                      "div",
+                                      {
+                                        staticClass: "post-caption text-justify"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n\t\t\t\t\t\t\t\t\t\t" +
+                                            _vm._s(post.content.toString()) +
+                                            "\n\t\t\t\t\t\t\t\t\t"
+                                        )
+                                      ]
+                                    )
+                              ])
+                            : _vm._e()
                         ])
                       : _vm._e(),
                     _vm._v(" "),
@@ -62698,265 +62835,281 @@ var render = function() {
   return _c("div", {}, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card mb-4 shadow-sm" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "card-title card-header shadow-sm justify-content-between align-items-center"
-            },
-            [
-              _c("div", { staticClass: "d-flex" }, [
-                _c("img", {
-                  staticClass: "post_title_img",
-                  attrs: {
-                    src: "/storage/" + _vm.post.user.profile.profile_img,
-                    alt: "Profile image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "name-and-time" }, [
-                  _c("div", { staticClass: "d-block" }, [
-                    _c(
-                      "a",
-                      { staticClass: "name my-0 py-0", attrs: { href: "/#/" } },
-                      [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\t\t\t" +
-                            _vm._s(_vm.post.user.name) +
-                            "\n\t\t\t\t\t\t\t\t"
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "time text-muted" }, [
-                    _vm._v(
-                      "\n\t\t\t\t\t\t\t\t" +
-                        _vm._s(_vm.moment(_vm.post.created_at).fromNow()) +
-                        "\n\t\t\t\t\t\t\t"
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "dropdown mt-2 mr-3" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "text-muted text-decoration-none",
-                    attrs: {
-                      href: "#",
-                      role: "button",
-                      id: "dropdownMenuLink",
-                      "data-toggle": "dropdown",
-                      "aria-haspopup": "true",
-                      "aria-expanded": "false"
-                    }
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "bi bi-three-dots card-head-icon",
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          width: "16",
-                          height: "16",
-                          fill: "currentColor",
-                          viewBox: "0 0 16 16"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            "fill-rule": "evenodd",
-                            d:
-                              "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                          }
-                        })
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "dropdown-menu dropdown-menu-right p-0 m-0" },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "dropdown-item view-btn",
-                        attrs: { href: "#" }
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "bi bi-fullscreen mr-2",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              width: "16",
-                              height: "16",
-                              fill: "currentColor",
-                              viewBox: "0 0 16 16"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                "fill-rule": "evenodd",
-                                d:
-                                  "M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v("\n\t\t\t\t\t\t\t\tView\n\t\t\t\t\t\t\t")
-                      ]
-                    ),
+        _vm.post
+          ? _c("div", { staticClass: "card mb-4 shadow-sm" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "card-title card-header shadow-sm justify-content-between align-items-center"
+                },
+                [
+                  _c("div", { staticClass: "d-flex" }, [
+                    _c("img", {
+                      staticClass: "post_title_img",
+                      attrs: {
+                        src: "/storage/" + _vm.post.user.profile.profile_img,
+                        alt: "Profile image"
+                      }
+                    }),
                     _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "dropdown-item edit-btn",
-                        attrs: { href: "#" }
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "bi bi-tools mr-2",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              width: "16",
-                              height: "16",
-                              fill: "currentColor",
-                              viewBox: "0 0 16 16"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                "fill-rule": "evenodd",
-                                d:
-                                  "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                "fill-rule": "evenodd",
-                                d:
-                                  "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v("\n\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "dropdown-item delete-btn",
-                        attrs: { href: "#" }
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "bi bi-trash2 mr-2",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              width: "16",
-                              height: "16",
-                              fill: "currentColor",
-                              viewBox: "0 0 16 16"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                "fill-rule": "evenodd",
-                                d:
-                                  "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                "fill-rule": "evenodd",
-                                d:
-                                  "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v("\n\t\t\t\t\t\t\t\tDelete\n\t\t\t\t\t\t\t")
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body post-body" }, [
-            _vm.post.content
-              ? _c("div", [
-                  _vm.post.content.toString().length >= 150
-                    ? _c("div", { staticClass: "post-caption text-justify" }, [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\t" +
-                            _vm._s(
-                              _vm.post.content.toString().substring(0, 149) +
-                                "... "
-                            ) +
-                            "\n\t\t\t\t\t\t\t"
-                        ),
+                    _c("div", { staticClass: "name-and-time" }, [
+                      _c("div", { staticClass: "d-block" }, [
                         _c(
                           "a",
                           {
-                            staticClass: "text-decoration-none",
-                            attrs: { href: "" }
+                            staticClass: "name my-0 py-0",
+                            attrs: { href: "/#/" }
                           },
-                          [_vm._v("see more")]
+                          [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\t\t" +
+                                _vm._s(_vm.post.user.name) +
+                                "\n\t\t\t\t\t\t\t\t"
+                            )
+                          ]
                         )
-                      ])
-                    : _c("div", { staticClass: "post-caption text-justify" }, [
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "time text-muted" }, [
                         _vm._v(
-                          "\n\t\t\t\t\t\t\t" +
-                            _vm._s(_vm.post.content.toString()) +
-                            "\n\t\t\t\t\t\t"
+                          "\n\t\t\t\t\t\t\t\t" +
+                            _vm._s(_vm.moment(_vm.post.created_at).fromNow()) +
+                            "\n\t\t\t\t\t\t\t"
                         )
                       ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dropdown mt-2 mr-3" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-muted text-decoration-none",
+                        attrs: {
+                          href: "#",
+                          role: "button",
+                          id: "dropdownMenuLink",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-three-dots card-head-icon",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                d:
+                                  "M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "dropdown-menu dropdown-menu-right p-0 m-0"
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item view-btn",
+                            attrs: { href: "#" }
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "bi bi-fullscreen mr-2",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "16",
+                                  height: "16",
+                                  fill: "currentColor",
+                                  viewBox: "0 0 16 16"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v("\n\t\t\t\t\t\t\t\tView\n\t\t\t\t\t\t\t")
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item edit-btn",
+                            attrs: { href: "#" }
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "bi bi-tools mr-2",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "16",
+                                  height: "16",
+                                  fill: "currentColor",
+                                  viewBox: "0 0 16 16"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v("\n\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t")
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "dropdown-item delete-btn",
+                            attrs: { href: "#" }
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "bi bi-trash2 mr-2",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  width: "16",
+                                  height: "16",
+                                  fill: "currentColor",
+                                  viewBox: "0 0 16 16"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M3.18 4l1.528 9.164a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836L12.82 4H3.18zm.541 9.329A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671L14 3H2l1.721 10.329z"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M14 3c0 1.105-2.686 2-6 2s-6-.895-6-2 2.686-2 6-2 6 .895 6 2z"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  attrs: {
+                                    "fill-rule": "evenodd",
+                                    d:
+                                      "M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v("\n\t\t\t\t\t\t\t\tDelete\n\t\t\t\t\t\t\t")
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body post-body" }, [
+                _vm.post.content
+                  ? _c("div", [
+                      _vm.post.content.toString().length >= 150
+                        ? _c(
+                            "div",
+                            { staticClass: "post-caption text-justify" },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t" +
+                                  _vm._s(
+                                    _vm.post.content
+                                      .toString()
+                                      .substring(0, 149) + "... "
+                                  ) +
+                                  "\n\t\t\t\t\t\t\t"
+                              ),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "text-decoration-none",
+                                  attrs: { href: "" }
+                                },
+                                [_vm._v("see more")]
+                              )
+                            ]
+                          )
+                        : _c(
+                            "div",
+                            { staticClass: "post-caption text-justify" },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t" +
+                                  _vm._s(_vm.post.content.toString()) +
+                                  "\n\t\t\t\t\t\t"
+                              )
+                            ]
+                          )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", [
+                  _vm.post.img
+                    ? _c("img", {
+                        staticClass: "post-img",
+                        attrs: {
+                          src: "/storage/" + _vm.post.img,
+                          width: "100%",
+                          alt: "Post's image"
+                        }
+                      })
+                    : _vm._e()
                 ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("div", [
-              _vm.post.img
-                ? _c("img", {
-                    staticClass: "post-img",
-                    attrs: {
-                      src: "/storage/" + _vm.post.img,
-                      width: "100%",
-                      alt: "Post's image"
-                    }
-                  })
-                : _vm._e()
+              ])
             ])
-          ])
-        ])
+          : _vm._e()
       ])
     ])
   ])
@@ -63340,32 +63493,34 @@ var render = function() {
       { staticStyle: { "padding-left": "7%", "padding-right": "7%" } },
       [
         _c("div", { staticClass: "row pt-2 pb-5" }, [
-          _c("div", { staticClass: "col-md-3" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center",
-                staticStyle: {
-                  height: "170px",
-                  width: "170px",
-                  border: "3px solid #ffffff",
-                  "border-radius": "50%"
-                }
-              },
-              [
-                _vm.profile
-                  ? _c("img", {
-                      staticStyle: { height: "100%", width: "auto" },
-                      attrs: {
-                        src: "/storage/" + _vm.profile.profile_img,
-                        alt: "img"
-                      }
-                    })
-                  : _vm._e()
-              ]
-            )
-          ]),
+          _vm.profile
+            ? _c("div", { staticClass: "col-md-3" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center",
+                    staticStyle: {
+                      height: "170px",
+                      width: "170px",
+                      border: "3px solid #ffffff",
+                      "border-radius": "50%"
+                    }
+                  },
+                  [
+                    _vm.profile
+                      ? _c("img", {
+                          staticStyle: { height: "100%", width: "auto" },
+                          attrs: {
+                            src: "/storage/" + _vm.profile.profile_img,
+                            alt: "img"
+                          }
+                        })
+                      : _vm._e()
+                  ]
+                )
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-5 pt-0" }, [
             _c("div", { staticClass: "ml-1" }, [
@@ -81166,7 +81321,7 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     },
     getSinglePost: function getSinglePost(context, payload) {
       axios.get('/api/post/' + payload).then(function (response) {
-        context.commit("getSinglePost", response.data.post);
+        context.commit("getSinglePost", response.data.post[0]);
       });
     },
     getUserPosts: function getUserPosts(context, payload) {
@@ -81183,7 +81338,18 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
       axios.get('/api/profile/' + payload).then(function (response) {
         context.commit('getProfile', response.data.profile);
       });
-    }
+    },
+    deletePost: function deletePost(context, payload) {
+      axios["delete"]('/api/post/' + payload).then(function () {
+        context.dispatch('getPosts'); // can be improved by adding "add" method
+      });
+    } // updatePost(context, payload){
+    //     axios.post('/api/post/'+payload);
+    //     //     .then(()=>{
+    //     //
+    //     // })
+    // }
+
   }
 });
 
@@ -81207,8 +81373,8 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\laravel-projects\spa\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\laravel-projects\spa\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\spa\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\spa\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
