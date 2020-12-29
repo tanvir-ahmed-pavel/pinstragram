@@ -26,7 +26,7 @@
 						<div>
 							<div class="form-group border-0">
                                 <textarea style="font-size: 25px;" rows="2" v-model="content" class="form-control border-0" name="content"
-                                          placeholder="Whats on your mind....."></textarea>
+                                          placeholder="Whats on your mind..."></textarea>
 							</div>
 
 							<div class="d-flex justify-content-between">
@@ -47,7 +47,6 @@
 			</form>
 		</div>
 	</div>
-
 </template>
 
 <script>
@@ -69,7 +68,7 @@
                     this.imgPre = e.target.result;
                 };
                 this.img = e.target.files[0];
-	            
+
             },
             createPost(){
                 this.formData.append('content', this.content);
@@ -79,14 +78,11 @@
                     this.img='';
                     this.imgPre='';
                 });
-
-
             }
 	    }
-
     }
 </script>
 
 <style scoped>
-
+@import "../../../css/create-post.css";
 </style>
