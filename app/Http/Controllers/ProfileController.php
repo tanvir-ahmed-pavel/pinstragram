@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index($id)
     {
-        $profile = User::findOrFail($id)->profile;
+        $profile = User::findOrFail($id)->profile()->with('user')->get();
 
         return response()->json([
             'profile' => $profile,

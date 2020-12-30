@@ -6,7 +6,7 @@
 				<div v-if="profile" class="col-md-3">
 					<div class="float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center"
 					     style="height: 170px; width: 170px; border: 3px solid #ffffff; border-radius: 50%;">
-						<img v-if="profile" :src="'/storage/'+profile.profile_img" alt="img"
+						<img v-if="profile" :src="'/storage/'+profile[0].profile_img" alt="img"
 						style="height: 100%; width: auto;">
 					</div>
 				</div>
@@ -21,7 +21,7 @@
 <!--							            follow-->
 							<div class="d-flex align-items-baseline pb-3">
 								<div>
-									<div class="h1" style="font-weight: 100;">{{ 'asd' }}</div>
+									<div v-if="profile" class="h1" style="font-weight: 100;">{{ profile[0].user.name}}</div>
 								</div>
 								
 									<router-link class="btn btn-sm btn-outline-secondary pl-2 pr-2 ml-4 mb-1 p-0" :to="'/profile/'+user.id+'/edit'">
@@ -69,9 +69,9 @@
 
 <!--						                    Profile info section-->
 
-						<div v-if="profile" class="pt-4 font-weight-bold">{{ profile.title }}</div>
-						<div v-if="profile">{{profile.description}}</div>
-						<div v-if="profile"><a href="https://www.">{{profile.url}}</a></div>
+						<div v-if="profile" class="pt-4 font-weight-bold">{{ profile[0].title }}</div>
+						<div v-if="profile">{{profile[0].description}}</div>
+						<div v-if="profile"><a href="https://www.">{{profile[0].url}}</a></div>
 <!--						{{this.profile}}-->
 					</div>
 				</div>

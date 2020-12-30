@@ -63512,7 +63512,7 @@ var render = function() {
                       ? _c("img", {
                           staticStyle: { height: "100%", width: "auto" },
                           attrs: {
-                            src: "/storage/" + _vm.profile.profile_img,
+                            src: "/storage/" + _vm.profile[0].profile_img,
                             alt: "img"
                           }
                         })
@@ -63530,14 +63530,16 @@ var render = function() {
                   { staticClass: "d-flex align-items-baseline pb-3" },
                   [
                     _c("div", [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "h1",
-                          staticStyle: { "font-weight": "100" }
-                        },
-                        [_vm._v(_vm._s("asd"))]
-                      )
+                      _vm.profile
+                        ? _c(
+                            "div",
+                            {
+                              staticClass: "h1",
+                              staticStyle: { "font-weight": "100" }
+                            },
+                            [_vm._v(_vm._s(_vm.profile[0].user.name))]
+                          )
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
                     _c(
@@ -63562,18 +63564,18 @@ var render = function() {
               _vm._v(" "),
               _vm.profile
                 ? _c("div", { staticClass: "pt-4 font-weight-bold" }, [
-                    _vm._v(_vm._s(_vm.profile.title))
+                    _vm._v(_vm._s(_vm.profile[0].title))
                   ])
                 : _vm._e(),
               _vm._v(" "),
               _vm.profile
-                ? _c("div", [_vm._v(_vm._s(_vm.profile.description))])
+                ? _c("div", [_vm._v(_vm._s(_vm.profile[0].description))])
                 : _vm._e(),
               _vm._v(" "),
               _vm.profile
                 ? _c("div", [
                     _c("a", { attrs: { href: "https://www." } }, [
-                      _vm._v(_vm._s(_vm.profile.url))
+                      _vm._v(_vm._s(_vm.profile[0].url))
                     ])
                   ])
                 : _vm._e()
