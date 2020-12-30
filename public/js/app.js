@@ -3100,102 +3100,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7668,7 +7572,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../css/login-register.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/login-register.css"), "");
 
 // module
-exports.push([module.i, "\r\n", ""]);
+exports.push([module.i, "\n", ""]);
 
 // exports
 
@@ -7687,7 +7591,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../css/login-register.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/login-register.css"), "");
 
 // module
-exports.push([module.i, "\r\n", ""]);
+exports.push([module.i, "\n", ""]);
 
 // exports
 
@@ -7803,7 +7707,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/** Variables **/\n:root{\r\n    --theme-color: #2E89FF;\r\n    --white: #FFFFFF;\n}\n.logo{\r\n    margin-top: 15px;\r\n    margin-bottom: 15px;\r\n    height: 150px;\r\n    width: 150px;\r\n    border-radius: 100%;\n}\n.logo-div{\r\n    margin: 5px auto;\n}\n.crd-header{\r\n    background-color: var(--theme-color);\r\n    color: var(--white);\r\n    text-align: center;\r\n    font-size: 30px;\r\n    font-weight: 800;\r\n    box-shadow: 0 1px 5px var(--theme-color);\n}\n.crd-header-div{\r\n    text-align: center;\r\n    font-size: 12px;\r\n    font-weight: 500;\n}\n.crd-body{\r\n    color: var(--theme-color);\r\n    background-color: var(--white);\r\n    padding-top: 30px;\r\n    padding-bottom: 30px;\n}\r\n\r\n\r\n/* Field */\n.reg-log-input-field{\r\n    border: 0;\r\n    border-radius: 0;\r\n    border-bottom: 2px solid var(--theme-color);\r\n    color: var(--theme-color);\n}\n.btn-reg-log{\r\n    background-color: var(--theme-color);\r\n    color: var(--white);\r\n    border: 1px solid var(--white);\n}\n.btn-reg-log:hover{\r\n    color: var(--theme-color);\r\n    background-color: var(--white);\r\n    border: 1px solid var(--theme-color);\n}\n.reg-log-label{\r\n    color: var(--theme-color);\r\n    margin-right: 0;\r\n    padding-right: 0;\n}\r\n", ""]);
+exports.push([module.i, "/** Variables **/\n:root{\n    --theme-color: #2E89FF;\n    --white: #FFFFFF;\n}\n.logo{\n    margin-top: 15px;\n    margin-bottom: 15px;\n    height: 150px;\n    width: 150px;\n    border-radius: 100%;\n}\n.logo-div{\n    margin: 5px auto;\n}\n.crd-header{\n    background-color: var(--theme-color);\n    color: var(--white);\n    text-align: center;\n    font-size: 30px;\n    font-weight: 800;\n    box-shadow: 0 1px 5px var(--theme-color);\n}\n.crd-header-div{\n    text-align: center;\n    font-size: 12px;\n    font-weight: 500;\n}\n.crd-body{\n    color: var(--theme-color);\n    background-color: var(--white);\n    padding-top: 30px;\n    padding-bottom: 30px;\n}\n\n\n/* Field */\n.reg-log-input-field{\n    border: 0;\n    border-radius: 0;\n    border-bottom: 2px solid var(--theme-color);\n    color: var(--theme-color);\n}\n.btn-reg-log{\n    background-color: var(--theme-color);\n    color: var(--white);\n    border: 1px solid var(--white);\n}\n.btn-reg-log:hover{\n    color: var(--theme-color);\n    background-color: var(--white);\n    border: 1px solid var(--theme-color);\n}\n.reg-log-label{\n    color: var(--theme-color);\n    margin-right: 0;\n    padding-right: 0;\n}\n", ""]);
 
 // exports
 
@@ -7841,7 +7745,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".card-head{\r\n    display: flex;\n}\r\n/* User profile image */\n.post_title_img{\r\n    height: 50px;\r\n    width: 50px;\r\n    border-radius: 50px;\n}\n.card-head-icon{\r\n    cursor: pointer;\n}\n.card-title{\r\n    display: flex;\r\n    background-color: #FFFFFF;\n}\n.name-and-time{\r\n    text-decoration: none;\r\n    margin: auto 0 auto 15px !important;\n}\n.name{\r\n    color: #1b1e21;\r\n    font-size: 18px;\r\n    font-family: 'Ubuntu', sans-serif;\r\n    font-weight: 600;\r\n    line-height: 100%;\n}\n.name:hover{\r\n    color: #1b1e21;\r\n    text-decoration: none;\n}\n.time{\r\n    font-size: 0.8em;\r\n    line-height: 100%;\n}\r\n\r\n/* Dropdown Button */\n.dropbtn {\r\n    font-size: 16px;\r\n    background-color: #FFFFFF;\r\n    border: none;\n}\r\n\r\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\r\n    position: relative;\r\n    display: inline-block;\n}\n.dropdown-item{\r\n    padding: 10px 15px;\n}\n.dropdown-item a {\r\n    text-decoration: none;\r\n    color: #1b1e21;\n}\r\n\r\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\r\n    display: block;\n}\n.view-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #007BFF;\n}\n.delete-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #28A745 !important;\n}\n.post-body{\r\n    padding: 0;\n}\r\n/* Post Caption */\n.post-caption{\r\n    padding: 10px 20px;\r\n    font-family: 'Arial', sans-serif;\n}\r\n/* Post Image */\n.img{\r\n    width: 100%;\n}\r\n", ""]);
+exports.push([module.i, ".card-head{\n    display: flex;\n}\n/* User profile image */\n.post_title_img{\n    height: 50px;\n    width: 50px;\n    border-radius: 50px;\n}\n.card-head-icon{\n    cursor: pointer;\n}\n.card-title{\n    display: flex;\n    background-color: #FFFFFF;\n}\n.name-and-time{\n    text-decoration: none;\n    margin: auto 0 auto 15px !important;\n}\n.name{\n    color: #1b1e21;\n    font-size: 18px;\n    font-family: 'Ubuntu', sans-serif;\n    font-weight: 600;\n    line-height: 100%;\n}\n.name:hover{\n    color: #1b1e21;\n    text-decoration: none;\n}\n.time{\n    font-size: 0.8em;\n    line-height: 100%;\n}\n\n/* Dropdown Button */\n.dropbtn {\n    font-size: 16px;\n    background-color: #FFFFFF;\n    border: none;\n}\n\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n.dropdown-item{\n    padding: 10px 15px;\n}\n.dropdown-item a {\n    text-decoration: none;\n    color: #1b1e21;\n}\n\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\n    display: block;\n}\n.view-btn:hover{\n    color: #f1f1f1;\n    background-color: #007BFF;\n}\n.delete-btn:hover{\n    color: #f1f1f1;\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\n    color: #f1f1f1;\n    background-color: #28A745 !important;\n}\n.post-body{\n    padding: 0;\n}\n/* Post Caption */\n.post-caption{\n    padding: 10px 20px;\n    font-family: 'Arial', sans-serif;\n}\n/* Post Image */\n.img{\n    width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -63676,7 +63580,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-<<<<<<< HEAD
   return _c(
     "div",
     { staticClass: "container" },
@@ -63754,21 +63657,17 @@ var render = function() {
               [
                 _c("div", { staticClass: "mr-4" }, [
                   _c("strong", [_vm._v(_vm._s("12"))]),
-                  _vm._v(" " + _vm._s(" posts ") + "\n                        ")
+                  _vm._v(" " + _vm._s(" posts ") + "\n                    ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "mr-4" }, [
                   _c("strong", [_vm._v(_vm._s("43223"))]),
-                  _vm._v(
-                    " " + _vm._s(" followers ") + "\n                        "
-                  )
+                  _vm._v(" " + _vm._s(" followers ") + "\n                    ")
                 ]),
                 _vm._v(" "),
                 _c("div", [
                   _c("strong", [_vm._v(_vm._s("1313"))]),
-                  _vm._v(
-                    "  " + _vm._s(" following") + "\n                        "
-                  )
+                  _vm._v("  " + _vm._s(" following") + "\n                    ")
                 ])
               ]
             ),
@@ -63792,107 +63691,12 @@ var render = function() {
             _vm.profile.description
               ? _c("div", { staticClass: "profile-description" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n                    " +
                       _vm._s(_vm.profile.description) +
-                      "\n                    "
+                      "\n                "
                   )
                 ])
               : _vm._e()
-=======
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticStyle: { "padding-left": "7%", "padding-right": "7%" } },
-      [
-        _c("div", { staticClass: "row pt-2 pb-5" }, [
-          _vm.profile
-            ? _c("div", { staticClass: "col-md-3" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center",
-                    staticStyle: {
-                      height: "170px",
-                      width: "170px",
-                      border: "3px solid #ffffff",
-                      "border-radius": "50%"
-                    }
-                  },
-                  [
-                    _vm.profile
-                      ? _c("img", {
-                          staticStyle: { height: "100%", width: "auto" },
-                          attrs: {
-                            src: "/storage/" + _vm.profile[0].profile_img,
-                            alt: "img"
-                          }
-                        })
-                      : _vm._e()
-                  ]
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-5 pt-0" }, [
-            _c("div", { staticClass: "ml-1" }, [
-              _c("div", { staticClass: "d-flex justify-content-between" }, [
-                _c(
-                  "div",
-                  { staticClass: "d-flex align-items-baseline pb-3" },
-                  [
-                    _c("div", [
-                      _vm.profile
-                        ? _c(
-                            "div",
-                            {
-                              staticClass: "h1",
-                              staticStyle: { "font-weight": "100" }
-                            },
-                            [_vm._v(_vm._s(_vm.profile[0].user.name))]
-                          )
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass:
-                          "btn btn-sm btn-outline-secondary pl-2 pr-2 ml-4 mb-1 p-0",
-                        attrs: { to: "/profile/" + _vm.user.id + "/edit" }
-                      },
-                      [
-                        _c("small", [_vm._v("Edit Profile")]),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "fas fa-cogs" })
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _vm.profile
-                ? _c("div", { staticClass: "pt-4 font-weight-bold" }, [
-                    _vm._v(_vm._s(_vm.profile[0].title))
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.profile
-                ? _c("div", [_vm._v(_vm._s(_vm.profile[0].description))])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.profile
-                ? _c("div", [
-                    _c("a", { attrs: { href: "https://www." } }, [
-                      _vm._v(_vm._s(_vm.profile[0].url))
-                    ])
-                  ])
-                : _vm._e()
-            ])
->>>>>>> fc2f474ff389b70ec3e1dd01469d10180103f3c1
           ])
         ])
       ]),
@@ -81706,8 +81510,8 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\spa\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\spa\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\laravel-projects\spa\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\laravel-projects\spa\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
