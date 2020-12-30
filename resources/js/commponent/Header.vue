@@ -36,8 +36,6 @@
 							<router-link v-if="!auth" to="/login" class="text-decoration-none m-1">Login</router-link>
 							<router-link v-if="!auth" to="/register" class="text-decoration-none m-1">Register</router-link>
 						</template>
-						
-					
 					</ul>
 				</div>
 			</div>

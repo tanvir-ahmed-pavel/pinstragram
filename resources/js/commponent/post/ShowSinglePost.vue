@@ -2,7 +2,7 @@
 	<div class="">
 		<div class="row">
 			<div class="col-md-8">
-				<div class="card mb-4 shadow-sm">
+				<div v-if="post" class="card mb-4 shadow-sm">
 					<div class="card-title card-header shadow-sm justify-content-between align-items-center">
 						<div class="d-flex">
 							<img :src="'/storage/'+post.user.profile.profile_img"

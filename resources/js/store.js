@@ -108,7 +108,7 @@ export default {
         },
         getSinglePost(context, payload){
             axios.get('/api/post/'+payload).then((response)=>{
-                context.commit("getSinglePost", response.data.post)
+                context.commit("getSinglePost", response.data.post[0])
             })
         },
         getUserPosts(context, payload){
@@ -126,6 +126,18 @@ export default {
                 context.commit('getProfile', response.data.profile);
             })
         },
+        deletePost(context, payload){
+            axios.delete('/api/post/'+payload).then(()=>{
+                context.dispatch('getPosts'); // can be improved by adding "add" method
+            })
+        },
+        // updatePost(context, payload){
+        //     axios.post('/api/post/'+payload);
+        //     //     .then(()=>{
+        //     //
+        //     // })
+        // }
+
 
     },
 

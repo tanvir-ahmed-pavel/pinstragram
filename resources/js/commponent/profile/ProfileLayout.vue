@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 <!--	<div class="container">-->
 <!--		<div style="padding-left: 7%; padding-right: 7%;">-->
 <!--			<div class="row pt-2 pb-5">-->
@@ -10,6 +11,19 @@
 <!--						style="height: 100%; width: auto;">-->
 <!--					</div>-->
 <!--				</div>-->
+=======
+	<div class="container">
+		<div style="padding-left: 7%; padding-right: 7%;">
+			<div class="row pt-2 pb-5">
+				
+				<div v-if="profile" class="col-md-3">
+					<div class="float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center"
+					     style="height: 170px; width: 170px; border: 3px solid #ffffff; border-radius: 50%;">
+						<img v-if="profile" :src="'/storage/'+profile[0].profile_img" alt="img"
+						style="height: 100%; width: auto;">
+					</div>
+				</div>
+>>>>>>> fc2f474ff389b70ec3e1dd01469d10180103f3c1
 
 <!--&lt;!&ndash;				           Profile Info &ndash;&gt;-->
 
@@ -18,6 +32,7 @@
 <!--						<div class="d-flex justify-content-between">-->
 
 
+<<<<<<< HEAD
 <!--&lt;!&ndash;							            follow&ndash;&gt;-->
 <!--							<div class="d-flex align-items-baseline pb-3">-->
 <!--								<div>-->
@@ -145,6 +160,84 @@
         <create-post></create-post>
         <show-post></show-post>
     </div>
+=======
+<!--							            follow-->
+							<div class="d-flex align-items-baseline pb-3">
+								<div>
+									<div v-if="profile" class="h1" style="font-weight: 100;">{{ profile[0].user.name}}</div>
+								</div>
+								
+									<router-link class="btn btn-sm btn-outline-secondary pl-2 pr-2 ml-4 mb-1 p-0" :to="'/profile/'+user.id+'/edit'">
+										<small>Edit Profile</small> <i class="fas fa-cogs"></i>
+									</router-link>
+								
+
+							</div>
+
+
+						</div>
+
+<!--						               Count Section-->
+
+						<div class="d-flex">
+
+<!--							                      Post count-->
+
+							<div class="pr-5">
+								<strong>1</strong> posts
+							</div>
+
+<!--							                     follower-->
+
+							<div class="pr-5">
+								<a href="#" type="button" class="text-decoration-none text-dark" data-toggle="modal" data-target="#followerModal">
+									<strong>5</strong> followers
+								</a>
+<!--								                        Follower Modal-->
+
+
+							</div>
+
+<!--							                       Following Count-->
+
+							<div>
+								<a href="#" type="button" class="text-decoration-none text-dark" data-toggle="modal" data-target="#followModal">
+									<strong>10</strong> following
+								</a>
+
+<!--								                        Following Modal-->
+							</div>
+
+						</div>
+
+<!--						                    Profile info section-->
+
+						<div v-if="profile" class="pt-4 font-weight-bold">{{ profile[0].title }}</div>
+						<div v-if="profile">{{profile[0].description}}</div>
+						<div v-if="profile"><a href="https://www.">{{profile[0].url}}</a></div>
+<!--						{{this.profile}}-->
+					</div>
+				</div>
+
+
+
+			</div>
+
+<!--			       Create post-->
+
+			<create-post></create-post>
+
+<!--			      Post Section-->
+			<show-post></show-post>
+
+			<div class="row">
+				<div class="col-md-12"></div>
+			</div>
+			
+
+		</div>
+	</div>
+>>>>>>> fc2f474ff389b70ec3e1dd01469d10180103f3c1
 </template>
 
 <script>
