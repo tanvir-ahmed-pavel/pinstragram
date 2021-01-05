@@ -8,9 +8,9 @@
 							<div class="overflow-hidden d-flex justify-content-center align-items-center position-relative"
 							     style="height: 40px; width: 40px; border: 1.5px solid #000000; border-radius: 50%; background-color: rgba(255,255,0,0)">
 
-								<!--					<img src="/storage/{{Auth::user()->profile->profile_img ?? "profile_imgs/default-avatar.png"}}"-->
-								<!--					alt="img"-->
-								<!--					style="height: 100%; width: auto;">-->
+													<img :src="'/storage/'+authUser.profile.profile_img"
+													alt="img"
+													style="height: 100%; width: auto;">
 								<div class="d-flex justify-content-center align-items-center position-absolute"
 								     style="height: 38px; width: 38px; border: 2px solid #ffffff; border-radius: 50%;">
 								</div>
@@ -79,7 +79,12 @@
                     this.imgPre='';
                 });
             }
-	    }
+	    },
+	    computed:{
+          authUser(){
+              return this.$store.getters.user;
+          }
+	    },
     }
 </script>
 

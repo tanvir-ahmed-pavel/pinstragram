@@ -108,7 +108,7 @@ export default {
         },
         getSinglePost(context, payload){
             axios.get('/api/post/'+payload).then((response)=>{
-                context.commit("getSinglePost", response.data.post[0])
+                context.commit("getSinglePost", response.data.post)
             })
         },
         getUserPosts(context, payload){

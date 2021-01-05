@@ -20,11 +20,15 @@ Route::middleware('auth:sanctum')->group(function () {
 //    User Data
 
     Route::get('/user', function (Request $request) {
-        return $request->user();
+        $user = $request->user();
+        $user->profile;
+        return $user;
     });
 
     Route::get("/profile/post/{id}", [\App\Http\Controllers\ProfileController::class, 'profilePost']);
     Route::put("/profile/{id}", [\App\Http\Controllers\ProfileController::class, 'update']);
+    Route::get("/isFollowing/{id}", [\App\Http\Controllers\FollowController::class, 'isFollowing']);
+    Route::post("/follow/{id}", [\App\Http\Controllers\FollowController::class, 'store']);
 
 });
 

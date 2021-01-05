@@ -51,6 +51,7 @@ export const routes = [
         component: ProfileEdit,
         meta: {
             requirsAuth: true,
+            sameAsUser:true,
         },
     },
 ];

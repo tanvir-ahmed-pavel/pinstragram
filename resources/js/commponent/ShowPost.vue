@@ -44,7 +44,7 @@
 										View
 									</router-link>
 									<a @click.prevent="editing=post.id" v-if="post.user.id === user.id" href="#"
-									             class="dropdown-item edit-btn">
+									   class="dropdown-item edit-btn">
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 										     fill="currentColor"
 										     class="bi bi-tools mr-2" viewBox="0 0 16 16">
@@ -56,7 +56,7 @@
 										Edit
 									</a>
 									<a href="#" @click.prevent="deletePost(post.id)" v-if="post.user.id === user.id"
-									             class="dropdown-item delete-btn">
+									   class="dropdown-item delete-btn">
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 										     fill="currentColor"
 										     class="bi bi-trash2 mr-2" viewBox="0 0 16 16">
@@ -77,9 +77,9 @@
 							<div v-if="editing === post.id">
 								<form>
 									
-									<textarea autofocus placeholder="Update your caption" id="content" style="resize: none" class="post-caption text-justify form-control border-0" rows="2" v-model="form.content=post.content" name="content">{{post.content}}</textarea>
+									<textarea autofocus placeholder="Update your caption" id="content" style="resize: none" class="post-caption text-justify form-control border-0" rows="2" v-model="form.content=post.content" name="content"></textarea>
 									<input type="submit" class="ml-3 mt-2 mb-2 btn btn-success btn-sm" value="Save" @click.prevent="updatePost(post.id)">
-<!--									<button @click.prevent="cancelEdit(post.content)" class="btn btn-sm btn-danger">aa</button>-->
+									<button @click.prevent="editing=false" class="btn btn-sm btn-secondary">cancel</button>
 								</form>
 							</div>
 							<div v-if="post.content">
@@ -124,11 +124,11 @@
         data() {
             return {
                 moment: moment,
-	            form:{
+                form:{
                     content: '',
-		            _method: 'PATCH'
-	            },
-                
+                    _method: 'PATCH'
+                },
+
                 editing: false,
             }
         },
@@ -144,10 +144,10 @@
             },
             updatePost(payload) {
                 axios.post('/api/post/'+payload, this.form).then(()=>{
-                
+
                 });
                 // this.$store.dispatch('updatePost', payload);
-				// console.log(this.content);
+                // console.log(this.content);
                 this.editing = false;
             },
         },

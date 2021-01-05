@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container" v-if="profile">
 		
 		<div style="padding-left: 7%; padding-right: 7%;">
 			
@@ -78,9 +78,9 @@
 						
 						<!--						                    Profile info section-->
 						
-						<div v-if="profile" class="pt-4 font-weight-bold">{{ this.profile.title }}</div>
-						<div v-if="profile">{{this.profile.description}}</div>
-						<div v-if="profile"><a href="https://www.">{{this.profile.url}}</a></div>
+						<div v-if="profile.title!== 'null'" class="pt-4 font-weight-bold">{{ this.profile.title }}</div>
+						<div v-if="profile.description!== 'null'">{{this.profile.description}}</div>
+						<div v-if="profile.url!== 'null'"><a href="https://www.">{{this.profile.url}}</a></div>
 					
 					</div>
 				</div>
@@ -107,13 +107,26 @@
 						<strong></strong>
 					
 					</div>
+					<div class="row pt-2 pb-2">
+						<label for="cover_image" class="col-md-4 col-form-label">Cover Image</label>
+						
+						<input type="file"  class="form-control-file" id="cover_image"
+						       name="cover_img">
+						
+						<strong></strong>
+					
+					</div>
 					<div class="form-group row">
 						<label for="title" class="col-md-4 col-form-label">Title</label>
+<!--						<div class="col-md-12">-->
+<!--							<strong >{{profile.title}}</strong>-->
+<!--							<a class="text-decoration-none pl-3" @click.prevent="editT = !editT" href="">-->
+<!--								Click to edit-->
+<!--							</a>-->
+<!--						</div>-->
 						
 						<input id="title" v-model="title" type="text" class="form-control" name="title"
-						       autocomplete="title" autofocus>
-						
-						
+						       autocomplete="title" autofocus placeholder="Enter new title">
 						<span class="invalid-feedback" role="alert">
                             <strong></strong>
                         </span>
@@ -136,7 +149,7 @@
 					<div class="form-group row">
 						<label for="url" class="col-md-4 col-form-label">URL</label>
 						
-						<input id="url" v-model="url" type="text" class="form-control" name="url"
+						<input id="url" v-model="url" type="text" value="asdfdsf" class="form-control" name="url"
 						       autocomplete="url" autofocus>
 						
 						
@@ -164,17 +177,26 @@
         created() {
             this.getProfile();
         },
+	    mounted(){
+            this.permission();
+	    },
         data() {
             return {
-
+				editT:false,
                 title: '',
                 description: '',
                 url: '',
                 profile_img: '',
+                cover_img: '',
                 imgPre: '',
             }
         },
         methods: {
+            permission(){
+                if (this.$router.currentRoute.path !== '/profile/'+this.user.id+'/edit'){
+                    return this.$router.push('/profile/'+this.user.id+'/edit');
+                }
+            },
             getProfile() {
                 this.$store.dispatch('getProfile', this.user.id);
             },
@@ -191,6 +213,7 @@
                 let formData = new FormData();
                 formData.append('title', this.title);
                 formData.append('profile_img', this.profile_img);
+                formData.append('cover_img', this.cover_img);
                 formData.append('url', this.url);
                 formData.append('description', this.description);
                 formData.append('_method', 'PUT');

@@ -16,7 +16,8 @@ class ProfileController extends Controller
      */
     public function index($id)
     {
-        $profile = User::findOrFail($id)->profile()->with('user')->get();
+        $profile = User::findOrFail($id)->profile;
+        $profile->user;
 
         return response()->json([
             'profile' => $profile,
@@ -87,32 +88,30 @@ class ProfileController extends Controller
             "title" => "string|nullable",
             "description" => "string|nullable",
             "profile_img" => "image|nullable",
-            "url" => "url|nullable",
+            "cover_img" => "image|nullable",
+            "url" => "string|nullable",
         ]);
-
 
 
         $user = User::findOrFail($id);
 
         if ( Auth::user()->id == $user->profile->user_id) {
-            if ($data['profile_img']) {
-                $img_path = $request->file("profile_img")->store("profile_imgs", 'public');
+                $p_img_path = $request->file("profile_img") ? $request->file("profile_img")->store("profile_imgs", 'public') : $user->profile->profile_img;
+                $c_img_path = $request->file("cover_img") ? $request->file("cover_img")->store("cover_imgs", 'public') : $user->profile->cover_img;
+                $title = $data["title"] ? $data["title"] : $user->profile->title;
+                $url = $data["url"] ? $data["url"] : $user->profile->url;
+                $description = $data["description"] ? $data["description"] : $user->profile->desciption;
+
                 $user->profile()->update([
-                    "title" => $data["title"],
-                    "url" => $data["url"],
-                    "description" => $data["description"],
-                    "profile_img" => $img_path,
+                    "title" => $title,
+                    "url" => $url,
+                    "description" => $description,
+                    "profile_img" => $p_img_path,
+                    "cover_img" => $c_img_path,
                 ]);
-            } else {
-                $user->profile()->update([
-                    "title" => $data["title"],
-                    "url" => $data["url"],
-                    "description" => $data["description"],
-                ]);
-            }
             return response()->json('success', 200);
         }
-        return response()->json('Server error', 500);
+        return response()->json('unauthorized', 401);
 
     }
 

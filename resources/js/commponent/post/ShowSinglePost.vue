@@ -80,9 +80,9 @@
     let moment = require('moment');
     export default {
         name: "ShowSinglePost",
-	    created(){
+        created(){
             this.$store.dispatch('getSinglePost', this.$route.params.id)
-	    },
+        },
         data() {
             return {
                 moment:moment,

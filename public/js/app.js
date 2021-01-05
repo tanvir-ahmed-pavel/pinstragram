@@ -1983,6 +1983,62 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/Follow.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/Follow.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Follow",
+  props: ['ProfileId'],
+  data: function data() {
+    return {
+      status: '',
+      loading: false
+    };
+  },
+  mounted: function mounted() {
+    this.loading = true;
+    this.isFollowing();
+    console.log(this.status);
+  },
+  created: function created() {},
+  methods: {
+    isFollowing: function isFollowing() {
+      var _this = this;
+
+      axios.get('/api/isFollowing/' + this.ProfileId).then(function (response) {
+        // return this.status=response.data;
+        console.log(response.data);
+        _this.status = !!response.data;
+        _this.loading = false;
+      }); // this.$store.dispatch('following', this.ProfileId)
+    },
+    follow: function follow() {
+      var _this2 = this;
+
+      axios.post('/api/follow/' + this.ProfileId).then(function () {
+        _this2.status = !_this2.status;
+      });
+    }
+  },
+  computed: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/Header.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/Header.vue?vue&type=script&lang=js& ***!
@@ -2685,6 +2741,11 @@ __webpack_require__.r(__webpack_exports__);
         _this2.imgPre = '';
       });
     }
+  },
+  computed: {
+    authUser: function authUser() {
+      return this.$store.getters.user;
+    }
   }
 });
 
@@ -2967,21 +3028,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProfileEdit",
   created: function created() {
     this.getProfile();
   },
+  mounted: function mounted() {
+    this.permission();
+  },
   data: function data() {
     return {
+      editT: false,
       title: '',
       description: '',
       url: '',
       profile_img: '',
+      cover_img: '',
       imgPre: ''
     };
   },
   methods: {
+    permission: function permission() {
+      if (this.$router.currentRoute.path !== '/profile/' + this.user.id + '/edit') {
+        return this.$router.push('/profile/' + this.user.id + '/edit');
+      }
+    },
     getProfile: function getProfile() {
       this.$store.dispatch('getProfile', this.user.id);
     },
@@ -3003,6 +3087,7 @@ __webpack_require__.r(__webpack_exports__);
       var formData = new FormData();
       formData.append('title', this.title);
       formData.append('profile_img', this.profile_img);
+      formData.append('cover_img', this.cover_img);
       formData.append('url', this.url);
       formData.append('description', this.description);
       formData.append('_method', 'PUT'); //
@@ -3047,6 +3132,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ShowPost__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ShowPost */ "./resources/js/commponent/ShowPost.vue");
 /* harmony import */ var _post_CreatePost__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../post/CreatePost */ "./resources/js/commponent/post/CreatePost.vue");
+/* harmony import */ var _Follow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Follow */ "./resources/js/commponent/Follow.vue");
 //
 //
 //
@@ -3100,11 +3186,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProfileLayout",
   components: {
+    Follow: _Follow__WEBPACK_IMPORTED_MODULE_2__["default"],
     CreatePost: _post_CreatePost__WEBPACK_IMPORTED_MODULE_1__["default"],
     ShowPost: _ShowPost__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -7572,7 +7676,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../css/login-register.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/login-register.css"), "");
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\r\n", ""]);
 
 // exports
 
@@ -7591,7 +7695,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../css/login-register.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/login-register.css"), "");
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\r\n", ""]);
 
 // exports
 
@@ -7630,7 +7734,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.i(__webpack_require__(/*! -!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../css/create-post.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/create-post.css"), "");
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\r\n", ""]);
 
 // exports
 
@@ -7707,7 +7811,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/** Variables **/\n:root{\n    --theme-color: #2E89FF;\n    --white: #FFFFFF;\n}\n.logo{\n    margin-top: 15px;\n    margin-bottom: 15px;\n    height: 150px;\n    width: 150px;\n    border-radius: 100%;\n}\n.logo-div{\n    margin: 5px auto;\n}\n.crd-header{\n    background-color: var(--theme-color);\n    color: var(--white);\n    text-align: center;\n    font-size: 30px;\n    font-weight: 800;\n    box-shadow: 0 1px 5px var(--theme-color);\n}\n.crd-header-div{\n    text-align: center;\n    font-size: 12px;\n    font-weight: 500;\n}\n.crd-body{\n    color: var(--theme-color);\n    background-color: var(--white);\n    padding-top: 30px;\n    padding-bottom: 30px;\n}\n\n\n/* Field */\n.reg-log-input-field{\n    border: 0;\n    border-radius: 0;\n    border-bottom: 2px solid var(--theme-color);\n    color: var(--theme-color);\n}\n.btn-reg-log{\n    background-color: var(--theme-color);\n    color: var(--white);\n    border: 1px solid var(--white);\n}\n.btn-reg-log:hover{\n    color: var(--theme-color);\n    background-color: var(--white);\n    border: 1px solid var(--theme-color);\n}\n.reg-log-label{\n    color: var(--theme-color);\n    margin-right: 0;\n    padding-right: 0;\n}\n", ""]);
+exports.push([module.i, "/** Variables **/\n:root{\r\n    --theme-color: #2E89FF;\r\n    --white: #FFFFFF;\n}\n.logo{\r\n    margin-top: 15px;\r\n    margin-bottom: 15px;\r\n    height: 150px;\r\n    width: 150px;\r\n    border-radius: 100%;\n}\n.logo-div{\r\n    margin: 5px auto;\n}\n.crd-header{\r\n    background-color: var(--theme-color);\r\n    color: var(--white);\r\n    text-align: center;\r\n    font-size: 30px;\r\n    font-weight: 800;\r\n    box-shadow: 0 1px 5px var(--theme-color);\n}\n.crd-header-div{\r\n    text-align: center;\r\n    font-size: 12px;\r\n    font-weight: 500;\n}\n.crd-body{\r\n    color: var(--theme-color);\r\n    background-color: var(--white);\r\n    padding-top: 30px;\r\n    padding-bottom: 30px;\n}\r\n\r\n\r\n/* Field */\n.reg-log-input-field{\r\n    border: 0;\r\n    border-radius: 0;\r\n    border-bottom: 2px solid var(--theme-color);\r\n    color: var(--theme-color);\n}\n.btn-reg-log{\r\n    background-color: var(--theme-color);\r\n    color: var(--white);\r\n    border: 1px solid var(--white);\n}\n.btn-reg-log:hover{\r\n    color: var(--theme-color);\r\n    background-color: var(--white);\r\n    border: 1px solid var(--theme-color);\n}\n.reg-log-label{\r\n    color: var(--theme-color);\r\n    margin-right: 0;\r\n    padding-right: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -7726,7 +7830,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/** Variables **/\n:root{\n    --theme-color: #2E89FF;\n    --white: #FFFFFF;\n}\n.profile-info {\n    padding-bottom: 20px;\n    border-bottom: 2px solid #DBDBDB;\n}\n.cover-photo img {\n    width: 100%;\n    height: 350px;\n    border-radius: 5px;\n}\n.profile-header {\n    margin-left: 15px;\n    margin-top: 5px;\n}\n.profile-photo > img {\n    height: 200px;\n    width: 200px;\n    margin: -75px 0 0 30px;\n    border-radius: 200px;\n}\n.profile-name {\n    font-family: Arial, serif;\n}\n.profile-posts-followers-following {\n    font-size: 18px;\n}\n.profile-title {\n    font-family: Arial, serif;\n    font-size: 18px;\n    font-weight: 500;\n}\n.profile-url, .profile-description {\n    margin-top: 0;\n    font-size: 16px;\n}\n.edit-profile > p {\n    margin-left: 5px;\n    line-height: 20px;\n    font-weight: 600;\n}\n", ""]);
+exports.push([module.i, "/** Variables **/\n:root{\r\n    --theme-color: #2E89FF;\r\n    --white: #FFFFFF;\n}\n.profile-info {\r\n    padding-bottom: 50px;\r\n    /*border-bottom: 2px solid #DBDBDB;*/\n}\n.cover-photo img {\r\n    width: 100%;\r\n    height: 350px;\r\n    border-radius: 5px;\n}\n.profile-header {\r\n    margin-left: 15px;\r\n    margin-top: 5px;\n}\n.profile-photo > img {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin: -75px 0 0 30px;\r\n    border-radius: 200px;\n}\n.profile-name {\r\n    font-family: Arial, serif;\n}\n.profile-posts-followers-following {\r\n    font-size: 18px;\n}\n.profile-title {\r\n    font-family: Arial, serif;\r\n    font-size: 18px;\r\n    font-weight: 500;\n}\n.profile-url, .profile-description {\r\n    margin-top: 0;\r\n    font-size: 16px;\n}\n.edit-profile > p {\r\n    margin-left: 5px;\r\n    line-height: 20px;\r\n    font-weight: 600;\n}\r\n", ""]);
 
 // exports
 
@@ -7745,7 +7849,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".card-head{\n    display: flex;\n}\n/* User profile image */\n.post_title_img{\n    height: 50px;\n    width: 50px;\n    border-radius: 50px;\n}\n.card-head-icon{\n    cursor: pointer;\n}\n.card-title{\n    display: flex;\n    background-color: #FFFFFF;\n}\n.name-and-time{\n    text-decoration: none;\n    margin: auto 0 auto 15px !important;\n}\n.name{\n    color: #1b1e21;\n    font-size: 18px;\n    font-family: 'Ubuntu', sans-serif;\n    font-weight: 600;\n    line-height: 100%;\n}\n.name:hover{\n    color: #1b1e21;\n    text-decoration: none;\n}\n.time{\n    font-size: 0.8em;\n    line-height: 100%;\n}\n\n/* Dropdown Button */\n.dropbtn {\n    font-size: 16px;\n    background-color: #FFFFFF;\n    border: none;\n}\n\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\n    position: relative;\n    display: inline-block;\n}\n.dropdown-item{\n    padding: 10px 15px;\n}\n.dropdown-item a {\n    text-decoration: none;\n    color: #1b1e21;\n}\n\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\n    display: block;\n}\n.view-btn:hover{\n    color: #f1f1f1;\n    background-color: #007BFF;\n}\n.delete-btn:hover{\n    color: #f1f1f1;\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\n    color: #f1f1f1;\n    background-color: #28A745 !important;\n}\n.post-body{\n    padding: 0;\n}\n/* Post Caption */\n.post-caption{\n    padding: 10px 20px;\n    font-family: 'Arial', sans-serif;\n}\n/* Post Image */\n.img{\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, ".card-head{\r\n    display: flex;\n}\r\n/* User profile image */\n.post_title_img{\r\n    height: 50px;\r\n    width: 50px;\r\n    border-radius: 50px;\n}\n.card-head-icon{\r\n    cursor: pointer;\n}\n.card-title{\r\n    display: flex;\r\n    background-color: #FFFFFF;\n}\n.name-and-time{\r\n    text-decoration: none;\r\n    margin: auto 0 auto 15px !important;\n}\n.name{\r\n    color: #1b1e21;\r\n    font-size: 18px;\r\n    font-family: 'Ubuntu', sans-serif;\r\n    font-weight: 600;\r\n    line-height: 100%;\n}\n.name:hover{\r\n    color: #1b1e21;\r\n    text-decoration: none;\n}\n.time{\r\n    font-size: 0.8em;\r\n    line-height: 100%;\n}\r\n\r\n/* Dropdown Button */\n.dropbtn {\r\n    font-size: 16px;\r\n    background-color: #FFFFFF;\r\n    border: none;\n}\r\n\r\n/* The container <div> - needed to position the dropdown content */\n.dropdown {\r\n    position: relative;\r\n    display: inline-block;\n}\n.dropdown-item{\r\n    padding: 10px 15px;\n}\n.dropdown-item a {\r\n    text-decoration: none;\r\n    color: #1b1e21;\n}\r\n\r\n/* Show the dropdown menu on hover */\n.dropdown:hover .dropdown-content{\r\n    display: block;\n}\n.view-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #007BFF;\n}\n.delete-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #DC3545 !important;\n}\n.edit-btn:hover{\r\n    color: #f1f1f1;\r\n    background-color: #28A745 !important;\n}\n.post-body{\r\n    padding: 0;\n}\r\n/* Post Caption */\n.post-caption{\r\n    padding: 10px 20px;\r\n    font-family: 'Arial', sans-serif;\n}\r\n/* Post Image */\n.img{\r\n    width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -61315,6 +61419,50 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/Follow.vue?vue&type=template&id=e2843a2c&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/Follow.vue?vue&type=template&id=e2843a2c&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return !this.loading
+    ? _c("div", {}, [
+        _c(
+          "button",
+          {
+            staticClass: "btn-secondary btn btn-sm",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.follow()
+              }
+            }
+          },
+          [
+            _vm._v(
+              "\n\t\t" + _vm._s(!!this.status ? "Following" : "Follow") + "\n\t"
+            )
+          ]
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/Header.vue?vue&type=template&id=7d6ebbc6&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/commponent/Header.vue?vue&type=template&id=7d6ebbc6&scoped=true& ***!
@@ -62409,9 +62557,9 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t\t\t" +
+                                      "\n\t\t\t\t\t\t\t\t\t\t" +
                                         _vm._s(post.user.name) +
-                                        "\n\t\t\t\t\t\t\t\t\t\t"
+                                        "\n\t\t\t\t\t\t\t\t\t"
                                     )
                                   ]
                                 )
@@ -62421,11 +62569,11 @@ var render = function() {
                             _vm._v(" "),
                             _c("div", { staticClass: "time text-muted" }, [
                               _vm._v(
-                                "\n\t\t\t\t\t\t\t\t\t\t" +
+                                "\n\t\t\t\t\t\t\t\t\t" +
                                   _vm._s(
                                     _vm.moment(post.created_at).fromNow()
                                   ) +
-                                  "\n\t\t\t\t\t\t\t\t\t"
+                                  "\n\t\t\t\t\t\t\t\t"
                               )
                             ])
                           ])
@@ -62510,7 +62658,7 @@ var render = function() {
                                   ]
                                 ),
                                 _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t\tView\n\t\t\t\t\t\t\t\t\t"
+                                  "\n\t\t\t\t\t\t\t\t\tView\n\t\t\t\t\t\t\t\t"
                                 )
                               ]
                             ),
@@ -62560,7 +62708,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t\t\t"
+                                      "\n\t\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t\t"
                                     )
                                   ]
                                 )
@@ -62618,7 +62766,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t\tDelete\n\t\t\t\t\t\t\t\t\t"
+                                      "\n\t\t\t\t\t\t\t\t\tDelete\n\t\t\t\t\t\t\t\t"
                                     )
                                   ]
                                 )
@@ -62634,45 +62782,41 @@ var render = function() {
                     _vm.editing === post.id
                       ? _c("div", [
                           _c("form", [
-                            _c(
-                              "textarea",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: (_vm.form.content = post.content),
-                                    expression: "form.content=post.content"
-                                  }
-                                ],
-                                staticClass:
-                                  "post-caption text-justify form-control border-0",
-                                staticStyle: { resize: "none" },
-                                attrs: {
-                                  autofocus: "",
-                                  placeholder: "Update your caption",
-                                  id: "content",
-                                  rows: "2",
-                                  name: "content"
-                                },
-                                domProps: {
-                                  value: (_vm.form.content = post.content)
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      (_vm.form.content = post),
-                                      "content",
-                                      $event.target.value
-                                    )
-                                  }
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: (_vm.form.content = post.content),
+                                  expression: "form.content=post.content"
                                 }
+                              ],
+                              staticClass:
+                                "post-caption text-justify form-control border-0",
+                              staticStyle: { resize: "none" },
+                              attrs: {
+                                autofocus: "",
+                                placeholder: "Update your caption",
+                                id: "content",
+                                rows: "2",
+                                name: "content"
                               },
-                              [_vm._v(_vm._s(post.content))]
-                            ),
+                              domProps: {
+                                value: (_vm.form.content = post.content)
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    (_vm.form.content = post),
+                                    "content",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
                             _vm._v(" "),
                             _c("input", {
                               staticClass:
@@ -62684,7 +62828,21 @@ var render = function() {
                                   return _vm.updatePost(post.id)
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-secondary",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    _vm.editing = false
+                                  }
+                                }
+                              },
+                              [_vm._v("cancel")]
+                            )
                           ])
                         ])
                       : _vm._e(),
@@ -62701,13 +62859,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n\t\t\t\t\t\t\t\t\t\t" +
+                                          "\n\t\t\t\t\t\t\t\t\t" +
                                             _vm._s(
                                               post.content
                                                 .toString()
                                                 .substring(0, 149) + "... "
                                             ) +
-                                            "\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t"
+                                            "\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t"
                                         ),
                                         _c(
                                           "a",
@@ -62726,9 +62884,9 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n\t\t\t\t\t\t\t\t\t\t" +
+                                          "\n\t\t\t\t\t\t\t\t\t" +
                                             _vm._s(post.content.toString()) +
-                                            "\n\t\t\t\t\t\t\t\t\t"
+                                            "\n\t\t\t\t\t\t\t\t"
                                         )
                                       ]
                                     )
@@ -62786,7 +62944,44 @@ var render = function() {
       _c("form", [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body pb-0" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "d-flex align-items-center mt-3 pb-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "overflow-hidden d-flex justify-content-center align-items-center position-relative",
+                  staticStyle: {
+                    height: "40px",
+                    width: "40px",
+                    border: "1.5px solid #000000",
+                    "border-radius": "50%",
+                    "background-color": "rgba(255,255,0,0)"
+                  }
+                },
+                [
+                  _c("img", {
+                    staticStyle: { height: "100%", width: "auto" },
+                    attrs: {
+                      src: "/storage/" + _vm.authUser.profile.profile_img,
+                      alt: "img"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", {
+                    staticClass:
+                      "d-flex justify-content-center align-items-center position-absolute",
+                    staticStyle: {
+                      height: "38px",
+                      width: "38px",
+                      border: "2px solid #ffffff",
+                      "border-radius": "50%"
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(0)
+            ]),
             _vm._v(" "),
             _c("div", [
               _c("div", { staticClass: "form-group border-0" }, [
@@ -62870,37 +63065,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center mt-3 pb-2" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "overflow-hidden d-flex justify-content-center align-items-center position-relative",
-          staticStyle: {
-            height: "40px",
-            width: "40px",
-            border: "1.5px solid #000000",
-            "border-radius": "50%",
-            "background-color": "rgba(255,255,0,0)"
-          }
-        },
-        [
-          _c("div", {
-            staticClass:
-              "d-flex justify-content-center align-items-center position-absolute",
-            staticStyle: {
-              height: "38px",
-              width: "38px",
-              border: "2px solid #ffffff",
-              "border-radius": "50%"
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "ml-2" }, [
-        _c("div", { staticClass: "p-0 m-0" })
-      ])
+    return _c("div", { staticClass: "ml-2" }, [
+      _c("div", { staticClass: "p-0 m-0" })
     ])
   }
 ]
@@ -63229,252 +63395,269 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticStyle: { "padding-left": "7%", "padding-right": "7%" } },
-      [
-        _c("div", { staticClass: "row pt-2 pb-5" }, [
-          _c("div", { staticClass: "col-md-3" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center",
-                staticStyle: {
-                  height: "170px",
-                  width: "170px",
-                  border: "3px solid #ffffff",
-                  "border-radius": "50%"
-                }
-              },
-              [
-                _vm.profile && !_vm.imgPre
-                  ? _c("img", {
-                      staticStyle: { height: "100%", width: "auto" },
-                      attrs: {
-                        src: "/storage/" + _vm.profile.profile_img,
-                        alt: "img"
-                      }
-                    })
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.imgPre
-                  ? _c("img", {
-                      staticStyle: { height: "100%", width: "auto" },
-                      attrs: { src: _vm.imgPre, alt: "img" }
-                    })
-                  : _vm._e()
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-5 pt-0" }, [
-            _c("div", { staticClass: "ml-1" }, [
-              _c("div", { staticClass: "d-flex justify-content-between" }, [
-                _c("div", { staticClass: "d-flex align-items-baseline pb-3" }, [
-                  _c("div", [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "h1",
-                        staticStyle: { "font-weight": "100" }
-                      },
-                      [_vm._v(_vm._s(this.user.name))]
-                    )
-                  ])
-                ])
+  return _vm.profile
+    ? _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticStyle: { "padding-left": "7%", "padding-right": "7%" } },
+          [
+            _c("div", { staticClass: "row pt-2 pb-5" }, [
+              _c("div", { staticClass: "col-md-3" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "float-right mr-5 shadow overflow-hidden d-flex justify-content-center align-items-center",
+                    staticStyle: {
+                      height: "170px",
+                      width: "170px",
+                      border: "3px solid #ffffff",
+                      "border-radius": "50%"
+                    }
+                  },
+                  [
+                    _vm.profile && !_vm.imgPre
+                      ? _c("img", {
+                          staticStyle: { height: "100%", width: "auto" },
+                          attrs: {
+                            src: "/storage/" + _vm.profile.profile_img,
+                            alt: "img"
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.imgPre
+                      ? _c("img", {
+                          staticStyle: { height: "100%", width: "auto" },
+                          attrs: { src: _vm.imgPre, alt: "img" }
+                        })
+                      : _vm._e()
+                  ]
+                )
               ]),
               _vm._v(" "),
-              _vm._m(0),
+              _c("div", { staticClass: "col-md-5 pt-0" }, [
+                _c("div", { staticClass: "ml-1" }, [
+                  _c("div", { staticClass: "d-flex justify-content-between" }, [
+                    _c(
+                      "div",
+                      { staticClass: "d-flex align-items-baseline pb-3" },
+                      [
+                        _c("div", [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "h1",
+                              staticStyle: { "font-weight": "100" }
+                            },
+                            [_vm._v(_vm._s(this.user.name))]
+                          )
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _vm.profile.title !== "null"
+                    ? _c("div", { staticClass: "pt-4 font-weight-bold" }, [
+                        _vm._v(_vm._s(this.profile.title))
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.profile.description !== "null"
+                    ? _c("div", [_vm._v(_vm._s(this.profile.description))])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.profile.url !== "null"
+                    ? _c("div", [
+                        _c("a", { attrs: { href: "https://www." } }, [
+                          _vm._v(_vm._s(this.profile.url))
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("form", { staticClass: "pt-4" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-8 offset-1" }, [
+              _vm._m(1),
               _vm._v(" "),
-              _vm.profile
-                ? _c("div", { staticClass: "pt-4 font-weight-bold" }, [
-                    _vm._v(_vm._s(this.profile.title))
-                  ])
-                : _vm._e(),
+              _c("div", { staticClass: "row pt-2 pb-2" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label",
+                    attrs: { for: "profile_image" }
+                  },
+                  [_vm._v("Profile Image")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control-file",
+                  attrs: {
+                    type: "file",
+                    id: "profile_image",
+                    name: "profile_img"
+                  },
+                  on: { change: _vm.imgUpload }
+                }),
+                _vm._v(" "),
+                _c("strong")
+              ]),
               _vm._v(" "),
-              _vm.profile
-                ? _c("div", [_vm._v(_vm._s(this.profile.description))])
-                : _vm._e(),
+              _vm._m(2),
               _vm._v(" "),
-              _vm.profile
-                ? _c("div", [
-                    _c("a", { attrs: { href: "https://www." } }, [
-                      _vm._v(_vm._s(this.profile.url))
-                    ])
-                  ])
-                : _vm._e()
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label",
+                    attrs: { for: "title" }
+                  },
+                  [_vm._v("Title")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.title,
+                      expression: "title"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "title",
+                    type: "text",
+                    name: "title",
+                    autocomplete: "title",
+                    autofocus: "",
+                    placeholder: "Enter new title"
+                  },
+                  domProps: { value: _vm.title },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.title = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(3)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label",
+                    attrs: { for: "description" }
+                  },
+                  [_vm._v("Description")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.description,
+                      expression: "description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "description",
+                    type: "text",
+                    name: "description",
+                    autocomplete: "description",
+                    autofocus: ""
+                  },
+                  domProps: { value: _vm.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.description = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(4)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group row" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-md-4 col-form-label",
+                    attrs: { for: "url" }
+                  },
+                  [_vm._v("URL")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.url,
+                      expression: "url"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "url",
+                    type: "text",
+                    value: "asdfdsf",
+                    name: "url",
+                    autocomplete: "url",
+                    autofocus: ""
+                  },
+                  domProps: { value: _vm.url },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.url = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(5)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row pt-4" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.updateProfile($event)
+                      }
+                    }
+                  },
+                  [_vm._v("\n\t\t\t\t\t\t\tSave Profile\n\t\t\t\t\t\t")]
+                )
+              ])
             ])
           ])
         ])
-      ]
-    ),
-    _vm._v(" "),
-    _c("form", { staticClass: "pt-4" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-8 offset-1" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "row pt-2 pb-2" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label",
-                attrs: { for: "profile_image" }
-              },
-              [_vm._v("Profile Image")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control-file",
-              attrs: { type: "file", id: "profile_image", name: "profile_img" },
-              on: { change: _vm.imgUpload }
-            }),
-            _vm._v(" "),
-            _c("strong")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label",
-                attrs: { for: "title" }
-              },
-              [_vm._v("Title")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.title,
-                  expression: "title"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                id: "title",
-                type: "text",
-                name: "title",
-                autocomplete: "title",
-                autofocus: ""
-              },
-              domProps: { value: _vm.title },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.title = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm._m(2)
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label",
-                attrs: { for: "description" }
-              },
-              [_vm._v("Description")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.description,
-                  expression: "description"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                id: "description",
-                type: "text",
-                name: "description",
-                autocomplete: "description",
-                autofocus: ""
-              },
-              domProps: { value: _vm.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.description = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm._m(3)
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group row" }, [
-            _c(
-              "label",
-              { staticClass: "col-md-4 col-form-label", attrs: { for: "url" } },
-              [_vm._v("URL")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.url,
-                  expression: "url"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                id: "url",
-                type: "text",
-                name: "url",
-                autocomplete: "url",
-                autofocus: ""
-              },
-              domProps: { value: _vm.url },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.url = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm._m(4)
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row pt-4" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { type: "submit" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.updateProfile($event)
-                  }
-                }
-              },
-              [_vm._v("\n\t\t\t\t\t\t\tSave Profile\n\t\t\t\t\t\t")]
-            )
-          ])
-        ])
       ])
-    ])
-  ])
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
@@ -63532,6 +63715,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row pt-2 pb-2" }, [
+      _c(
+        "label",
+        {
+          staticClass: "col-md-4 col-form-label",
+          attrs: { for: "cover_image" }
+        },
+        [_vm._v("Cover Image")]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control-file",
+        attrs: { type: "file", id: "cover_image", name: "cover_img" }
+      }),
+      _vm._v(" "),
+      _c("strong")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "span",
       { staticClass: "invalid-feedback", attrs: { role: "alert" } },
@@ -63580,149 +63785,163 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("div", { staticClass: "profile-info" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "profile-photo d-flex" }, [
-          _vm.profile.profile_img
-            ? _c("img", {
-                attrs: {
-                  src: "/storage/" + _vm.profile.profile_img,
-                  alt: "img"
-                }
-              })
-            : _c("img", {
-                attrs: {
-                  src: __webpack_require__(/*! ../../../assets/avatar.svg */ "./resources/assets/avatar.svg"),
-                  alt: "img"
-                }
-              }),
-          _vm._v(" "),
-          _c("div", { staticClass: "d-block profile-header" }, [
-            _c("div", { staticClass: "profile-name d-flex" }, [
-              _c("h1", [_c("strong", [_vm._v(_vm._s(_vm.user.name))])]),
-              _vm._v(" "),
-              _c(
-                "div",
-                [
-                  _vm.profile.id === _vm.user.id
-                    ? _c(
-                        "router-link",
-                        {
-                          staticClass: "text-decoration-none",
-                          attrs: { to: "/profile/" + _vm.user.id + "/edit" }
-                        },
-                        [
-                          _c("div", { staticClass: "edit-profile d-flex" }, [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "bi bi-sliders ml-1",
-                                attrs: {
-                                  xmlns: "http://www.w3.org/2000/svg",
-                                  width: "20",
-                                  height: "20",
-                                  fill: "currentColor",
-                                  viewBox: "0 0 16 16"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    "fill-rule": "evenodd",
-                                    d:
-                                      "M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Edit")])
-                          ])
-                        ]
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
+  return _vm.profile
+    ? _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c("div", { staticClass: "profile-info" }, [
+            _c("div", { staticClass: "cover-photo" }, [
+              !_vm.profile.cover_img
+                ? _c("img", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../assets/SampleCover.jpg */ "./resources/assets/SampleCover.jpg"),
+                      alt: "Cover Photo"
+                    }
+                  })
+                : _c("img", {
+                    attrs: {
+                      src: "/storage/" + _vm.profile.cover_img,
+                      alt: "Cover Photo"
+                    }
+                  })
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "d-flex profile-posts-followers-following" },
-              [
-                _c("div", { staticClass: "mr-4" }, [
-                  _c("strong", [_vm._v(_vm._s("12"))]),
-                  _vm._v(" " + _vm._s(" posts ") + "\n                    ")
+            _c("div", { staticClass: "profile-photo d-flex" }, [
+              _vm.profile.profile_img
+                ? _c("img", {
+                    staticClass: "shadow",
+                    attrs: {
+                      src: "/storage/" + _vm.profile.profile_img,
+                      alt: "img"
+                    }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-block profile-header" }, [
+                _c("div", { staticClass: "profile-name d-flex" }, [
+                  _c("h1", [
+                    _c("strong", [_vm._v(_vm._s(_vm.profile.user.name))])
+                  ]),
+                  _vm._v(" "),
+                  _vm.profile.id === _vm.user.id
+                    ? _c(
+                        "div",
+                        { staticClass: "pt-2 pl-3" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "text-decoration-none",
+                              attrs: { to: "/profile/" + _vm.user.id + "/edit" }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "edit-profile d-flex" },
+                                [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass: "bi bi-sliders ml-1",
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "20",
+                                        height: "20",
+                                        fill: "currentColor",
+                                        viewBox: "0 0 16 16"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          "fill-rule": "evenodd",
+                                          d:
+                                            "M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("p", [_vm._v("Edit")])
+                                ]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    : _c(
+                        "div",
+                        { staticClass: "p2" },
+                        [
+                          _c("follow", {
+                            attrs: { "profile-id": this.$route.params.id }
+                          })
+                        ],
+                        1
+                      )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "mr-4" }, [
-                  _c("strong", [_vm._v(_vm._s("43223"))]),
-                  _vm._v(" " + _vm._s(" followers ") + "\n                    ")
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "d-flex profile-posts-followers-following" },
+                  [
+                    _c("div", { staticClass: "mr-4" }, [
+                      _c("strong", [_vm._v(_vm._s("12"))]),
+                      _vm._v(" " + _vm._s(" posts ") + "\n\t\t\t\t\t\t")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mr-4" }, [
+                      _c("strong", [_vm._v(_vm._s("43223"))]),
+                      _vm._v(" " + _vm._s(" followers ") + "\n\t\t\t\t\t\t")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("strong", [_vm._v(_vm._s("1313"))]),
+                      _vm._v(" " + _vm._s(" following") + "\n\t\t\t\t\t\t")
+                    ])
+                  ]
+                ),
                 _vm._v(" "),
-                _c("div", [
-                  _c("strong", [_vm._v(_vm._s("1313"))]),
-                  _vm._v("  " + _vm._s(" following") + "\n                    ")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _vm.profile.title
-              ? _c("div", { staticClass: "profile-title" }, [
-                  _c("div", [_vm._v(_vm._s(_vm.profile.title))])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.profile.url
-              ? _c("div", { staticClass: "profile-url" }, [
-                  _c(
-                    "a",
-                    { attrs: { href: _vm.profile.url, target: "_blank" } },
-                    [_vm._v(_vm._s(_vm.profile.url))]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.profile.description
-              ? _c("div", { staticClass: "profile-description" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.profile.description) +
-                      "\n                "
-                  )
-                ])
-              : _vm._e()
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("create-post"),
-      _vm._v(" "),
-      _c("show-post")
-    ],
-    1
-  )
+                _vm.profile.title !== "null"
+                  ? _c("div", { staticClass: "profile-title" }, [
+                      _c("strong", [_vm._v(_vm._s(_vm.profile.title))])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.profile.description !== "null"
+                  ? _c("div", { staticClass: "profile-description" }, [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t" +
+                          _vm._s(_vm.profile.description) +
+                          "\n\t\t\t\t\t"
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.profile.url !== "null"
+                  ? _c("div", { staticClass: "profile-url" }, [
+                      _c(
+                        "a",
+                        { attrs: { href: _vm.profile.url, target: "_blank" } },
+                        [_vm._v(_vm._s(_vm.profile.url))]
+                      )
+                    ])
+                  : _vm._e()
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("create-post"),
+          _vm._v(" "),
+          _c("show-post")
+        ],
+        1
+      )
+    : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "cover-photo" }, [
-      _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../assets/SampleCover.jpg */ "./resources/assets/SampleCover.jpg"),
-          alt: "Cover Photo"
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -80246,17 +80465,6 @@ module.exports = "/images/SampleCover.jpg?6afc72607de337b6a7165f61f6a177ae";
 
 /***/ }),
 
-/***/ "./resources/assets/avatar.svg":
-/*!*************************************!*\
-  !*** ./resources/assets/avatar.svg ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/avatar.svg?1c1ce5f0d1691a3af75eaa043389fdb1";
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -80542,6 +80750,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_91b0432a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Dashboard_vue_vue_type_template_id_91b0432a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/commponent/Follow.vue":
+/*!********************************************!*\
+  !*** ./resources/js/commponent/Follow.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Follow_vue_vue_type_template_id_e2843a2c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Follow.vue?vue&type=template&id=e2843a2c&scoped=true& */ "./resources/js/commponent/Follow.vue?vue&type=template&id=e2843a2c&scoped=true&");
+/* harmony import */ var _Follow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Follow.vue?vue&type=script&lang=js& */ "./resources/js/commponent/Follow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Follow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Follow_vue_vue_type_template_id_e2843a2c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Follow_vue_vue_type_template_id_e2843a2c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "e2843a2c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/commponent/Follow.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/commponent/Follow.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/commponent/Follow.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Follow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Follow.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/Follow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Follow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/commponent/Follow.vue?vue&type=template&id=e2843a2c&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/commponent/Follow.vue?vue&type=template&id=e2843a2c&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Follow_vue_vue_type_template_id_e2843a2c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Follow.vue?vue&type=template&id=e2843a2c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/commponent/Follow.vue?vue&type=template&id=e2843a2c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Follow_vue_vue_type_template_id_e2843a2c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Follow_vue_vue_type_template_id_e2843a2c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -81338,7 +81615,8 @@ var routes = [{
   path: '/profile/:id/edit',
   component: _commponent_profile_ProfileEdit__WEBPACK_IMPORTED_MODULE_5__["default"],
   meta: {
-    requirsAuth: true
+    requirsAuth: true,
+    sameAsUser: true
   }
 }];
 
@@ -81458,7 +81736,7 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     },
     getSinglePost: function getSinglePost(context, payload) {
       axios.get('/api/post/' + payload).then(function (response) {
-        context.commit("getSinglePost", response.data.post[0]);
+        context.commit("getSinglePost", response.data.post);
       });
     },
     getUserPosts: function getUserPosts(context, payload) {
@@ -81510,8 +81788,8 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\laravel-projects\spa\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\laravel-projects\spa\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\spa\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\spa\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
