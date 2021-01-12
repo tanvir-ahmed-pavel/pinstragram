@@ -17,9 +17,27 @@
 											{{post.user.name}}
 										</router-link>
 									</div>
-									<div class="time text-muted">
-										{{moment(post.created_at).fromNow()}}
+									<div class="d-flex align-items-end">
+										<div>
+											<small v-if="post.privacy_id===1"
+											       class="privacy text-muted border rounded border-secondary"> Public
+											</small>
+											<small v-else-if="post.privacy_id===2"
+											       class="privacy text-muted border rounded border-secondary"> Friends
+											</small>
+											<small v-else class="privacy text-muted border rounded border-secondary">
+												Privet
+											</small>
+										</div>
+										<div>&nbsp</div>
+										<div>
+											<div class="time text-muted">
+												{{moment(post.created_at).fromNow()}}
+												<span v-if="post.created_at !== post.updated_at" class="text-muted">{{" || Edited: "+moment(post.updated_at).fromNow()}}</span>
+											</div>
+										</div>
 									</div>
+								
 								</div>
 							</div>
 							<!--------- DROPDOWN -------->
@@ -77,9 +95,14 @@
 							<div v-if="editing === post.id">
 								<form>
 									
-									<textarea autofocus placeholder="Update your caption" id="content" style="resize: none" class="post-caption text-justify form-control border-0" rows="2" v-model="form.content=post.content" name="content"></textarea>
-									<input type="submit" class="ml-3 mt-2 mb-2 btn btn-success btn-sm" value="Save" @click.prevent="updatePost(post.id)">
-									<button @click.prevent="editing=false" class="btn btn-sm btn-secondary">cancel</button>
+									<textarea autofocus placeholder="Update your caption" id="content"
+									          style="resize: none"
+									          class="post-caption text-justify form-control border-0" rows="2"
+									          v-model="form.content=post.content" name="content"></textarea>
+									<input type="submit" class="ml-3 mt-2 mb-2 btn btn-success btn-sm" value="Save"
+									       @click.prevent="updatePost(post.id)">
+									<button @click.prevent="editing=false" class="btn btn-sm btn-secondary">cancel
+									</button>
 								</form>
 							</div>
 							<div v-if="post.content">
@@ -124,7 +147,7 @@
         data() {
             return {
                 moment: moment,
-                form:{
+                form: {
                     content: '',
                     _method: 'PATCH'
                 },
@@ -133,17 +156,17 @@
             }
         },
         methods: {
-            deletePost(payload){
-                if (confirm("Are you sure you want to delete this post??")){
+            deletePost(payload) {
+                if (confirm("Are you sure you want to delete this post??")) {
                     this.$store.dispatch('deletePost', payload);
                 }
             },
-            cancelEdit(payload){
-                this.form.content=payload;
+            cancelEdit(payload) {
+                this.form.content = payload;
                 this.editing = false;
             },
             updatePost(payload) {
-                axios.post('/api/post/'+payload, this.form).then(()=>{
+                axios.post('/api/post/' + payload, this.form).then(() => {
 
                 });
                 // this.$store.dispatch('updatePost', payload);
@@ -163,6 +186,10 @@
 </script>
 
 <style scoped>
+	.privacy {
+		padding: 1px 4px;
+	}
+	
 	@import "../../css/show_post.css";
 	@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 </style>

@@ -12,10 +12,15 @@ class Post extends Model
     protected $fillable = [
         'content',
         'img',
+        'privacy_id',
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function privacy(){
+        return $this->belongsTo(Privacy::class);
     }
 
 }

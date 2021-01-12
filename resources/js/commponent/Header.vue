@@ -2,10 +2,10 @@
 	<div class="">
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
-				<a class="navbar-brand" href="">
-					<router-link v-if="auth" to="/dashboard">Home</router-link>
-					<router-link v-else to="/">Home</router-link>
-				</a>
+				
+					<router-link class="navbar-brand" v-if="auth" to="/dashboard">Home</router-link>
+					<router-link class="navbar-brand" v-else to="/">Home</router-link>
+				
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 				        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				        aria-expanded="false" aria-label="Toggle navigation">

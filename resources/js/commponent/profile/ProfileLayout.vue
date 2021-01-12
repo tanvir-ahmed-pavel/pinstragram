@@ -1,5 +1,5 @@
 <template>
-	<div class="container" v-if="profile">
+	<div class="container" v-if="profile && !loading">
 		<!--information section-->
 		<div class="profile-info">
 			<div class="cover-photo">
@@ -61,7 +61,7 @@
 		
 		
 		
-		<create-post></create-post>
+		<create-post v-if="user.id==this.$route.params.id"></create-post>
 		<show-post></show-post>
 	</div>
 
@@ -76,16 +76,25 @@
         name: "ProfileLayout",
         components: {Follow, CreatePost, ShowPost},
         created() {
+            // this.$store.dispatch('loading');
             this.getProfile();
+            // this.loading = true;
         },
         mounted() {
 
         },
+	    data(){
+            return{
+            
+            }
+	    },
         methods: {
             getProfile() {
-                this.$store.dispatch('getProfile', this.$route.params.id);
+                this.$store.dispatch('loading');
+                this.$store.dispatch('getProfile', this.$route.params.id)
             },
             getUser() {
+                this.$store.dispatch('loading');
                 this.$store.dispatch('user', this.$route.params.id)
             }
         },
@@ -95,7 +104,10 @@
             },
             profile() {
                 return this.$store.getters.getProfile;
-            }
+            },
+	        loading(){
+                return this.$store.getters.loading;
+	        },
         }
     }
 </script>

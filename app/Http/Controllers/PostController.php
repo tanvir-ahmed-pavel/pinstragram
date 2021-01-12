@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Privacy;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy("created_at", "desc")->with('user.profile')->get();
+//        $posts = Privacy::find(2)->posts->with('user.profile')->get();
 
 //        dd($posts);
         return response()->json([
@@ -52,22 +54,29 @@ class PostController extends Controller
         $data = $this->validate($request, [
             "content" => "required_without_all:img|string|nullable",
             "img" => "required_without_all:content|image|nullable",
+            "privacy_id" => "required|int",
         ]);
 
-//        dd($request->img);
+        $user = Auth::user();
+
 
         $img_path = $request->file("img");
         if (!is_null($img_path)) {
             $img_path = $request->file("img")->store("post_imgs", 'public');
-            Auth::user()->posts()->create([
+            $user->posts()->create([
                 "content" => $data['content'],
+                "privacy_id" => $data['privacy_id'],
                 "img" => $img_path,
             ]);
             return response()->json('Post Created', 200);
         } else {
-            Auth::user()->posts()->create([
+            $user->posts()->create([
                 "content" => $data['content'],
+                "privacy_id" => $data['privacy_id'],
             ]);
+
+//            $post->privacy()->attach($privacy->id);
+
             return response()->json('Post Created', 200);
         }
 

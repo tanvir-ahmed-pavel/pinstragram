@@ -3,19 +3,38 @@ import {getUser} from "./authHelper";
 const authUser = getUser();
 export default {
     state: {
+        // Auth
+
         auth: !!authUser,
-        loading: null,
+        authUser: authUser,
+
+        // Loading
+
+        loading: false,
+        followLoading:false,
+
+        // Validation
+
         authErrors: null,
         validationErrors: null,
-        authUser: authUser,
+
+        // DATA
+
         posts: [],
         singlePost: null,
         profile: null,
+        isFollowing:null,
     },
 
     getters: {
-        welcome(state){
-            return state.welcome;
+        loading(state){
+            return state.loading;
+        },
+        fLoading(state){
+          return state.followLoading;
+        },
+        following(state){
+            return state.isFollowing;
         },
         user(state){
             return state.authUser;
@@ -37,10 +56,26 @@ export default {
         },
         getProfile(state){
             return state.profile;
-        }
+        },
+
     },
 
     mutations: {
+
+        // loading mutation
+        ////
+
+        // auth loading
+
+        loading(state) {
+            state.loading=true;
+        },
+
+        // Follow component loading
+
+        fLoading(state){
+            state.followLoading = true;
+        },
         login(state){
             state.loading = true;
             state.authErrors = null;
@@ -76,16 +111,39 @@ export default {
         },
         getPosts(state, payload){
             state.posts = payload;
+            state.loading = false;
         },
         getSinglePost(state, payload){
             state.singlePost = payload;
+            state.loading = false;
         },
         getProfile(state, payload) {
             state.profile = payload;
+            state.loading = false;
+        },
+        isFollowing(state, payload){
+            state.isFollowing = payload;
+            state.followLoading = false;
+        },
+        follow(state) {
+            state.isFollowing = !state.isFollowing;
+            state.followLoading = false;
         }
     },
 
     actions: {
+
+        // loading Action
+        ////
+
+        // Auth loading
+
+        loading(context){
+          context.commit('loading');
+        },
+
+        //
+
         login(context){
             context.commit("login");
         },
@@ -131,13 +189,16 @@ export default {
                 context.dispatch('getPosts'); // can be improved by adding "add" method
             })
         },
-        // updatePost(context, payload){
-        //     axios.post('/api/post/'+payload);
-        //     //     .then(()=>{
-        //     //
-        //     // })
-        // }
-
+        following(context, payload){
+            axios.get('/api/isFollowing/'+payload).then((response)=>{
+                context.commit('following', response.data);
+            });
+        },
+        follow(context, payload){
+            axios.post('/api/follow/'+payload).then(()=>{
+                context.commit('follow');
+            })
+        },
 
     },
 

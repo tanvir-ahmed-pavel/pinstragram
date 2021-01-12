@@ -2004,37 +2004,44 @@ __webpack_require__.r(__webpack_exports__);
   name: "Follow",
   props: ['ProfileId'],
   data: function data() {
-    return {
-      status: '',
-      loading: false
-    };
+    return {};
   },
   mounted: function mounted() {
-    this.loading = true;
     this.isFollowing();
-    console.log(this.status);
   },
-  created: function created() {},
+  created: function created() {
+    this.$store.commit('fLoading');
+  },
   methods: {
     isFollowing: function isFollowing() {
       var _this = this;
 
       axios.get('/api/isFollowing/' + this.ProfileId).then(function (response) {
-        // return this.status=response.data;
-        console.log(response.data);
-        _this.status = !!response.data;
-        _this.loading = false;
+        _this.$store.commit('isFollowing', !!response.data); // return this.status=response.data;
+        // console.log(response.data);
+        // this.status = !!response.data;
+        // this.loading = false;
+
       }); // this.$store.dispatch('following', this.ProfileId)
     },
     follow: function follow() {
-      var _this2 = this;
+      this.$store.commit('fLoading');
+      this.$store.dispatch('follow', this.ProfileId);
+    } // follow(){
+    //     axios.post('/api/follow/'+this.ProfileId).then(()=>{
+    //         this.status = !this.status;
+    //     })
+    // }
 
-      axios.post('/api/follow/' + this.ProfileId).then(function () {
-        _this2.status = !_this2.status;
-      });
-    }
   },
-  computed: {}
+  computed: {
+    following: function following() {
+      return this.$store.getters.following;
+    },
+    loading: function loading() {
+      return this.$store.getters.fLoading;
+    }
+  }
 });
 
 /***/ }),
@@ -2595,6 +2602,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2707,6 +2737,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreatePost",
   data: function data() {
@@ -2714,6 +2794,7 @@ __webpack_require__.r(__webpack_exports__);
       content: '',
       img: '',
       imgPre: '',
+      privacy: '',
       formData: new FormData()
     };
   },
@@ -2735,6 +2816,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.formData.append('content', this.content);
       this.formData.append('img', this.img);
+      this.formData.append('privacy_id', this.privacy);
       this.$store.dispatch('createPost', this.formData).then(function () {
         _this2.content = '';
         _this2.img = '';
@@ -3213,14 +3295,20 @@ __webpack_require__.r(__webpack_exports__);
     ShowPost: _ShowPost__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   created: function created() {
-    this.getProfile();
+    // this.$store.dispatch('loading');
+    this.getProfile(); // this.loading = true;
   },
   mounted: function mounted() {},
+  data: function data() {
+    return {};
+  },
   methods: {
     getProfile: function getProfile() {
+      this.$store.dispatch('loading');
       this.$store.dispatch('getProfile', this.$route.params.id);
     },
     getUser: function getUser() {
+      this.$store.dispatch('loading');
       this.$store.dispatch('user', this.$route.params.id);
     }
   },
@@ -3230,6 +3318,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     profile: function profile() {
       return this.$store.getters.getProfile;
+    },
+    loading: function loading() {
+      return this.$store.getters.loading;
     }
   }
 });
@@ -7715,7 +7806,7 @@ exports.i(__webpack_require__(/*! -!../../../node_modules/css-loader??ref--6-1!.
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Ubuntu&display=swap);", ""]);
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\n.privacy[data-v-c3234394] {\n\tpadding: 1px 4px;\n}\n", ""]);
 
 // exports
 
@@ -7734,7 +7825,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.i(__webpack_require__(/*! -!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../css/create-post.css */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./resources/css/create-post.css"), "");
 
 // module
-exports.push([module.i, "\r\n", ""]);
+exports.push([module.i, "\n", ""]);
 
 // exports
 
@@ -61434,22 +61525,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return !this.loading
+  return !_vm.loading
     ? _c("div", {}, [
         _c(
           "button",
           {
-            staticClass: "btn-secondary btn btn-sm",
+            staticClass: "btn btn-sm mt-2 ml-3",
+            class: !!_vm.following ? "btn-danger" : "btn-primary",
             on: {
               click: function($event) {
                 $event.preventDefault()
-                return _vm.follow()
+                return _vm.follow($event)
               }
             }
           },
           [
             _vm._v(
-              "\n\t\t" + _vm._s(!!this.status ? "Following" : "Follow") + "\n\t"
+              "\n\t\t" +
+                _vm._s(!!_vm.following ? "Unfollow" : "Follow") +
+                "\n\t"
             )
           ]
         )
@@ -61485,118 +61579,123 @@ var render = function() {
         staticClass: "navbar navbar-expand-md navbar-light bg-white shadow-sm"
       },
       [
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "a",
-            { staticClass: "navbar-brand", attrs: { href: "" } },
-            [
-              _vm.auth
-                ? _c("router-link", { attrs: { to: "/dashboard" } }, [
-                    _vm._v("Home")
-                  ])
-                : _c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "collapse navbar-collapse",
-              attrs: { id: "navbarSupportedContent" }
-            },
-            [
-              _c("ul", { staticClass: "navbar-nav mr-auto" }),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "navbar-nav ml-auto" },
-                [
-                  _vm.auth
-                    ? [
-                        _c("li", { staticClass: "nav-item dropdown" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "nav-link dropdown-toggle",
-                              attrs: {
-                                id: "navbarDropdown",
-                                href: "#",
-                                role: "button",
-                                "data-toggle": "dropdown",
-                                "aria-haspopup": "true",
-                                "aria-expanded": "false"
-                              }
-                            },
-                            [_vm._v(" " + _vm._s(_vm.user.name) + " ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "dropdown-menu dropdown-menu-right",
-                              attrs: { "aria-labelledby": "navbarDropdown" }
-                            },
-                            [
-                              _c(
+        _c(
+          "div",
+          { staticClass: "container" },
+          [
+            _vm.auth
+              ? _c(
+                  "router-link",
+                  { staticClass: "navbar-brand", attrs: { to: "/dashboard" } },
+                  [_vm._v("Home")]
+                )
+              : _c(
+                  "router-link",
+                  { staticClass: "navbar-brand", attrs: { to: "/" } },
+                  [_vm._v("Home")]
+                ),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "collapse navbar-collapse",
+                attrs: { id: "navbarSupportedContent" }
+              },
+              [
+                _c("ul", { staticClass: "navbar-nav mr-auto" }),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "navbar-nav ml-auto" },
+                  [
+                    _vm.auth
+                      ? [
+                          _c("li", { staticClass: "nav-item dropdown" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "nav-link dropdown-toggle",
+                                attrs: {
+                                  id: "navbarDropdown",
+                                  href: "#",
+                                  role: "button",
+                                  "data-toggle": "dropdown",
+                                  "aria-haspopup": "true",
+                                  "aria-expanded": "false"
+                                }
+                              },
+                              [_vm._v(" " + _vm._s(_vm.user.name) + " ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "dropdown-menu dropdown-menu-right",
+                                attrs: { "aria-labelledby": "navbarDropdown" }
+                              },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "dropdown-item",
+                                    attrs: { to: "/profile/" + this.user.id }
+                                  },
+                                  [_vm._v("Profile")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "dropdown-item",
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.logout($event)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Logout")]
+                                )
+                              ],
+                              1
+                            )
+                          ])
+                        ]
+                      : [
+                          !_vm.auth
+                            ? _c(
                                 "router-link",
                                 {
-                                  staticClass: "dropdown-item",
-                                  attrs: { to: "/profile/" + this.user.id }
+                                  staticClass: "text-decoration-none m-1",
+                                  attrs: { to: "/login" }
                                 },
-                                [_vm._v("Profile")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "dropdown-item",
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.logout($event)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Logout")]
+                                [_vm._v("Login")]
                               )
-                            ],
-                            1
-                          )
-                        ])
-                      ]
-                    : [
-                        !_vm.auth
-                          ? _c(
-                              "router-link",
-                              {
-                                staticClass: "text-decoration-none m-1",
-                                attrs: { to: "/login" }
-                              },
-                              [_vm._v("Login")]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        !_vm.auth
-                          ? _c(
-                              "router-link",
-                              {
-                                staticClass: "text-decoration-none m-1",
-                                attrs: { to: "/register" }
-                              },
-                              [_vm._v("Register")]
-                            )
-                          : _vm._e()
-                      ]
-                ],
-                2
-              )
-            ]
-          )
-        ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !_vm.auth
+                            ? _c(
+                                "router-link",
+                                {
+                                  staticClass: "text-decoration-none m-1",
+                                  attrs: { to: "/register" }
+                                },
+                                [_vm._v("Register")]
+                              )
+                            : _vm._e()
+                        ]
+                  ],
+                  2
+                )
+              ]
+            )
+          ],
+          1
+        )
       ]
     )
   ])
@@ -62567,15 +62666,88 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _c("div", { staticClass: "time text-muted" }, [
-                              _vm._v(
-                                "\n\t\t\t\t\t\t\t\t\t" +
-                                  _vm._s(
-                                    _vm.moment(post.created_at).fromNow()
-                                  ) +
-                                  "\n\t\t\t\t\t\t\t\t"
-                              )
-                            ])
+                            _c(
+                              "div",
+                              { staticClass: "d-flex align-items-end" },
+                              [
+                                _c("div", [
+                                  post.privacy_id === 1
+                                    ? _c(
+                                        "small",
+                                        {
+                                          staticClass:
+                                            "privacy text-muted border rounded border-secondary"
+                                        },
+                                        [
+                                          _vm._v(
+                                            " Public\n\t\t\t\t\t\t\t\t\t\t"
+                                          )
+                                        ]
+                                      )
+                                    : post.privacy_id === 2
+                                    ? _c(
+                                        "small",
+                                        {
+                                          staticClass:
+                                            "privacy text-muted border rounded border-secondary"
+                                        },
+                                        [
+                                          _vm._v(
+                                            " Friends\n\t\t\t\t\t\t\t\t\t\t"
+                                          )
+                                        ]
+                                      )
+                                    : _c(
+                                        "small",
+                                        {
+                                          staticClass:
+                                            "privacy text-muted border rounded border-secondary"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t\tPrivet\n\t\t\t\t\t\t\t\t\t\t"
+                                          )
+                                        ]
+                                      )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", [_vm._v(" ")]),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _c(
+                                    "div",
+                                    { staticClass: "time text-muted" },
+                                    [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t" +
+                                          _vm._s(
+                                            _vm
+                                              .moment(post.created_at)
+                                              .fromNow()
+                                          ) +
+                                          "\n\t\t\t\t\t\t\t\t\t\t\t"
+                                      ),
+                                      post.created_at !== post.updated_at
+                                        ? _c(
+                                            "span",
+                                            { staticClass: "text-muted" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  " || Edited: " +
+                                                    _vm
+                                                      .moment(post.updated_at)
+                                                      .fromNow()
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
                           ])
                         ],
                         1
@@ -62841,7 +63013,7 @@ var render = function() {
                                   }
                                 }
                               },
-                              [_vm._v("cancel")]
+                              [_vm._v("cancel\n\t\t\t\t\t\t\t\t")]
                             )
                           ])
                         ])
@@ -62980,7 +63152,195 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", { staticClass: "ml-2" }, [
+                _c(
+                  "div",
+                  { staticClass: "p-0 m-0" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "lead text-decoration-none text-dark",
+                        attrs: { to: "/profile/" + this.authUser.id }
+                      },
+                      [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(_vm.authUser.name) +
+                            "\n\t\t\t\t\t\t\t\t\t"
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("div", { staticClass: "dropdown" }, [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "dropdown-menu",
+                            attrs: { "aria-labelledby": "dropdownMenuButton" }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdown-item",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _c("div", { staticClass: "form-check" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass:
+                                        "form-check-label stretched-link",
+                                      attrs: { for: "privacy1" }
+                                    },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.privacy,
+                                            expression: "privacy"
+                                          }
+                                        ],
+                                        staticClass: "form-check-input",
+                                        attrs: {
+                                          type: "radio",
+                                          name: "privacy",
+                                          id: "privacy1",
+                                          checked: ""
+                                        },
+                                        domProps: {
+                                          value: 1,
+                                          checked: _vm._q(_vm.privacy, 1)
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            _vm.privacy = 1
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPublic\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdown-item",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _c("div", { staticClass: "form-check" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass:
+                                        "form-check-label stretched-link",
+                                      attrs: { for: "privacy2" }
+                                    },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.privacy,
+                                            expression: "privacy"
+                                          }
+                                        ],
+                                        staticClass: "form-check-input",
+                                        attrs: {
+                                          type: "radio",
+                                          name: "privacy",
+                                          id: "privacy2"
+                                        },
+                                        domProps: {
+                                          value: 3,
+                                          checked: _vm._q(_vm.privacy, 3)
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            _vm.privacy = 3
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFriends\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdown-item",
+                                attrs: { href: "#" }
+                              },
+                              [
+                                _c("div", { staticClass: "form-check" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass:
+                                        "form-check-label stretched-link",
+                                      attrs: { for: "privacy3" }
+                                    },
+                                    [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.privacy,
+                                            expression: "privacy"
+                                          }
+                                        ],
+                                        staticClass: "form-check-input",
+                                        attrs: {
+                                          type: "radio",
+                                          name: "privacy",
+                                          id: "privacy3"
+                                        },
+                                        domProps: {
+                                          value: 3,
+                                          checked: _vm._q(_vm.privacy, 3)
+                                        },
+                                        on: {
+                                          change: function($event) {
+                                            _vm.privacy = 3
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(
+                                        "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPrivet\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ],
+                  1
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("div", [
@@ -63065,9 +63425,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "ml-2" }, [
-      _c("div", { staticClass: "p-0 m-0" })
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "p-0 btn btn-sm btn-outline-secondary dropdown-toggle",
+        attrs: {
+          type: "button",
+          id: "dropdownMenuButton",
+          "data-toggle": "dropdown",
+          "aria-haspopup": "true",
+          "aria-expanded": "false"
+        }
+      },
+      [_c("small", { staticClass: "p-0" }, [_vm._v("Privacy")])]
+    )
   }
 ]
 render._withStripped = true
@@ -63785,7 +64156,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.profile
+  return _vm.profile && !_vm.loading
     ? _c(
         "div",
         { staticClass: "container" },
@@ -63933,7 +64304,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("create-post"),
+          _vm.user.id == this.$route.params.id ? _c("create-post") : _vm._e(),
           _vm._v(" "),
           _c("show-post")
         ],
@@ -81636,18 +82007,30 @@ __webpack_require__.r(__webpack_exports__);
 var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
+    // Auth
     auth: !!authUser,
-    loading: null,
+    authUser: authUser,
+    // Loading
+    loading: false,
+    followLoading: false,
+    // Validation
     authErrors: null,
     validationErrors: null,
-    authUser: authUser,
+    // DATA
     posts: [],
     singlePost: null,
-    profile: null
+    profile: null,
+    isFollowing: null
   },
   getters: {
-    welcome: function welcome(state) {
-      return state.welcome;
+    loading: function loading(state) {
+      return state.loading;
+    },
+    fLoading: function fLoading(state) {
+      return state.followLoading;
+    },
+    following: function following(state) {
+      return state.isFollowing;
     },
     user: function user(state) {
       return state.authUser;
@@ -81672,6 +82055,16 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     }
   },
   mutations: {
+    // loading mutation
+    ////
+    // auth loading
+    loading: function loading(state) {
+      state.loading = true;
+    },
+    // Follow component loading
+    fLoading: function fLoading(state) {
+      state.followLoading = true;
+    },
     login: function login(state) {
       state.loading = true;
       state.authErrors = null;
@@ -81705,15 +82098,33 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
     },
     getPosts: function getPosts(state, payload) {
       state.posts = payload;
+      state.loading = false;
     },
     getSinglePost: function getSinglePost(state, payload) {
       state.singlePost = payload;
+      state.loading = false;
     },
     getProfile: function getProfile(state, payload) {
       state.profile = payload;
+      state.loading = false;
+    },
+    isFollowing: function isFollowing(state, payload) {
+      state.isFollowing = payload;
+      state.followLoading = false;
+    },
+    follow: function follow(state) {
+      state.isFollowing = !state.isFollowing;
+      state.followLoading = false;
     }
   },
   actions: {
+    // loading Action
+    ////
+    // Auth loading
+    loading: function loading(context) {
+      context.commit('loading');
+    },
+    //
     login: function login(context) {
       context.commit("login");
     },
@@ -81758,13 +82169,17 @@ var authUser = Object(_authHelper__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
       axios["delete"]('/api/post/' + payload).then(function () {
         context.dispatch('getPosts'); // can be improved by adding "add" method
       });
-    } // updatePost(context, payload){
-    //     axios.post('/api/post/'+payload);
-    //     //     .then(()=>{
-    //     //
-    //     // })
-    // }
-
+    },
+    following: function following(context, payload) {
+      axios.get('/api/isFollowing/' + payload).then(function (response) {
+        context.commit('following', response.data);
+      });
+    },
+    follow: function follow(context, payload) {
+      axios.post('/api/follow/' + payload).then(function () {
+        context.commit('follow');
+      });
+    }
   }
 });
 
