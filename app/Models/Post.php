@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use function Symfony\Component\Translation\t;
 
 class Post extends Model
 {
@@ -21,6 +22,10 @@ class Post extends Model
 
     public function privacy(){
         return $this->belongsTo(Privacy::class);
+    }
+
+    public function likedBy(){
+        return $this->belongsToMany(User::class);
     }
 
 }

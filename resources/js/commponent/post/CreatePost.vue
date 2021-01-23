@@ -26,7 +26,7 @@
 											<button class="p-0 btn btn-sm btn-outline-secondary dropdown-toggle"
 											        type="button" id="dropdownMenuButton" data-toggle="dropdown"
 											        aria-haspopup="true" aria-expanded="false">
-												<small class="p-0">Privacy</small>
+												<small class="pl-1 pr-1">{{privacyLabel(this.privacy)}}</small>
 											</button>
 											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 												<a class="dropdown-item" href="#">
@@ -34,7 +34,7 @@
 														<label class="form-check-label stretched-link" for="privacy1">
 															<input v-model="privacy" class="form-check-input" type="radio"
 															       name="privacy" id="privacy1"
-															       :value="1" checked>
+															       :value="1" @change="privacyLabel(1)">
 															Public
 														</label>
 													</div>
@@ -44,7 +44,7 @@
 														<label class="form-check-label stretched-link" for="privacy2">
 															<input v-model="privacy" class="form-check-input" type="radio"
 															       name="privacy" id="privacy2"
-															       :value="3">
+															       :value="2" @change="privacyLabel(2)">
 															Friends
 														</label>
 													</div>
@@ -55,7 +55,7 @@
 														<label class="form-check-label stretched-link" for="privacy3">
 															<input v-model="privacy" class="form-check-input" type="radio"
 															       name="privacy" id="privacy3"
-															       :value="3">
+															       :value="3" @change="privacyLabel(3)">
 															Privet
 														</label>
 													</div>
@@ -107,7 +107,7 @@
                 content: '',
                 img: '',
                 imgPre: '',
-	            privacy:'',
+	            privacy: 1,
                 formData: new FormData,
             }
         },
@@ -130,7 +130,16 @@
                     this.img = '';
                     this.imgPre = '';
                 });
-            }
+            },
+	        privacyLabel(privacyId){
+                if (privacyId ===1){
+                    return "Public";
+                } else if (privacyId ===2){
+                    return "Friends";
+                } else {
+                    return "Privet";
+                }
+	        }
         },
         computed: {
             authUser() {

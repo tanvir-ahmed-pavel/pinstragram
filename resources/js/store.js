@@ -24,6 +24,12 @@ export default {
         singlePost: null,
         profile: null,
         isFollowing:null,
+
+        //Likes
+
+        liked: null,
+        likeLoad: false,
+
     },
 
     getters: {
@@ -57,6 +63,12 @@ export default {
         getProfile(state){
             return state.profile;
         },
+
+        //Likes
+
+        isLiked(state){
+            return state.liked;
+        }
 
     },
 
@@ -121,6 +133,9 @@ export default {
             state.profile = payload;
             state.loading = false;
         },
+
+        // Follow
+
         isFollowing(state, payload){
             state.isFollowing = payload;
             state.followLoading = false;
@@ -128,7 +143,22 @@ export default {
         follow(state) {
             state.isFollowing = !state.isFollowing;
             state.followLoading = false;
+        },
+
+        // Likes
+
+        likeLoad(state){
+            state.likeLoad = true;
+        },
+        isLiked(state, payload){
+            state.likeLoad = false;
+            state.liked = payload;
+        },
+        like(state){
+            state.likeLoad = false;
+            state.liked = !state.isLiked;
         }
+
     },
 
     actions: {
@@ -189,6 +219,9 @@ export default {
                 context.dispatch('getPosts'); // can be improved by adding "add" method
             })
         },
+
+        // Follow
+
         following(context, payload){
             axios.get('/api/isFollowing/'+payload).then((response)=>{
                 context.commit('following', response.data);
@@ -199,6 +232,23 @@ export default {
                 context.commit('follow');
             })
         },
+
+        // Like
+
+        likeLoad(context) {
+            context.commit('likeLoad');
+        },
+        isLiked(context, payload){
+            axios.get('/api/isLiked/'+payload).then((response)=>{
+                context.commit('isLiked', response.data);
+            })
+        },
+        like(context, payload) {
+            axios.post('/api/like/'+payload).then(()=>{
+                context.commit('like');
+            })
+        }
+
 
     },
 

@@ -24,10 +24,52 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy("created_at", "desc")->with('user.profile')->get();
-//        $posts = Privacy::find(2)->posts->with('user.profile')->get();
 
-//        dd($posts);
+        $publicPost = [];
+        foreach (Privacy::findOrFail(1)->posts as $post)
+        {
+            $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+
+            $post->user;
+            $post->user->profile;
+            $publicPost[] = $post;
+        }
+
+
+        $selfPost = [];
+        foreach (Privacy::findOrFail(2)->posts as $post)
+        {
+            if ($post->user->id == Auth::user()->id)
+            {
+                $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+
+                $post->user;
+                $post->user->profile;
+                $selfPost[]=$post;
+            }
+        }
+
+
+        $followings = Auth::user()->following;
+        $friendsPost = [];
+        foreach ($followings as $following)
+        {
+            foreach ($following->user->posts as $post)
+            {
+                if ($post->privacy_id == 2)
+                {
+                    $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+
+                    $post->user;
+                    $post->user->profile;
+                    $friendsPost[]=$post;
+                }
+            }
+        }
+
+        $unsortedPosts = array_merge($publicPost, $selfPost, $friendsPost);
+        $posts = collect($unsortedPosts)->sortByDesc('created_at')->values();
+
         return response()->json([
             'posts' => $posts,
         ]);

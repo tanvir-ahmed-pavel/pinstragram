@@ -12,7 +12,12 @@
     import Header from "./Header";
     export default {
         name: "App",
-        components: {Header}
+        components: {Header},
+	    created() {
+        },
+	    methods:{
+     
+	    },
     }
 </script>
 

@@ -29,6 +29,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put("/profile/{id}", [\App\Http\Controllers\ProfileController::class, 'update']);
     Route::get("/isFollowing/{id}", [\App\Http\Controllers\FollowController::class, 'isFollowing']);
     Route::post("/follow/{id}", [\App\Http\Controllers\FollowController::class, 'store']);
+    Route::post("/like/{id}", [\App\Http\Controllers\LikeController::class, 'store']);
+    Route::get("/isLiked/{id}", [\App\Http\Controllers\LikeController::class, 'isLiked']);
 
 });
 

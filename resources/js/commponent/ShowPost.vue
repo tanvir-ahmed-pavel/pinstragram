@@ -5,7 +5,10 @@
 				<div class="col-md-8">
 					<div class="card mb-4 shadow-sm">
 						<div class="card-title card-header shadow-sm justify-content-between align-items-center">
+							
+							
 							<!--------- HEADER PROPERTIES -------->
+							
 							<div class="d-flex">
 								<router-link :to="'/profile/'+post.user.id" class="name my-0 py-0">
 									<img :src="'/storage/'+post.user.profile.profile_img"
@@ -37,10 +40,11 @@
 											</div>
 										</div>
 									</div>
-								
 								</div>
 							</div>
+							
 							<!--------- DROPDOWN -------->
+							
 							<div class="dropdown mt-2 mr-3">
 								<a class="text-muted text-decoration-none" href="#" role="button"
 								   id="dropdownMenuLink"
@@ -88,7 +92,10 @@
 									</a>
 								</div>
 							</div>
+							
 						</div>
+						
+						
 						<!--------- POST CONTENT AND IMAGE -------->
 						
 						<div class="card-body post-body">
@@ -105,15 +112,19 @@
 									</button>
 								</form>
 							</div>
+							
 							<div v-if="post.content">
 								<div v-if="editing !== post.id">
 									<div class="post-caption text-justify" v-if="post.content.toString().length >= 150">
-										{{post.content.toString().substring(0, 149) + '... ' }}
+										<h2>{{post.content.toString().substring(0, 149) + '... ' }}</h2>
 										
 										<a :href="''" class="text-decoration-none">see more</a>
 									</div>
 									<div class="post-caption text-justify" v-else>
-										{{post.content.toString()}}
+										
+										<div class="font-weight-lighter" style="font-size: 30px; letter-spacing: 2px; word-spacing: 2px;" v-if="!post.img">{{post.content.toString()}}</div>
+										<div v-else>{{post.content.toString()}}</div>
+										
 									</div>
 								</div>
 							</div>
@@ -122,7 +133,15 @@
 								     alt="Post's image"/>
 							</div>
 						</div>
+						
 						<!--------- LIKE COMMENT SHARE -------->
+						
+						<div class="card-footer pt-1 pb-1 pl-4">
+							
+							<like v-bind:post-id="post.id" v-bind:status="post.likedByAuth"></like>
+							
+						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -131,9 +150,11 @@
 </template>
 
 <script>
+    import Like from "./Like";
     let moment = require('moment');
     export default {
         name: "ShowPost",
+        components: {Like},
         created() {
             if (this.$router.currentRoute.path === '/dashboard') {
                 this.$store.dispatch('getPosts');
