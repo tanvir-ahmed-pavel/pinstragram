@@ -8,18 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowController extends Controller
 {
-    public function isFollowing($id){
-        $profile = User::findOrFail($id)->profile;
-        $following = Auth::user()->following->contains($profile);
-
-//        dd($following);
-        return $following;
-    }
 
     public function store($id){
         $profile = User::findOrFail($id)->profile;
 
-        return Auth::user()->following()->toggle($profile);
+        return response()->json(Auth::user()->followings()->toggle($profile));
+    }
+
+    public function authFollowings(){
+        $followings = Auth::user()->followings->load(['user']);
+
+        return response()->json([
+            'followings' => $followings,
+        ]);
     }
 
 }

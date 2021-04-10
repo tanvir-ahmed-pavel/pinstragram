@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use phpDocumentor\Reflection\DocBlock\Tags\Reference\Reference;
 
 
 class PostController extends Controller
@@ -25,54 +26,80 @@ class PostController extends Controller
     public function index()
     {
 
-        $publicPost = [];
-        foreach (Privacy::findOrFail(1)->posts as $post)
-        {
-            $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+        $publicPost = Privacy::findOrFail(1)->posts->load(['user', 'user.profile', 'likedBy', 'likedBy.profile']);
+//        $publicPost->likedBy->contains(Auth::user());
 
-            $post->user;
-            $post->user->profile;
-            $publicPost[] = $post;
-        }
+//        foreach ($publicPosts as $post){
+//            $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+//            $publicPost = $publicPosts;
+//        }
 
-
-        $selfPost = [];
-        foreach (Privacy::findOrFail(2)->posts as $post)
-        {
-            if ($post->user->id == Auth::user()->id)
-            {
-                $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
-
-                $post->user;
-                $post->user->profile;
-                $selfPost[]=$post;
-            }
-        }
+        $selfFrndPost = Auth::user()->posts->load(['user', 'user.profile', 'likedBy', 'likedBy.profile'])->where('privacy_id', 2);
 
 
-        $followings = Auth::user()->following;
-        $friendsPost = [];
-        foreach ($followings as $following)
-        {
-            foreach ($following->user->posts as $post)
-            {
-                if ($post->privacy_id == 2)
-                {
-                    $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+        $followings = Auth::user()->followings->pluck('user_id');
 
-                    $post->user;
-                    $post->user->profile;
-                    $friendsPost[]=$post;
-                }
-            }
-        }
+//        i have to use pluck here *Oh i already did, xDD*
+        $followingPost = Privacy::findOrFail(2)->posts->whereIn('user_id', $followings)->load(['user', 'user.profile', 'likedBy', 'likedBy.profile']);
 
-        $unsortedPosts = array_merge($publicPost, $selfPost, $friendsPost);
-        $posts = collect($unsortedPosts)->sortByDesc('created_at')->values();
+
+        $posts = $publicPost->merge($selfFrndPost)->merge($followingPost)->sortByDesc('created_at')->values();
+
 
         return response()->json([
             'posts' => $posts,
         ]);
+
+
+
+//        Old & unoptimized code for reference
+
+//        foreach (Privacy::findOrFail(1)->posts as $post)
+//        {
+//            $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+//
+//            $post->user;
+//            $post->user->profile;
+//            $post->likedBy->load('profile');
+//            $publicPost[] = $post;
+//        }
+//
+//        foreach (Privacy::findOrFail(2)->posts as $post)
+//        {
+//            if ($post->user->id == Auth::user()->id)
+//            {
+//                $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+//
+//                $post->user;
+//                $post->user->profile;
+//                $post->likedBy->load('profile');
+//                $selfPost[]=$post;
+//            }
+//        }
+//
+//        $followings = Auth::user()->following;
+//        foreach ($followings as $following)
+//        {
+//            foreach ($following->user->posts as $post)
+//            {
+//                if ($post->privacy_id == 2)
+//                {
+//                    $post->setAttribute("likedByAuth", $post->likedBy->contains(Auth::user()));
+//                    $post->user;
+//                    $post->user->profile;
+//                    $post->likedBy->load('profile');
+//                    $friendsPost[]=$post;
+//                }
+//            }
+//        }
+//
+//        $unsortedPosts = array_merge($publicPost, $selfPost, $friendsPost);
+//        $posts = collect($unsortedPosts)->sortByDesc('created_at')->values();
+//
+//        return response()->json([
+//            'posts' => $posts,
+//        ]);
+
     }
 
     /**
@@ -118,8 +145,9 @@ class PostController extends Controller
             ]);
 
 //            $post->privacy()->attach($privacy->id);
+//            $instantLoad = $this->index();
 
-            return response()->json('Post Created', 200);
+            return response()->json("Post Created", 200);
         }
 
     }
@@ -164,7 +192,8 @@ class PostController extends Controller
     {
 
         $data = $this->validate($request, [
-            "content" => "string|nullable"
+            "content" => "string|nullable",
+            "privacy_id" => "required",
         ]);
         $post = Post::findOrFail($id);
 

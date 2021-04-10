@@ -4,7 +4,7 @@
 		<div class="container">
 			<router-view></router-view>
 		</div>
-		
+
 	</div>
 </template>
 
@@ -14,9 +14,10 @@
         name: "App",
         components: {Header},
 	    created() {
+            this.$store.dispatch('authFollowingsA');
         },
 	    methods:{
-     
+
 	    },
     }
 </script>

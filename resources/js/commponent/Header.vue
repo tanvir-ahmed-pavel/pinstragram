@@ -2,26 +2,26 @@
 	<div class="">
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
-				
+
 					<router-link class="navbar-brand" v-if="auth" to="/dashboard">Home</router-link>
 					<router-link class="navbar-brand" v-else to="/">Home</router-link>
-				
+
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 				        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				        aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				
+
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<!-- Left Side Of Navbar -->
 					<ul class="navbar-nav mr-auto">
-					
+
 					</ul>
-					
+
 					<!-- Right Side Of Navbar -->
 					<ul class="navbar-nav ml-auto">
 						<!-- Authentication Links -->
-						
+
 						<template v-if="auth">
 							<li class="nav-item dropdown">
 								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -41,14 +41,16 @@
 			</div>
 		</nav>
 	</div>
-	
+
 </template>
 
 <script>
     export default {
         name: "Header",
         data() {
-            return {}
+            return {
+
+            }
         },
         methods: {
 

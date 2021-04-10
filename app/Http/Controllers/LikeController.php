@@ -14,16 +14,10 @@ class LikeController extends Controller
     }
 
     public function store($id){
-        $post = Post::finOrFail($id);
+        $post = Post::findOrFail($id);
 
         return Auth::user()->likes()->toggle($post);
 
-    }
-
-    public function isLiked($id){
-        $post = Post::findOrFail($id);
-
-        return Auth::user()->likes->contains($post);
     }
 
 }

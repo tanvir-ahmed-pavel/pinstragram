@@ -17,8 +17,9 @@ class ProfileController extends Controller
      */
     public function index($id)
     {
-        $profile = User::findOrFail($id)->profile;
-        $profile->user;
+        $profile = User::findOrFail($id)->profile->load(['user', 'followers.profile', 'user.followings.user']);
+//        $profile->user;
+//        $profile->followers;
 
         return response()->json([
             'profile' => $profile,
@@ -28,49 +29,11 @@ class ProfileController extends Controller
     public function profilePost($id)
     {
 
-        $publicPost = [];
-        foreach (Privacy::findOrFail(1)->posts->where('user_id', $id) as $post)
-        {
-            $post->user;
-            $post->user->profile;
-            $publicPost[] = $post;
-        }
-
-
-        $friendsPost = [];
-        foreach (Privacy::findOrFail(2)->posts->where('user_id', $id) as $post)
-        {
-            $post->user;
-            $post->user->profile;
-            $friendsPost[] = $post;
-        }
-
-        if (Auth::user()->id == $id)
-        {
-            $posts = User::findOrFail($id)->posts()->orderBy("created_at", "desc")->with('user.profile')->get();
+        $posts = User::findOrFail($id)->posts->load(['user', 'user.profile', 'likedBy', 'likedBy.profile'])->sortByDesc('created_at')->values();
 
             return response()->json([
                 'posts' => $posts,
             ], 200);
-        }
-        elseif (Auth::user()->following->contains(User::findOrFail($id)->profile))
-        {
-            $posts = array_merge($publicPost, $friendsPost);
-            $posts = collect($posts)->sortByDesc('created_at')->values();
-
-            return response()->json([
-                'posts' => $posts,
-            ], 200);
-        }
-        else
-        {
-            $posts = $publicPost;
-            $posts = collect($posts)->sortByDesc('created_at')->values();
-
-            return response()->json([
-                'posts' => $posts,
-            ], 200);
-        }
 
     }
 
@@ -122,7 +85,7 @@ class ProfileController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -167,4 +130,5 @@ class ProfileController extends Controller
     {
         //
     }
+
 }

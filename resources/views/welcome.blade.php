@@ -11,11 +11,16 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
         <!-- Styles -->
+
+        <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+
     </head>
     <body class="antialiased">
         <div id="app">
             <App></App>
         </div>
         <script src="{{asset('js/app.js')}}"></script>
+
     </body>
 </html>
