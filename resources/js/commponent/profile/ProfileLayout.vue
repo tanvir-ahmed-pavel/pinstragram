@@ -11,8 +11,8 @@
                 </div>
 
                 <div class="profile-photo d-flex">
-
-                    <img class="shadow" v-if="profile.profile_img" :src="'/storage/'+profile.profile_img" alt="img"/>
+                    <profile-img :profile="profile"></profile-img>
+<!--                    <img class="shadow" v-if="profile.profile_img" :src="'/storage/'+profile.profile_img" alt="img"/>-->
                     <!--				<img v-else src="../../../assets/avatar.svg" alt="img"/>-->
                     <div class="d-block profile-header">
                         <div class="profile-name d-flex">
@@ -83,6 +83,7 @@
 
                     </div>
                 </div>
+
             </div>
 
             <!--        Create & Show Post-->
@@ -108,10 +109,11 @@
     import FollowersModal from "../modals/FollowersModal";
     import FollowingsModal from "../modals/FollowingsModal";
     import LikelistModal from "../modals/LikelistModal";
+    import ProfileImg from "./ProfileImg";
 
     export default {
         name: "ProfileLayout",
-        components: {LikelistModal, FollowingsModal, FollowersModal, Follow, CreatePost, ShowPost},
+        components: {ProfileImg, LikelistModal, FollowingsModal, FollowersModal, Follow, CreatePost, ShowPost},
         created() {
 
             // int Loading
