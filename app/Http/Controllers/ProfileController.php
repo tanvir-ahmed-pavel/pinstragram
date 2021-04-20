@@ -87,6 +87,25 @@ class ProfileController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
+    public function profileImgUpdate(Request $request, $id){
+        $data = $this->validate($request, [
+            "profile_img" => "image|nullable",
+        ]);
+
+        $user = User::findOrFail($id);
+
+        if (Auth::user()->id == $user->profile->user_id) {
+            $p_img_path = $request->file("profile_img") ? $request->file("profile_img")->store("profile_imgs", 'public') : $user->profile->profile_img;
+
+            $user->profile()->update([
+                "profile_img" => $p_img_path,
+            ]);
+            return response()->json('success', 200);
+        }
+        return response()->json('unauthorized', 401);
+
+    }
+
     public function update(Request $request, $id)
     {
         $data = $this->validate($request, [

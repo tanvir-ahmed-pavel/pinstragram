@@ -1,7 +1,7 @@
 <template>
 	<div class="" v-if="!loading">
-		<button @click.prevent="follow" class="btn btn-sm" :class="!!isfollowing ? 'btn-danger' : 'btn-primary'">
-			{{!!isfollowing ? 'Unfollow' : 'Follow'}}
+		<button @click.prevent="follow" class="btn btn-sm " :class="!!isfollowing ? 'btn-outline-dark' : 'btn-dark'">
+			{{!!isfollowing ? 'Following ✔' : 'Follow +'}}
 		</button>
 	</div>
 </template>

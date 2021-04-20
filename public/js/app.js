@@ -3770,17 +3770,98 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProfileImg",
-  props: ['profile'],
+  props: ['profile', 'AuthId'],
+  created: function created() {
+    console.log(this.$route.params.id);
+  },
   data: function data() {
     return {
-      hover: false
+      hover: false,
+      profile_img: '',
+      imgPre: ''
     };
   },
   methods: {
     chngText: function chngText() {
       return 'Update Profile Image';
+    },
+    imgUpload: function imgUpload(e) {
+      var _this = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this.imgPre = e.target.result;
+      };
+
+      this.profile_img = e.target.files[0];
+    },
+    updateImg: function updateImg() {
+      var _this2 = this;
+
+      var formData = new FormData();
+      formData.append('profile_img', this.profile_img);
+      formData.append('_method', 'PUT');
+      axios.post('/api/profile/u_p_img/' + this.$route.params.id, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+        }
+      }).then(function (response) {
+        _this2.imgPre = null;
+        _this2.profile_img = null;
+
+        _this2.$router.push({
+          path: '/dashboard'
+        }); // this.$store.dispatch('updateProfile', this.$route.params.id).then(()=>{
+        //     this.$router.push({path: '/profile/'+this.$route.params.id});
+        // })
+
+      });
+    },
+    cancel: function cancel() {
+      this.imgPre = null;
+      this.profile_img = null;
     }
   }
 });
@@ -3803,6 +3884,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modals_FollowingsModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../modals/FollowingsModal */ "./resources/js/commponent/modals/FollowingsModal.vue");
 /* harmony import */ var _modals_LikelistModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../modals/LikelistModal */ "./resources/js/commponent/modals/LikelistModal.vue");
 /* harmony import */ var _ProfileImg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ProfileImg */ "./resources/js/commponent/profile/ProfileImg.vue");
+//
+//
+//
 //
 //
 //
@@ -3935,7 +4019,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {},
   data: function data() {
-    return {};
+    return {
+      hover: false
+    };
   },
   // reactive render
   watch: {
@@ -8544,7 +8630,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.imgHover[data-v-50233bb9]:hover{\n}\n", ""]);
+exports.push([module.i, "\n.profile-photo-img[data-v-50233bb9] {\n    height: 200px;\n    width: 200px;\n    /*margin: -75px 0 0 0;*/\n    border-radius: 200px;\n    transition: 0.5s ease-in-out;\n}\n.bg-text[data-v-50233bb9] {\n    height: 200px;\n    width: 200px;\n    border-radius: 200px;\n    opacity: 0%;\n    transition: 0.5s ease-in-out;\n}\n.bg-text[data-v-50233bb9]:hover {\n    opacity: 100%;\n}\n.label[data-v-50233bb9] {\n    margin: 60px 0;\n}\n.bg[data-v-50233bb9] {\n    height: 200px;\n    width: 200px;\n    margin: -75px 0 0 0;\n    border-radius: 200px;\n}\n.imgHover[data-v-50233bb9]:hover {\n}\n", ""]);
 
 // exports
 
@@ -8620,7 +8706,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "/** Variables **/\n:root{\r\n    --theme-color: #2E89FF;\r\n    --white: #FFFFFF;\n}\n.profile-info {\r\n    padding-bottom: 50px;\r\n    /*border-bottom: 2px solid #DBDBDB;*/\n}\n.cover-photo img {\r\n    width: 100%;\r\n    height: 350px;\r\n    border-radius: 5px;\n}\n.profile-header {\r\n    margin-left: 15px;\r\n    margin-top: 5px;\n}\n.profile-photo > img {\r\n    height: 200px;\r\n    width: 200px;\r\n    margin: -75px 0 0 30px;\r\n    border-radius: 200px;\n}\n.profile-name {\r\n    font-family: Arial, serif;\n}\n.profile-posts-followers-following {\r\n    font-size: 18px;\n}\n.profile-title {\r\n    font-family: Arial, serif;\r\n    font-size: 18px;\r\n    font-weight: 500;\n}\n.profile-url, .profile-description {\r\n    margin-top: 0;\r\n    font-size: 16px;\n}\n.edit-profile > p {\r\n    margin-left: 5px;\r\n    line-height: 20px;\r\n    font-weight: 600;\n}\r\n", ""]);
+exports.push([module.i, "/** Variables **/\n:root{\n    --theme-color: #2E89FF;\n    --white: #FFFFFF;\n}\n.profile-info {\n    padding-bottom: 50px;\n    /*border-bottom: 2px solid #DBDBDB;*/\n}\n.cover-photo img {\n    width: 100%;\n    height: 350px;\n    border-radius: 5px;\n}\n.profile-header {\n    margin-left: 15px;\n    margin-top: 5px;\n}\n.profile-photo > img {\n    height: 200px;\n    width: 200px;\n    margin: -75px 0 0 30px;\n    border-radius: 200px;\n}\n.profile-name {\n    font-family: Arial, serif;\n}\n.profile-posts-followers-following {\n    font-size: 18px;\n}\n.profile-title {\n    font-family: Arial, serif;\n    font-size: 18px;\n    font-weight: 500;\n}\n.profile-url, .profile-description {\n    margin-top: 0;\n    font-size: 16px;\n}\n.edit-profile > p {\n    margin-left: 5px;\n    line-height: 20px;\n    font-weight: 600;\n}\n", ""]);
 
 // exports
 
@@ -62289,8 +62375,8 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-sm",
-            class: !!_vm.isfollowing ? "btn-danger" : "btn-primary",
+            staticClass: "btn btn-sm ",
+            class: !!_vm.isfollowing ? "btn-outline-dark" : "btn-dark",
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -62301,7 +62387,7 @@ var render = function() {
           [
             _vm._v(
               "\n\t\t" +
-                _vm._s(!!_vm.isfollowing ? "Unfollow" : "Follow") +
+                _vm._s(!!_vm.isfollowing ? "Following ✔" : "Follow +") +
                 "\n\t"
             )
           ]
@@ -66064,23 +66150,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.profile.profile_img
-    ? _c("img", {
-        staticClass: "shadow",
-        attrs: { src: "/storage/" + _vm.profile.profile_img, alt: "img" },
+  return _c("div", {}, [
+    _c(
+      "div",
+      {
+        staticClass: " bg position-relative",
         on: {
-          mouseover: function($event) {
-            _vm.hover = true
-          },
           mouseout: function($event) {
             _vm.hover = false
-          },
-          click: function($event) {
-            $event.preventDefault()
           }
         }
-      })
-    : _vm._e()
+      },
+      [
+        _vm.AuthId == this.$route.params.id
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "position-absolute bg-dark text-light bg-text align-content-center ",
+                staticStyle: { "text-align": "center" }
+              },
+              [
+                _c(
+                  "label",
+                  {
+                    staticClass: "font-weight-bold label",
+                    attrs: { for: "profile_image" }
+                  },
+                  [
+                    _c(
+                      "p",
+                      {
+                        staticClass: "p-0",
+                        staticStyle: {
+                          "font-size": "20px",
+                          "margin-bottom": "-10px"
+                        }
+                      },
+                      [
+                        _c("ion-icon", { attrs: { name: "camera" } }),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(
+                          "\n                    Update Profile\n                    "
+                        ),
+                        _c("br"),
+                        _vm._v("\n                    Image\n                ")
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control-file",
+          attrs: {
+            type: "file",
+            hidden: "",
+            id: "profile_image",
+            name: "profile_img"
+          },
+          on: { change: _vm.imgUpload }
+        }),
+        _vm._v(" "),
+        _vm.profile.profile_img && !_vm.imgPre
+          ? _c("img", {
+              staticClass: "shadow profile-photo-img ",
+              staticStyle: { left: "0%", top: "0%", "font-size": "20px" },
+              attrs: { src: "/storage/" + _vm.profile.profile_img, alt: "img" },
+              on: {
+                mouseover: function($event) {
+                  _vm.hover = true
+                },
+                click: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            })
+          : _c("img", {
+              staticClass: "shadow profile-photo-img ",
+              staticStyle: { left: "0%", top: "0%", "font-size": "20px" },
+              attrs: { src: _vm.imgPre, alt: "img" },
+              on: {
+                mouseover: function($event) {
+                  _vm.hover = true
+                },
+                click: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            }),
+        _vm._v(" "),
+        _vm.imgPre
+          ? _c(
+              "button",
+              {
+                staticClass:
+                  "btn btn-sm btn-outline-dark p-0 pl-1 pr-1 ml-5 mt-3",
+                on: {
+                  click: function($event) {
+                    return _vm.cancel()
+                  }
+                }
+              },
+              [_vm._v("Cancel")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.imgPre
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-primary p-0 pl-1 pr-1 mt-3 ml-2",
+                on: {
+                  click: function($event) {
+                    return _vm.updateImg()
+                  }
+                }
+              },
+              [_vm._v("Save\n        ")]
+            )
+          : _vm._e()
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -66135,7 +66331,12 @@ var render = function() {
                   "div",
                   { staticClass: "profile-photo d-flex" },
                   [
-                    _c("profile-img", { attrs: { profile: _vm.profile } }),
+                    _c("profile-img", {
+                      attrs: {
+                        profile: _vm.profile,
+                        "auth-id": _vm.authUser.id
+                      }
+                    }),
                     _vm._v(" "),
                     _c("div", { staticClass: "d-block profile-header" }, [
                       _c("div", { staticClass: "profile-name d-flex" }, [
@@ -66235,7 +66436,7 @@ var render = function() {
                               "button",
                               {
                                 staticClass:
-                                  "btn btn p-0 pl-1 pr-1 btn-outline-secondary",
+                                  "btn btn p-0 pl-1 pr-1 btn-outline-dark",
                                 attrs: {
                                   type: "button",
                                   "data-toggle": "modal",
@@ -66261,7 +66462,7 @@ var render = function() {
                               "button",
                               {
                                 staticClass:
-                                  "btn p-0 pl-1 pr-1 btn-outline-secondary",
+                                  "btn p-0 pl-1 pr-1 btn-outline-dark",
                                 attrs: {
                                   type: "button",
                                   "data-toggle": "modal",

@@ -6,13 +6,16 @@
             <div class="profile-info">
                 <div class="cover-photo">
                     <!--cover 1280X350-->
-                    <img v-if="!profile.cover_img" src="../../../assets/SampleCover.jpg" alt="Cover Photo"/>
+                    <img v-if="!profile.cover_img"  src="../../../assets/SampleCover.jpg" alt="Cover Photo"/>
                     <img v-else :src="'/storage/'+profile.cover_img" alt="Cover Photo"/>
                 </div>
 
                 <div class="profile-photo d-flex">
-                    <profile-img :profile="profile"></profile-img>
-<!--                    <img class="shadow" v-if="profile.profile_img" :src="'/storage/'+profile.profile_img" alt="img"/>-->
+                    <profile-img :profile="profile" :auth-id="authUser.id"></profile-img>
+<!--                    <div>-->
+<!--                        <img class="shadow profile-photo-img" v-if="profile.profile_img" @mouseover="hover=true" @mouseout="hover=false" :src="'/storage/'+profile.profile_img" alt="img"/>-->
+<!--                    </div>-->
+
                     <!--				<img v-else src="../../../assets/avatar.svg" alt="img"/>-->
                     <div class="d-block profile-header">
                         <div class="profile-name d-flex">
@@ -52,7 +55,7 @@
                             <!--                        Followers-->
 
                             <div class="mr-4">
-                                <button type="button" class="btn btn p-0 pl-1 pr-1 btn-outline-secondary"
+                                <button type="button" class="btn btn p-0 pl-1 pr-1 btn-outline-dark"
                                         data-toggle="modal" :disabled="!profile.followers.length" data-target="#followerModal">
                                     <strong>{{profile.followers.length}}</strong> {{" followers "}}
                                 </button>
@@ -60,7 +63,7 @@
 
                             <!--                        Following-->
                             <div class="mr-4">
-                                <button type="button" class="btn p-0 pl-1 pr-1 btn-outline-secondary"
+                                <button type="button" class="btn p-0 pl-1 pr-1 btn-outline-dark"
                                         data-toggle="modal" :disabled="!profile.user.followings.length" data-target="#followingModal">
                                     <div>
                                         <strong>{{profile.user.followings.length}}</strong> {{" following"}}
@@ -129,7 +132,9 @@
 
         },
         data() {
-            return {}
+            return {
+                hover: false,
+            }
         },
 
         // reactive render

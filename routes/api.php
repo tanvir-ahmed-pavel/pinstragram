@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get("/profile/post/{id}", [\App\Http\Controllers\ProfileController::class, 'profilePost']);
     Route::put("/profile/{id}", [\App\Http\Controllers\ProfileController::class, 'update']);
+    Route::put("/profile/u_p_img/{id}", [\App\Http\Controllers\ProfileController::class, 'profileImgUpdate']);
     Route::get("/isFollowing/{id}", [\App\Http\Controllers\FollowController::class, 'isFollowing']);
     Route::get("/authFollowings", [\App\Http\Controllers\FollowController::class, 'authFollowings']);
     Route::post("/follow/{id}", [\App\Http\Controllers\FollowController::class, 'store']);
