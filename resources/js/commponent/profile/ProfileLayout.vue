@@ -6,8 +6,9 @@
             <div class="profile-info">
                 <div class="cover-photo">
                     <!--cover 1280X350-->
-                    <img v-if="!profile.cover_img"  src="../../../assets/SampleCover.jpg" alt="Cover Photo"/>
-                    <img v-else :src="'/storage/'+profile.cover_img" alt="Cover Photo"/>
+<!--                    <img v-if="!profile.cover_img"  src="../../../assets/SampleCover.jpg" alt="Cover Photo"/>-->
+<!--                    <img v-else :src="'/storage/'+profile.cover_img" alt="Cover Photo"/>-->
+                    <cover-img :profile="profile" :auth-id="authUser.id"></cover-img>
                 </div>
 
                 <div class="profile-photo d-flex">
@@ -113,10 +114,11 @@
     import FollowingsModal from "../modals/FollowingsModal";
     import LikelistModal from "../modals/LikelistModal";
     import ProfileImg from "./ProfileImg";
+    import CoverImg from "./CoverImg";
 
     export default {
         name: "ProfileLayout",
-        components: {ProfileImg, LikelistModal, FollowingsModal, FollowersModal, Follow, CreatePost, ShowPost},
+        components: {CoverImg, ProfileImg, LikelistModal, FollowingsModal, FollowersModal, Follow, CreatePost, ShowPost},
         created() {
 
             // int Loading

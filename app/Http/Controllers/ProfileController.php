@@ -106,6 +106,25 @@ class ProfileController extends Controller
 
     }
 
+    public function coverImgUpdate(Request $request, $id){
+        $data = $this->validate($request, [
+            "cover_img" => "image|nullable",
+        ]);
+
+        $user = User::findOrFail($id);
+
+        if (Auth::user()->id == $user->profile->user_id) {
+            $c_img_path = $request->file("cover_img") ? $request->file("cover_img")->store("cover_imgs", 'public') : $user->profile->cover_img;
+
+            $user->profile()->update([
+                "cover_img" => $c_img_path,
+            ]);
+            return response()->json('success', 200);
+        }
+        return response()->json('unauthorized', 401);
+
+    }
+
     public function update(Request $request, $id)
     {
         $data = $this->validate($request, [

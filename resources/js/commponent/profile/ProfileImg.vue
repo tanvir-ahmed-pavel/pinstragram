@@ -30,9 +30,10 @@
                  @mouseover="hover=true" @click.prevent=""
                  :src="imgPre" alt="img"/>
 
+<!--             Image save and cancel Button-->
 
             <button v-if="imgPre" @click="cancel()" class="btn btn-sm btn-outline-dark p-0 pl-1 pr-1 ml-5 mt-3">Cancel</button>
-            <button v-if="imgPre" @click="updateImg()" class="btn btn-sm btn-primary p-0 pl-1 pr-1 mt-3 ml-2">Save
+            <button v-if="imgPre" @click="updateImg()" class="btn btn-sm btn-dark p-0 pl-1 pr-1 mt-3 ml-2">Save
             </button>
             <!--            Update Text-->
 
@@ -52,7 +53,7 @@
         name: "ProfileImg",
         props: ['profile', 'AuthId'],
         created() {
-            console.log(this.$route.params.id);
+
         },
         data() {
             return {
@@ -107,6 +108,7 @@
     .profile-photo-img {
         height: 200px;
         width: 200px;
+        object-fit: cover;
         /*margin: -75px 0 0 0;*/
         border-radius: 200px;
         transition: 0.5s ease-in-out;
@@ -133,6 +135,7 @@
     .bg {
         height: 200px;
         width: 200px;
+        object-fit: cover;
         margin: -75px 0 0 0;
         border-radius: 200px;
     }
